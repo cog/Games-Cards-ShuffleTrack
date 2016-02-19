@@ -1,4 +1,4 @@
-Games-Cards-ShuffleTrack
+Games::Cards::ShuffleTrack
 
 Track cards through shuffles and cuts
 
