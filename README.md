@@ -1,15 +1,8 @@
 Games-Cards-ShuffleTrack
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+Track cards through shuffles and cuts
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+This module is still pending development. In fact, it's still in specification.
 
 
 INSTALLATION
@@ -20,6 +13,7 @@ To install this module, run the following commands:
 	make
 	make test
 	make install
+
 
 SUPPORT AND DOCUMENTATION
 
