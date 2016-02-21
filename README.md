@@ -1,51 +1,92 @@
-Games::Cards::ShuffleTrack
+# NAME
 
-Track cards through shuffles and cuts
+Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
-This module is still pending development. In fact, it's still in specification.
+# VERSION
 
+Version 0.01
 
-INSTALLATION
+# WARNING
 
-To install this module, run the following commands:
+This module is in development stage still. In fact, it's still under specification.
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+# SYNOPSIS
 
+This module allows you to simulate true and false shuffles and cuts.
 
-SUPPORT AND DOCUMENTATION
+    use Games::Cards::ShuffleTrack;
 
-After installing, you can find documentation for this module with the
-perldoc command.
+    my $deck = Games::Cards::ShuffleTrack->new();
+
+    $deck->riffle_shuffle();
+    $deck->riffle_shuffle();
+    $deck->riffle_shuffle();
+    $deck->cut();
+
+Or perhaps with more control:
+
+    my $deck = Games::Cards::ShuffleTrack->new();
+
+    $deck->faro_in();
+    $deck->cut(26);
+
+See the rest of the documentation for more advanced features.
+
+# SUBROUTINES/METHODS
+
+## new
+
+Create a new deck.
+
+## riffle\_shuffle
+
+Riffle shuffle the deck.
+
+# AUTHOR
+
+Jose Castro, `<cog at cpan.org>`
+
+# BUGS
+
+Please report any bugs or feature requests to `bug-games-cards-shuffletrack at rt.cpan.org`, or through
+the web interface at [http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-Cards-ShuffleTrack](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-Cards-ShuffleTrack).  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
+
+# SUPPORT
+
+You can find documentation for this module with the perldoc command.
 
     perldoc Games::Cards::ShuffleTrack
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack
+- RT: CPAN's request tracker (report bugs here)
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Games-Cards-ShuffleTrack
+    [http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack)
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack
+- AnnoCPAN: Annotated CPAN documentation
 
-    Search CPAN
-        http://search.cpan.org/dist/Games-Cards-ShuffleTrack/
+    [http://annocpan.org/dist/Games-Cards-ShuffleTrack](http://annocpan.org/dist/Games-Cards-ShuffleTrack)
 
+- CPAN Ratings
 
-LICENSE AND COPYRIGHT
+    [http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack](http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack)
 
-Copyright (C) 2016 Jose Castro
+- Search CPAN
+
+    [http://search.cpan.org/dist/Games-Cards-ShuffleTrack/](http://search.cpan.org/dist/Games-Cards-ShuffleTrack/)
+
+# ACKNOWLEDGEMENTS
+
+# LICENSE AND COPYRIGHT
+
+Copyright 2016 Jose Castro.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
 copy of the full license at:
 
-L<http://www.perlfoundation.org/artistic_license_2_0>
+[http://www.perlfoundation.org/artistic\_license\_2\_0](http://www.perlfoundation.org/artistic_license_2_0)
 
 Any use, modification, and distribution of the Standard or Modified
 Versions is governed by this Artistic License. By using, modifying or
@@ -76,4 +117,3 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
