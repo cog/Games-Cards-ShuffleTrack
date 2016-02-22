@@ -2,3 +2,6 @@ To Do list:
 
  * implement other orders other than new deck order
  * allow for user-specified order
+ * start a deck with a specific number of cards
+ * remove cards from a deck
+ * add cards to a deck (specific cards or random cards)
