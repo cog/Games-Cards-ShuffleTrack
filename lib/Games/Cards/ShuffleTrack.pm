@@ -45,15 +45,43 @@ Or perhaps with more control:
 See the rest of the documentation for more advanced features.
 
 
+=head1 DECK REPRESENTATION
+
+At the moment a deck is represented as a list of strings; each string represents a card where the first letter or digit (or digits, in the case of a 10) is the value of the card and the following letter is the suit:
+
+ * C - Clubs
+ * H - Hearts
+ * S - Spades
+ * D - Diamonds
+
+
 =head1 SUBROUTINES/METHODS
 
 =head2 new
 
 Create a new deck.
 
+The order of the deck is from top to bottom, which means it is the reverse of what you see when you spread a deck in your hands with the cards facing you.
+
+When you open most professional decks of cards you'll see the Ace of Spades (AS) in the front; this means it will actually be the 52nd card in the deck, since when you place the cards on the table facing down it will be the bottom card.
+
+Currently this module doesn't support specific orders or different orders other than the new deck.
+
+The order of the cards is as follows:
+
 =cut
 
+our $decks = {
+	new_deck_order => qw/AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
+						 AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
+						 KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
+						 KS QS JS 10S 9S 8S 7S 6S 5S 4S 3S 2S AS/
+};
+
 sub new {
+  my ($self) = @_;
+  my $deck = $decks->{'new_deck_order'};
+  bless $deck, $self;
 }
 
 =head2 riffle_shuffle
