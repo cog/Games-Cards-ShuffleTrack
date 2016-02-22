@@ -34,6 +34,7 @@ This module allows you to simulate true and false shuffles and cuts.
     $deck->riffle_shuffle();
     $deck->riffle_shuffle();
     $deck->cut();
+    print $deck->get_deck();
 
 Or perhaps with more control:
 
@@ -41,6 +42,7 @@ Or perhaps with more control:
 
     $deck->faro_in();
     $deck->cut(26);
+    print $deck->get_deck();
 
 See the rest of the documentation for more advanced features.
 
