@@ -45,14 +45,31 @@ Or perhaps with more control:
 See the rest of the documentation for more advanced features.
 
 
+=head1 INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+
 =head1 DECK REPRESENTATION
 
 At the moment a deck is represented as a list of strings; each string represents a card where the first letter or digit (or digits, in the case of a 10) is the value of the card and the following letter is the suit:
 
- * C - Clubs
- * H - Hearts
- * S - Spades
- * D - Diamonds
+	C - Clubs
+ 	H - Hearts
+ 	S - Spades
+ 	D - Diamonds
+
+As an example, some card representations:
+
+	AC - Ace of Clubs
+	10S - Ten of Spades
+	4D - 4 of Diamonds
+	KH - King of Hearts
 
 
 =head1 SUBROUTINES/METHODS
@@ -68,6 +85,11 @@ When you open most professional decks of cards you'll see the Ace of Spades (AS)
 Currently this module doesn't support specific orders or different orders other than the new deck.
 
 The order of the cards is as follows:
+
+	Ace of Hearths through King of Hearts
+	Ace of Clubs through King of Clubs
+	King of Diamonds through Ace of Diamonds
+	King of Spades through Ace of Spades
 
 =cut
 

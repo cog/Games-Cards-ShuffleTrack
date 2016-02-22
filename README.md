@@ -10,15 +10,6 @@ Version 0.01
 
 This module is in development stage still. In fact, it's still under specification.
 
-# INSTALLATION
-
-To install this module, run the following commands:
-
-    perl Makefile.PL
-    make
-    make test
-    make install
-
 # SYNOPSIS
 
 This module allows you to simulate true and false shuffles and cuts.
@@ -41,11 +32,53 @@ Or perhaps with more control:
 
 See the rest of the documentation for more advanced features.
 
+# INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+# DECK REPRESENTATION
+
+At the moment a deck is represented as a list of strings; each string represents a card where the first letter or digit (or digits, in the case of a 10) is the value of the card and the following letter is the suit:
+
+        C - Clubs
+        H - Hearts
+        S - Spades
+        D - Diamonds
+
+As an example, some card representations:
+
+        AC - Ace of Clubs
+        10S - Ten of Spades
+        4D - 4 of Diamonds
+        KH - King of Hearts
+
 # SUBROUTINES/METHODS
 
 ## new
 
 Create a new deck.
+
+The order of the deck is from top to bottom, which means it is the reverse of what you see when you spread a deck in your hands with the cards facing you.
+
+When you open most professional decks of cards you'll see the Ace of Spades (AS) in the front; this means it will actually be the 52nd card in the deck, since when you place the cards on the table facing down it will be the bottom card.
+
+Currently this module doesn't support specific orders or different orders other than the new deck.
+
+The order of the cards is as follows:
+
+        Ace of Hearths through King of Hearts
+        Ace of Clubs through King of Clubs
+        King of Diamonds through Ace of Diamonds
+        King of Spades through Ace of Spades
+
+## get\_deck
+
+Returns the deck as a list of strings.
 
 ## riffle\_shuffle
 
