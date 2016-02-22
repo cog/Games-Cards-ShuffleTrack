@@ -72,16 +72,28 @@ The order of the cards is as follows:
 =cut
 
 our $decks = {
-	new_deck_order => qw/AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
-						 AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
-						 KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
-						 KS QS JS 10S 9S 8S 7S 6S 5S 4S 3S 2S AS/
+	new_deck_order => [qw/AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
+						  AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
+						  KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
+						  KS QS JS 10S 9S 8S 7S 6S 5S 4S 3S 2S AS/],
 };
 
 sub new {
   my ($self) = @_;
   my $deck = $decks->{'new_deck_order'};
-  bless $deck, $self;
+  bless {'deck' => $deck}, $self;
+}
+
+
+=head2 get_deck
+
+Returns the deck as a list of strings.
+
+=cut
+
+sub get_deck {
+	my $self = shift;
+	return $self->{'deck'};
 }
 
 =head2 riffle_shuffle
