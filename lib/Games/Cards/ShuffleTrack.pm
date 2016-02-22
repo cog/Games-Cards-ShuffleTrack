@@ -123,17 +123,20 @@ sub get_deck {
 }
 
 
-=head2 riffle_shuffle
+=head2 Shuffling
+
+=head3 riffle_shuffle
 
 Riffle shuffle the deck.
 
 =cut
 
 sub riffle_shuffle {
+
 }
 
 
-=head2 faro_in
+=head3 faro_in
 
 Faro in the deck.
 
@@ -157,6 +160,29 @@ sub faro_in {
 	return $self;
 }
 
+
+=head3 faro_out
+
+Faro out the deck.
+
+=cut
+
+sub faro_out {
+	# this should be the same routine as the faro_in, simply taking the two halves in opposite order
+}
+
+
+=head2 Cutting
+
+=head3 cut
+
+Cut the deck
+
+=cut
+
+sub cut {
+
+}
 
 
 # subroutines
