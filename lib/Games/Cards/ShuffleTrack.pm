@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use List::MoreUtils;
+use List::MoreUtils qw/zip/;
 
 =head1 NAME
 
@@ -141,10 +141,18 @@ Faro in the deck.
 
 sub faro_in {
 	my $self = shift;
+	my $deck = $self->get_deck();
 
 	# check the size of the deck
-	# cut in half (what happens when the deck is odd-sized?)
-	# zip the elements of both halves
+	my $size = $self->_deck_size();
+
+	# cut in half (what happens when the deck is odd-sized?) and zip the halves
+	my $half = $size / 2;
+
+	my @first_half  = @$deck[0 .. $half - 1];
+	my @second_half = @$deck[$half .. $size - 1];
+
+	$self->_set_deck( zip @first_half, @second_half );
 
 	return $self;
 }
@@ -152,6 +160,12 @@ sub faro_in {
 
 
 # subroutines
+
+sub _set_deck {
+	my $self = shift;
+	my $new_deck = [@_];
+	$self->{'deck'} = $new_deck;
+}
 
 sub _deck_size {
 	my $self = shift;
