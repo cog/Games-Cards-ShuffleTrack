@@ -10,6 +10,15 @@ Version 0.01
 
 This module is in development stage still. In fact, it's still under specification.
 
+# INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
 # SYNOPSIS
 
 This module allows you to simulate true and false shuffles and cuts.
