@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use List::MoreUtils
+use List::MoreUtils;
 
 =head1 NAME
 
@@ -147,6 +147,15 @@ sub faro_in {
 	# zip the elements of both halves
 
 	return $self;
+}
+
+
+
+# subroutines
+
+sub _deck_size {
+	my $self = shift;
+	return scalar @{$self->{'deck'}};
 }
 
 
