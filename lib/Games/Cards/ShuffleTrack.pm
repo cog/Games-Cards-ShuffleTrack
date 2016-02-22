@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+use List::MoreUtils
+
 =head1 NAME
 
 Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
@@ -120,6 +122,7 @@ sub get_deck {
 	return $self->{'deck'};
 }
 
+
 =head2 riffle_shuffle
 
 Riffle shuffle the deck.
@@ -128,6 +131,24 @@ Riffle shuffle the deck.
 
 sub riffle_shuffle {
 }
+
+
+=head2 faro_in
+
+Faro in the deck.
+
+=cut
+
+sub faro_in {
+	my $self = shift;
+
+	# check the size of the deck
+	# cut in half (what happens when the deck is odd-sized?)
+	# zip the elements of both halves
+
+	return $self;
+}
+
 
 =head1 AUTHOR
 
