@@ -128,6 +128,8 @@ sub get_deck {
 
 Riffle shuffle the deck.
 
+    $deck->riffle_shuffle();
+
 In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 4 cards.
 
 =cut
@@ -140,6 +142,8 @@ sub riffle_shuffle {
 =head3 faro_in
 
 Faro in the deck.
+
+    $deck->faro_in();
 
 The deck is cut in precisely half and the two halves are interlaced perfectly so that each card from each half is inserted in between two cards from the opposite half.
 
@@ -172,6 +176,8 @@ sub faro_in {
 
 =head3 faro_out
 
+    $deck->faro_out();
+
 Faro out the deck.
 
 =cut
@@ -185,7 +191,7 @@ sub faro_out {
 
 =head3 cut
 
-Cut the deck
+Cut the deck.
 
 =cut
 
