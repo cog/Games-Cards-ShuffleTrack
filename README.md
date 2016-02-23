@@ -20,8 +20,8 @@ This module allows you to simulate true and false shuffles and cuts.
 
     $deck->riffle_shuffle();
     $deck->riffle_shuffle();
-    $deck->riffle_shuffle();
     $deck->cut();
+    print $deck->get_deck();
 
 Or perhaps with more control:
 
@@ -29,6 +29,7 @@ Or perhaps with more control:
 
     $deck->faro_in();
     $deck->cut(26);
+    print $deck->get_deck();
 
 See the rest of the documentation for more advanced features.
 
@@ -63,6 +64,8 @@ As an example, some card representations:
 
 Create a new deck.
 
+    my $deck = Games::Cards::ShuffleTrack->new();
+
 The order of the deck is from top to bottom, which means it is the reverse of what you see when you spread a deck in your hands with the cards facing you.
 
 When you open most professional decks of cards you'll see the Ace of Spades (AS) in the front; this means it will actually be the 52nd card in the deck, since when you place the cards on the table facing down it will be the bottom card.
@@ -80,9 +83,43 @@ The order of the cards is as follows:
 
 Returns the deck as a list of strings.
 
-## riffle\_shuffle
+    my @cards = $deck->get_deck();
+
+## Shuffling
+
+### riffle\_shuffle
 
 Riffle shuffle the deck.
+
+    $deck->riffle_shuffle();
+
+In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 4 cards.
+
+### faro\_in
+
+Faro in the deck.
+
+    $deck->faro_in();
+
+The deck is cut in precisely half and the two halves are interlaced perfectly so that each card from each half is inserted in between two cards from the opposite half.
+
+Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
+
+    1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
+
+In a "faro in" the top and bottom cards remain in their original positions.
+
+### faro\_out
+
+    $deck->faro_out();
+
+Faro out the deck.
+
+## Cutting
+
+### cut
+
+Cut the deck.
 
 # AUTHOR
 
