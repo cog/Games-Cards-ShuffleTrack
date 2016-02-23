@@ -267,6 +267,15 @@ L<http://search.cpan.org/dist/Games-Cards-ShuffleTrack/>
 =back
 
 
+=head1 SEE ALSO
+
+Recommended reading:
+
+    * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
+
+    * The Annotated Erdnase, by Darwin Ortiz
+
+
 =head1 ACKNOWLEDGEMENTS
 
 

@@ -161,6 +161,14 @@ You can also look for information at:
 
     [http://search.cpan.org/dist/Games-Cards-ShuffleTrack/](http://search.cpan.org/dist/Games-Cards-ShuffleTrack/)
 
+# SEE ALSO
+
+Recommended reading:
+
+    * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
+
+    * The Annotated Erdnase, by Darwin Ortiz
+
 # ACKNOWLEDGEMENTS
 
 # LICENSE AND COPYRIGHT
