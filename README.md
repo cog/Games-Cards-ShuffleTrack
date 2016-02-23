@@ -121,6 +121,12 @@ Faro out the deck.
 
 Cut the deck.
 
+    $deck->cut();
+
+Cut at a precise position (moving X cards from top to bottom):
+
+    $deck->cut(26);
+
 # AUTHOR
 
 Jose Castro, `<cog at cpan.org>`

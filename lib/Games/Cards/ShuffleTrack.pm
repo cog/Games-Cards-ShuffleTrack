@@ -197,6 +197,12 @@ sub faro_out {
 
 Cut the deck.
 
+    $deck->cut();
+
+Cut at a precise position (moving X cards from top to bottom):
+
+    $deck->cut(26);
+
 =cut
 
 sub cut {

@@ -16,7 +16,9 @@ To Do list:
         * faro X cards from the top
 
  * running cuts
- * cut just the top of the deck
- * cut deep
+ * cut (somewhere between 10 and 43 cards)
+ * cut center (not the exact center but somewhere near the center, between 19 and 31)
+ * cut short (just the top of the deck; somewhere between 5 and 15 cards)
+ * cut deep (somewhere between 35 and 45)
 
  * given a series of procedures and a desired final result, assert the initial order of the deck
