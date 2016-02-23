@@ -1,28 +1,36 @@
 To Do list:
 
- * implement other orders other than new deck order
- * allow for user-specified order
- * start a deck with a specific number of cards
- * remove cards from a deck
- * add cards to a deck (specific cards or random cards)
- * document what happens if you try to faro a deck with an odd number of cards
- * allow for an option on shuffles and cuts to do the procedure X times
- * include whether the deck is face up or face down so that you can do some moves with the cards facing the opposite direction (e.g., running cards from the face)
+ * new deck
+    * implement other orders other than new deck order
+    * allow for user-specified order
+    * start a deck with a specific number of cards
+
+ * changing a deck
+    * remove cards from a deck
+    * add cards to a deck (specific cards or random cards)
+
+ * documentation
+    * document what happens if you try to faro a deck with an odd number of cards
+    * acknowledgments
+    * update the list of recommended books
 
  * shuffling
+    * allow for an option on shuffles and cuts to do the procedure X times
  	* hindu shuffle
  	* overhand shuffle
     * faro
         * faro out
         * faro X cards from the top
 
- * running cuts
- * cut (somewhere between 10 and 43 cards)
- * cut center (not the exact center but somewhere near the center, between 19 and 31)
- * cut short (just the top of the deck; somewhere between 5 and 15 cards)
- * cut deep (somewhere between 35 and 45)
- * cut at a specific card (assume the operator has a way of doing this regardless of the position of the card)
+ * cutting the deck
+    * running cuts
+    * cut (somewhere between 10 and 43 cards)
+    * cut center (not the exact center but somewhere near the center, between 19 and 31)
+    * cut short (just the top of the deck; somewhere between 5 and 15 cards)
+    * cut deep (somewhere between 35 and 45)
+    * cut at a specific card (assume the operator has a way of doing this regardless of the position of the card)
 
- * given a series of procedures and a desired final result, assert the initial order of the deck
-
- * maintain relationship through cards; from a specific order and through a series of procedures, ascertain axioms about the end result
+ * advanced
+    * include whether the deck is face up or face down so that you can do some moves with the cards facing the opposite direction (e.g., running cards from the face)
+    * given a series of procedures and a desired final result, assert the initial order of the deck
+    * maintain relationship through cards; from a specific order and through a series of procedures, ascertain axioms about the end result
