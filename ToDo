@@ -8,7 +8,7 @@ To Do list:
  * document what happens if you try to faro a deck with an odd number of cards
  * allow for an option on shuffles and cuts to do the procedure X times
  * include whether the deck is face up or face down so that you can do some moves with the cards facing the opposite direction (e.g., running cards from the face)
- 
+
  * shuffling
  	* hindu shuffle
  	* overhand shuffle
@@ -22,3 +22,5 @@ To Do list:
  * cut deep (somewhere between 35 and 45)
 
  * given a series of procedures and a desired final result, assert the initial order of the deck
+
+ * maintain relationship through cards; from a specific order and through a series of procedures, ascertain axioms about the end result
