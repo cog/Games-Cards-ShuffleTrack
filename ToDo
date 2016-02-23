@@ -21,6 +21,7 @@ To Do list:
  * cut center (not the exact center but somewhere near the center, between 19 and 31)
  * cut short (just the top of the deck; somewhere between 5 and 15 cards)
  * cut deep (somewhere between 35 and 45)
+ * cut at a specific card (assume the operator has a way of doing this regardless of the position of the card)
 
  * given a series of procedures and a desired final result, assert the initial order of the deck
 
