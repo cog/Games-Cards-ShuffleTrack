@@ -81,6 +81,8 @@ As an example, some card representations:
 
 Create a new deck.
 
+    my $deck = Games::Cards::ShuffleTrack->new();
+
 The order of the deck is from top to bottom, which means it is the reverse of what you see when you spread a deck in your hands with the cards facing you.
 
 When you open most professional decks of cards you'll see the Ace of Spades (AS) in the front; this means it will actually be the 52nd card in the deck, since when you place the cards on the table facing down it will be the bottom card.
@@ -113,6 +115,8 @@ sub new {
 =head2 get_deck
 
 Returns the deck as a list of strings.
+
+    my @cards = $deck->get_deck();
 
 =cut
 
