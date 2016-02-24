@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
+use List::Util qw/min/;
 use List::MoreUtils qw/zip/;
 
 =head1 NAME
@@ -158,18 +159,19 @@ sub riffle_shuffle {
 	);
 
 	# riffle cards from both halves, from the bottom to the top, until you've depleted both halves; we're riffling 1-5 cards at a time (we're not considering how fast each half is depleted nor whether the packets riffled on each side are of similar sizes)
-
 	my @new_pile = ();
 
-	# TODO: a good riffle shuffle should be an in-shuffle, and there should be an option for an out-shuffle or even to control either top or bottom stock
+	# TODO: there should be an option for an out-shuffle or even to control either top or bottom stock
 
 	while ( @{$halves[0]} and @{$halves[1]} ) {
 		# drop X cards from the bottom of this half to the pile
-		my $number_of_cards = int(rand(5))+1;
+		# TODO: should we favor numbers 2 and 3 in favor or 1, 4 and 5?
+		my $number_of_cards = int(rand( min(5, scalar @{$halves[0]}) ))+1;
 
-		unshift @new_pile, pop $number_of_cards, @{$halves[0]};
+		my @dropped_cards = splice @{$halves[0]}, -$number_of_cards;
+		unshift @new_pile, @dropped_cards;
 
-		# alternate between left and right (start with left, otherwise you'd always keep the bottom card on the bottom)
+		# alternate between left and right (and we started with left, otherwise you'd always keep the bottom card on the bottom)
 		@halves = reverse @halves;
 	}
 
