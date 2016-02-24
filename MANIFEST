@@ -7,6 +7,7 @@ t/00-load.t
 t/01-basic.t
 t/02-subroutines.t
 t/03-faro.t
+t/04-riffle-shuffle.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
