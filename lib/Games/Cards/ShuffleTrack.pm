@@ -184,11 +184,11 @@ sub riffle_shuffle {
 }
 
 
-=head3 faro_in
+=head3 faro_out
 
 Faro in the deck.
 
-    $deck->faro_in();
+    $deck->faro_out();
 
 The deck is cut in precisely half and the two halves are interlaced perfectly so that each card from each half is inserted in between two cards from the opposite half.
 
@@ -196,11 +196,11 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
     1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
 
-In a "faro in" the top and bottom cards remain in their original positions.
+In a "faro out" the top and bottom cards remain in their original positions.
 
 =cut
 
-sub faro_in {
+sub faro_out {
 	my $self = shift;
 	my $deck = $self->get_deck();
 
@@ -219,15 +219,15 @@ sub faro_in {
 }
 
 
-=head3 faro_out
+=head3 faro_in
 
-    $deck->faro_out();
+    $deck->faro_in();
 
-Faro out the deck.
+Faro in the deck.
 
 =cut
 
-sub faro_out {
+sub faro_in {
 	# this should be the same routine as the faro_in, simply taking the two halves in opposite order
 }
 
