@@ -147,8 +147,7 @@ sub riffle_shuffle {
 	my $lower_limit = $size * 0.35;
 	my $upper_limit = $size * 0.60;
 
-	my $cut_depth  = int(rand( $upper_limit - $lower_limit ));
-	   $cut_depth += $lower_limit;
+	my $cut_depth  = $lower_limit + int(rand( $upper_limit - $lower_limit ));
 
 	# cut the deck into two piles (left pile is the original top half of the deck)
 	my $deck = $self->get_deck;
