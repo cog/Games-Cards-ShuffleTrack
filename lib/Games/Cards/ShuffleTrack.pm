@@ -153,10 +153,10 @@ sub riffle_shuffle {
 	# cut the deck into two piles (left pile is the original top half of the deck)
 	my $deck = $self->get_deck;
 
-	my @halves = (
-		[ @$deck[0 .. $cut_depth - 1] ],
-		[ @$deck[$cut_depth .. $size - 1] ]
-	);
+	my @left  = @$deck;
+	my @right = splice @left, $cut_depth;
+
+	my @halves = ( \@left, \@right );
 
 	# riffle cards from both halves, from the bottom to the top, until you've depleted both halves; we're riffling 1-5 cards at a time (we're not considering how fast each half is depleted nor whether the packets riffled on each side are of similar sizes)
 	my @new_pile = ();
@@ -212,8 +212,8 @@ sub faro_out {
 	# cut in half (what happens when the deck is odd-sized?) and zip the halves
 	my $half = $size / 2;
 
-	my @first_half  = @$deck[0 .. $half - 1];
-	my @second_half = @$deck[$half .. $size - 1];
+	my @first_half  = @$deck;
+	my @second_half = splice @first_half, $half;
 
 	$self->_set_deck( zip @first_half, @second_half );
 
