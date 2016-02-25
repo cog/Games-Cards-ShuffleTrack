@@ -146,15 +146,13 @@ sub riffle_shuffle {
 
 	# decide where to cut the deck; we're going to cut somewhere between 35% and 60% of the deck (if the deck has 52 cards, this should be somewhere between 18 and 31 cards)
 	my $size = $self->_deck_size;
-	my $lower_limit = $size * 0.35;
-	my $upper_limit = $size * 0.60;
+
+	my ($lower_limit, $upper_limit) = ($size * 0.35, $size * 0.60);
 
 	my $cut_depth  = $lower_limit + int(rand( $upper_limit - $lower_limit ));
 
 	# cut the deck into two piles (left pile is the original top half of the deck)
-	my $deck = $self->get_deck;
-
-	my @left  = @$deck;
+	my @left  = @{$self->get_deck};
 	my @right = splice @left, $cut_depth;
 
 	my @halves = ( \@left, \@right );
@@ -164,24 +162,21 @@ sub riffle_shuffle {
 
 	# TODO: there should be an option for an out-shuffle or even to control either top or bottom stock
 
-	while ( @{$halves[0]} and @{$halves[1]} ) {
+	while ( @left and @right ) {
 		# drop X cards from the bottom of this half to the pile
 		# TODO: should we favor numbers 2 and 3 in favor or 1, 4 and 5?
-		my $number_of_cards = int(rand( min(5, scalar @{$halves[0]}) ))+1;
+		my $current_half = $halves[0];
+		my $number_of_cards = int(rand( min(5, scalar @$current_half) ))+1;
 
-		my @dropped_cards = splice @{$halves[0]}, -$number_of_cards;
+		my @dropped_cards = splice @$current_half, -$number_of_cards;
 		unshift @new_pile, @dropped_cards;
 
 		# alternate between left and right (and we started with left, otherwise you'd always keep the bottom card on the bottom)
 		@halves = reverse @halves;
 	}
 
-	# drop the balance on top
-	unshift @new_pile, @{$halves[0]};
-	unshift @new_pile, @{$halves[1]};
-
-	# set the deck to be this new pile
-	$self->_set_deck( @new_pile );
+	# drop the balance on top and set the deck to be the result
+	$self->_set_deck( @new_pile, @left, @right );
 
 	return $self;
 }
