@@ -10,6 +10,8 @@ Version 0.01
 
 This module is in development stage still. In fact, it's still under specification.
 
+Many of the methods documented here haven't been implemented yet (nor has the module been uploaded to CPAN yet).
+
 # SYNOPSIS
 
 This module allows you to simulate true and false shuffles and cuts.
@@ -95,25 +97,33 @@ Riffle shuffle the deck.
 
 In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 4 cards.
 
+### Faro
+
+In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.
+
 ### faro\_out
 
-Faro in the deck.
+Faro out the deck.
 
     $deck->faro_out();
 
-The deck is cut in precisely half and the two halves are interlaced perfectly so that each card from each half is inserted in between two cards from the opposite half.
+In a "faro out" the top and bottom cards remain in their original positions.
 
 Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
 
     1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
 
-In a "faro out" the top and bottom cards remain in their original positions.
-
 ### faro\_in
+
+Faro in the deck.
 
     $deck->faro_in();
 
-Faro in the deck.
+In a "faro in" the top and bottom cards do not remain in their original positions (top card becomes second from the top, bottom card becomes second from the bottom).
+
+Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
+
+        27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
 
 ## Cutting
 
@@ -123,9 +133,19 @@ Cut the deck.
 
     $deck->cut();
 
+In a 52 cards deck, this would cut somewhere between 10 and 43 cards.
+
 Cut at a precise position (moving X cards from top to bottom):
 
     $deck->cut(26);
+
+Additional ways of cutting:
+
+        $deck->cut_deep; # in a 52 cards deck, somewhere between 35 and 45 cards
+        $deck->cut_short; # in a 52 cards deck, somewhere between 5 and 15 cards
+        $deck->cut_center; # in a 52 cards deck, somewhere between 19 and 31 cards
+        $deck->cut_below('AS'); # cutting right above the Ace of Spades
+        $deck->cut_above('KH'); # cutting right below the King of Hearts
 
 # AUTHOR
 
