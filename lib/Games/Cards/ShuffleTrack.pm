@@ -207,21 +207,9 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
 sub faro_out {
 	my $self = shift;
-	my $deck = $self->get_deck();
 
-	# check the size of the deck
-	my $size = $self->_deck_size();
-
-	# cut in half and zip the halves
-	# TODO: what happens when the deck is odd-sized?
-	my @first_half  = @$deck;
-	my @second_half = splice @first_half, $size / 2;
-
-	$self->_set_deck( zip @first_half, @second_half );
-
-	return $self;
+	$self->_faro( 'out' );
 }
-
 
 =head3 faro_in
 
@@ -238,19 +226,27 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 =cut
 
 sub faro_in {
-	# TODO: refactor the code from faro_in and faro_out
 	my $self = shift;
-	my $deck = $self->get_deck();
 
-	# check the size of the deck
-	my $size = $self->_deck_size();
+	$self->_faro( 'in' );
+}
 
-	# cut in half and zip the halves
+sub _faro {
+	my $self = shift;
+	my $faro = shift;
+
 	# TODO: what happens when the deck is odd-sized?
-	my @first_half  = @$deck;
+	my $size = $self->_deck_size;
+
+	my @first_half  = @{$self->get_deck};
 	my @second_half = splice @first_half, $size / 2;
 
-	$self->_set_deck( zip @second_half, @first_half );
+	if ( $faro eq 'out' ) {
+		$self->_set_deck( zip @first_half, @second_half );
+	}
+	elsif ( $faro eq 'in' ) {
+		$self->_set_deck( zip @second_half, @first_half );
+	}
 
 	return $self;
 }
