@@ -239,12 +239,11 @@ sub _faro {
 	my @first_half  = @{$self->get_deck};
 	my @second_half = splice @first_half, $self->_deck_size / 2;
 
-	if ( $faro eq 'out' ) {
-		$self->_set_deck( zip @first_half, @second_half );
-	}
-	elsif ( $faro eq 'in' ) {
-		$self->_set_deck( zip @second_half, @first_half );
-	}
+	$self->_set_deck(
+			$faro eq 'out' ?
+			zip @first_half,  @second_half :
+			zip @second_half, @first_half
+		);
 
 	return $self;
 }
