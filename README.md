@@ -81,9 +81,9 @@ The order of the cards is as follows:
 
 ## get\_deck
 
-Returns the deck as a list of strings.
+Returns the deck (a reference to a list of strings).
 
-    my @cards = $deck->get_deck();
+    my $cards = $deck->get_deck();
 
 ## Shuffling
 

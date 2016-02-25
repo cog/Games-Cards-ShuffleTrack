@@ -115,9 +115,9 @@ sub new {
 
 =head2 get_deck
 
-Returns the deck as a list of strings.
+Returns the deck (a reference to a list of strings).
 
-    my @cards = $deck->get_deck();
+    my $cards = $deck->get_deck();
 
 =cut
 
