@@ -266,7 +266,16 @@ Additional ways of cutting:
 =cut
 
 sub cut {
+	my $self = shift;
 
+	my $size = $self->_deck_size;
+
+	# on a 52 cards deck, cut between 10 and 43 cards
+	my $cut_depth = _rand( $size * 0.19, $size * 0.82 );
+
+	my $deck = $self->get_deck;
+	unshift @$deck, splice @$deck, $cut_depth;
+	$self->_set_deck( $deck );
 }
 
 
