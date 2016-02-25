@@ -168,8 +168,7 @@ sub riffle_shuffle {
 		my $current_half = $halves[0];
 		my $number_of_cards = int(rand( min(5, scalar @$current_half) ))+1;
 
-		my @dropped_cards = splice @$current_half, -$number_of_cards;
-		unshift @new_pile, @dropped_cards;
+		unshift @new_pile, splice @$current_half, -$number_of_cards;
 
 		# alternate between left and right (and we started with left, otherwise you'd always keep the bottom card on the bottom)
 		@halves = reverse @halves;
