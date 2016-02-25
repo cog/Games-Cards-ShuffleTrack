@@ -141,6 +141,7 @@ In the act of riffle shuffling a deck the deck is cut into two halves of approxi
 
 =cut
 
+# TODO: there should be an option for an out-shuffle or even to control either top or bottom stock
 sub riffle_shuffle {
 	my $self = shift;
 
@@ -151,16 +152,15 @@ sub riffle_shuffle {
 
 	my $cut_depth  = $lower_limit + int(rand( $upper_limit - $lower_limit ));
 
-	# cut the deck into two piles (left pile is the original top half of the deck)
+	# cut the deck into two piles (left pile is the original top half)
 	my @left  = @{$self->get_deck};
 	my @right = splice @left, $cut_depth;
 
 	my @halves = ( \@left, \@right );
 
-	# riffle cards from both halves, from the bottom to the top, until you've depleted both halves; we're riffling 1-5 cards at a time (we're not considering how fast each half is depleted nor whether the packets riffled on each side are of similar sizes)
+	# riffle cards from both halves, from the bottom to the top
+	# we're riffling 1-5 cards at a time (not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes)
 	my @new_pile = ();
-
-	# TODO: there should be an option for an out-shuffle or even to control either top or bottom stock
 
 	while ( @left and @right ) {
 		# drop X cards from the bottom of this half to the pile
@@ -170,12 +170,12 @@ sub riffle_shuffle {
 
 		unshift @new_pile, splice @$current_half, -$number_of_cards;
 
-		# alternate between left and right (and we started with left, otherwise you'd always keep the bottom card on the bottom)
+		# alternate between left and right (we started with left
 		@halves = reverse @halves;
 	}
 
 	# drop the balance on top and set the deck to be the result
-	$self->_set_deck( @new_pile, @left, @right );
+	$self->_set_deck( @left, @right, @new_pile );
 
 	return $self;
 }
