@@ -10,25 +10,20 @@ use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 
-my @before_8_faros = $deck->get_deck();
+my @original_deck = $deck->get_deck();
+
 
 # a deck of 52 cards after 8 faro-outs should result in the original order
-$deck->faro_out();
-$deck->faro_out();
-$deck->faro_out();
-$deck->faro_out();
-$deck->faro_out();
-$deck->faro_out();
-$deck->faro_out();
-$deck->faro_out();
-my @after_8_faros = $deck->get_deck();
+$deck->faro_out() for 1 .. 8;
 
-is_deeply( \@before_8_faros, \@after_8_faros );
+my @after_8_faro_outs = $deck->get_deck();
+
+is_deeply( \@after_8_faro_outs, \@original_deck );
+
 
 # a deck of 52 cards after 52 faro-ins should see its order reversed
-for (1 .. 52) {
-	$deck->faro_in();
-}
-my @after_52_faros = $deck->get_deck;
+$deck->faro_in() for 1 .. 52;
 
-is_deeply( \@after_52_faros, [reverse @before_8_faros] );
+my @after_52_faro_ins = $deck->get_deck;
+
+is_deeply( \@after_52_faro_ins, [reverse @original_deck] );
