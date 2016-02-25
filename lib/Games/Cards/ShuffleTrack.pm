@@ -236,10 +236,8 @@ sub _faro {
 	my $faro = shift;
 
 	# TODO: what happens when the deck is odd-sized?
-	my $size = $self->_deck_size;
-
 	my @first_half  = @{$self->get_deck};
-	my @second_half = splice @first_half, $size / 2;
+	my @second_half = splice @first_half, $self->_deck_size / 2;
 
 	if ( $faro eq 'out' ) {
 		$self->_set_deck( zip @first_half, @second_half );
