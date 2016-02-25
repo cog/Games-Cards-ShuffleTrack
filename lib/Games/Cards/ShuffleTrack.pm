@@ -210,11 +210,10 @@ sub faro_out {
 	# check the size of the deck
 	my $size = $self->_deck_size();
 
-	# cut in half (what happens when the deck is odd-sized?) and zip the halves
-	my $half = $size / 2;
-
+	# cut in half and zip the halves
+	# TODO: what happens when the deck is odd-sized?
 	my @first_half  = @$deck;
-	my @second_half = splice @first_half, $half;
+	my @second_half = splice @first_half, $size / 2;
 
 	$self->_set_deck( zip @first_half, @second_half );
 
