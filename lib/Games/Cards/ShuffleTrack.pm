@@ -238,7 +238,21 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 =cut
 
 sub faro_in {
-	# this should be the same routine as the faro_out, simply taking the two halves in opposite order
+	# TODO: refactor the code from faro_in and faro_out
+	my $self = shift;
+	my $deck = $self->get_deck();
+
+	# check the size of the deck
+	my $size = $self->_deck_size();
+
+	# cut in half and zip the halves
+	# TODO: what happens when the deck is odd-sized?
+	my @first_half  = @$deck;
+	my @second_half = splice @first_half, $size / 2;
+
+	$self->_set_deck( zip @second_half, @first_half );
+
+	return $self;
 }
 
 
