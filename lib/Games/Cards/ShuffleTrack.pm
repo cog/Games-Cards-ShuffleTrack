@@ -24,6 +24,8 @@ our $VERSION = '0.01';
 
 This module is in development stage still. In fact, it's still under specification.
 
+Many of the methods documented here haven't been implemented yet (nor has the module been uploaded to CPAN yet).
+
 
 =head1 SYNOPSIS
 
@@ -241,9 +243,19 @@ Cut the deck.
 
     $deck->cut();
 
+In a 52 cards deck, this would cut somewhere between 10 and 43 cards.
+
 Cut at a precise position (moving X cards from top to bottom):
 
     $deck->cut(26);
+
+Additional ways of cutting:
+
+	$deck->cut_deep; # in a 52 cards deck, somewhere between 35 and 45 cards
+	$deck->cut_short; # in a 52 cards deck, somewhere between 5 and 15 cards
+	$deck->cut_center; # in a 52 cards deck, somewhere between 19 and 31 cards
+	$deck->cut_below('AS'); # cutting right above the Ace of Spades
+	$deck->cut_above('KH'); # cutting right below the King of Hearts
 
 =cut
 
