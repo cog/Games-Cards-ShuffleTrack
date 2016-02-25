@@ -148,9 +148,7 @@ sub riffle_shuffle {
 	# decide where to cut the deck; we're going to cut somewhere between 35% and 60% of the deck (if the deck has 52 cards, this should be somewhere between 18 and 31 cards)
 	my $size = $self->_deck_size;
 
-	my ($lower_limit, $upper_limit) = ($size * 0.35, $size * 0.60);
-
-	my $cut_depth  = $lower_limit + int(rand( $upper_limit - $lower_limit ));
+	my $cut_depth = _rand( $size * 0.35, $size * 0.60 );
 
 	# cut the deck into two piles (left pile is the original top half)
 	my @left  = @{$self->get_deck};
@@ -285,6 +283,11 @@ sub _deck_size {
 	return scalar @{$self->{'deck'}};
 }
 
+sub _rand {
+	my ($lower_limit, $upper_limit) = @_;
+
+	return $lower_limit + int(rand( $upper_limit - $lower_limit ));
+}
 
 =head1 AUTHOR
 
