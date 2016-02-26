@@ -258,55 +258,34 @@ Cut at a precise position (moving X cards from top to bottom):
 
 Additional ways of cutting:
 
-	$deck->cut_short;  # on a 52 cards deck, somewhere between 5  and 15 cards
-	$deck->cut_center; # on a 52 cards deck, somewhere between 19 and 31 cards
-	$deck->cut_deep;   # on a 52 cards deck, somewhere between 35 and 45 cards
+	$deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
+	$deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
+	$deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
 	$deck->cut_below('AS'); # cutting right above the Ace of Spades
 	$deck->cut_above('KH'); # cutting right below the King of Hearts
 
 =cut
 
-# TODO: cutting the deck should all be done in one single method with an option to tell how deep the cut should be
 sub cut {
 	my $self = shift;
 	my $position = shift; # TODO: what happens if the position doesn't exist?
 
+	my $cuts = {
+		normal	=> [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
+		short 	=> [0.09, 0.28], # on a 52 cards deck, cut between 5  and 15 cards
+		center 	=> [0.36, 0.59], # on a 52 cards deck, cut between 19 and 31 cards
+		deep 	=> [0.67, 0.86], # on a 52 cards deck, cut between 35 and 45 cards
+	};
+
 	if (not defined $position) {
-		my $size  = $self->_deck_size;
-		$position = _rand( $size * 0.19, $size * 0.82 );
+		$position = 'normal';
 	}
 
-	# on a 52 cards deck, cut between 10 and 43 cards
-	$self->_cut( $position );
-}
-
-sub cut_short {
-	my $self = shift;
-
-	# on a 52 cards deck, cut between 5  and 15 cards
-	my $size = $self->_deck_size;
-	$self->_cut( _rand( $size * 0.09, $size * 0.28 ) )
-}
-
-sub cut_center {
-	my $self = shift;
-
-	# on a 52 cards deck, cut between 19 and 31 cards
-	my $size = $self->_deck_size;
-	$self->_cut( _rand( $size * 0.36, $size * 0.59 ) )
-}
-
-sub cut_deep {
-	my $self = shift;
-
-	# on a 52 cards deck, cut between 35 and 45 cards
-	my $size = $self->_deck_size;
-	$self->_cut( _rand( $size * 0.67, $size * 0.86 ) )
-}
-
-sub _cut {
-	my $self = shift;
-	my $position = shift;
+	if ($position =~ /^short|center|deep|normal$/) {
+		my ($lower, $upper) = @{$cuts->{ $position }};
+		my $size = $self->_deck_size;
+		$position = _rand( $size * $lower, $size * $upper );
+	}
 
 	my @deck = @{$self->get_deck};
 	unshift @deck, splice @deck, $position;
