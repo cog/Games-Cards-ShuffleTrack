@@ -19,6 +19,13 @@ Version 0.01
 
 our $VERSION = '0.01';
 
+our $cut_limits = {
+	normal	=> [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
+	short 	=> [0.09, 0.28], # on a 52 cards deck, cut between 5  and 15 cards
+	center 	=> [0.36, 0.59], # on a 52 cards deck, cut between 19 and 31 cards
+	deep 	=> [0.67, 0.86], # on a 52 cards deck, cut between 35 and 45 cards
+};
+
 
 =head1 WARNING
 
@@ -180,7 +187,7 @@ sub riffle_shuffle {
 }
 
 
-=head3 Faro
+=head3 Faro shuffle
 
 In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.
 
@@ -256,19 +263,12 @@ sub cut {
 	my $self = shift;
 	my $position = shift; # TODO: what happens if the position doesn't exist?
 
-	my $cuts = {
-		normal	=> [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
-		short 	=> [0.09, 0.28], # on a 52 cards deck, cut between 5  and 15 cards
-		center 	=> [0.36, 0.59], # on a 52 cards deck, cut between 19 and 31 cards
-		deep 	=> [0.67, 0.86], # on a 52 cards deck, cut between 35 and 45 cards
-	};
-
 	if (not defined $position) {
 		$position = 'normal';
 	}
 
 	if ($position =~ /^short|center|deep|normal$/) {
-		my ($lower, $upper) = @{$cuts->{ $position }};
+		my ($lower, $upper) = @{$cut_limits->{ $position }};
 		my $size = $self->_deck_size;
 		$position = _rand( $size * $lower, $size * $upper );
 	}
