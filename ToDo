@@ -22,6 +22,9 @@ To Do list:
  * shuffling
     * allow for an option on shuffles and cuts to do the procedure X times
     * riffle shuffle
+        * $deck->riffle_shuffle( 'short' );
+        * $deck->riffle_shuffle( 'deep'  );
+        * $deck->riffle_shuffle( 26 ); # divide the deck in precisely half
     	* riffle stacking
  	* hindu shuffle
  	* overhand shuffle
