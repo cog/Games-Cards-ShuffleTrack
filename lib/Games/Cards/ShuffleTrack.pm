@@ -257,9 +257,9 @@ Cut at a precise position (moving X cards from top to bottom):
 
 Additional ways of cutting:
 
-	$deck->cut_deep; # in a 52 cards deck, somewhere between 35 and 45 cards
-	$deck->cut_short; # in a 52 cards deck, somewhere between 5 and 15 cards
+	$deck->cut_short;  # in a 52 cards deck, somewhere between 5  and 15 cards
 	$deck->cut_center; # in a 52 cards deck, somewhere between 19 and 31 cards
+	$deck->cut_deep;   # in a 52 cards deck, somewhere between 35 and 45 cards
 	$deck->cut_below('AS'); # cutting right above the Ace of Spades
 	$deck->cut_above('KH'); # cutting right below the King of Hearts
 
@@ -268,13 +268,29 @@ Additional ways of cutting:
 sub cut {
 	my $self = shift;
 
-	my $size = $self->_deck_size;
-
 	# on a 52 cards deck, cut between 10 and 43 cards
-	my $cut_depth = _rand( $size * 0.19, $size * 0.82 );
+	my $size = $self->_deck_size;
+	$self->_cut( _rand( $size * 0.19, $size * 0.82 ) )
+}
+
+sub cut_short {
+
+}
+
+sub cut_center {
+
+}
+
+sub cut_deep {
+
+}
+
+sub _cut {
+	my $self = shift;
+	my $position = shift;
 
 	my $deck = $self->get_deck;
-	unshift @$deck, splice @$deck, $cut_depth;
+	unshift @$deck, splice @$deck, $position;
 	$self->_set_deck( $deck );
 }
 
