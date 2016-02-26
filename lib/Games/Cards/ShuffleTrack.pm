@@ -197,6 +197,7 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
 =cut
 
+# TODO: faro in and faro out should be just one method with an option
 sub faro_out {
 	my $self = shift;
 
@@ -265,6 +266,7 @@ Additional ways of cutting:
 
 =cut
 
+# TODO: cutting the deck should all be done in one single method with an option to tell how deep the cut should be
 sub cut {
 	my $self = shift;
 	my $position = shift; # TODO: what happens if the position doesn't exist?
