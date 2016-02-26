@@ -142,6 +142,7 @@ In the act of riffle shuffling a deck the deck is cut into two halves of approxi
 =cut
 
 # TODO: there should be an option for an out-shuffle or even to control either top or bottom stock
+# TODO: add an option to select where the deck is cut before the shuffle
 sub riffle_shuffle {
 	my $self = shift;
 
