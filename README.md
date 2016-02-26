@@ -141,9 +141,9 @@ Cut at a precise position (moving X cards from top to bottom):
 
 Additional ways of cutting:
 
-        $deck->cut_deep; # in a 52 cards deck, somewhere between 35 and 45 cards
-        $deck->cut_short; # in a 52 cards deck, somewhere between 5 and 15 cards
-        $deck->cut_center; # in a 52 cards deck, somewhere between 19 and 31 cards
+        $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
+        $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
+        $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
         $deck->cut_below('AS'); # cutting right above the Ace of Spades
         $deck->cut_above('KH'); # cutting right below the King of Hearts
 
