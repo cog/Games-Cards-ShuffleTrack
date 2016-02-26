@@ -13,4 +13,4 @@ eval "use Test::CheckManifest $min_tcm";
 plan skip_all => "Test::CheckManifest $min_tcm required" if $@;
 
 #ok_manifest();
-ok_manifest({filter => [qr/\.git/, qr/ToDo/, qr/ignore\.txt/, qr/xt\//]});
+ok_manifest({filter => [qr/\.git/, qr/ToDo/, qr/ignore\.txt/, qr/xt\//, qr/cover_db/]});
