@@ -123,7 +123,7 @@ Returns the deck (a reference to a list of strings).
 
 =cut
 
-sub get_deck {
+sub get_deck { # TODO: use wantarray to allow for an array to be returned
 	my $self = shift;
 	return $self->{'deck'};
 }
@@ -306,9 +306,10 @@ sub _cut {
 	my $self = shift;
 	my $position = shift;
 
-	my $deck = $self->get_deck;
-	unshift @$deck, splice @$deck, $position;
-	$self->_set_deck( @$deck );
+	my @deck = @{$self->get_deck};
+	unshift @deck, splice @deck, $position;
+
+	$self->_set_deck( @deck );
 }
 
 
@@ -328,7 +329,7 @@ sub _deck_size {
 sub _rand {
 	my ($lower_limit, $upper_limit) = @_;
 
-	return $lower_limit + int(rand( $upper_limit - $lower_limit ));
+	return int($lower_limit + int(rand( $upper_limit - $lower_limit )));
 }
 
 =head1 AUTHOR
