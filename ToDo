@@ -7,12 +7,20 @@ To Do list:
 
  * checks
     * get the position of a specific card
+        * $deck->find( 'AS' ); # find the Ace of Spades
     * get the relative position of one card to another
+        * $deck->find( 'AS', 'KH' ); # find the relative position of the King of Hearts to the Ace of Spades
     * get the card immediately before/after a specific card
+        * $deck->card_before( 'AS' );
+        * $deck->card_after(  'AS' );
 
  * changing a deck
     * remove cards from a deck
+        * $deck->remove_random();    # remove a random card
+        * $deck->remove_random( 5 ); # remove five cards
     * add cards to a deck (specific cards or random cards)
+        * $deck->add( $card ); # add $card to the deck at a random position
+        * $deck->add( $card, 20 ); # add $card to the deck at position 20
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
