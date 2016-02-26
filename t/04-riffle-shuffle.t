@@ -17,8 +17,7 @@ $deck->riffle_shuffle();
 
 my @after_shuffling = $deck->get_deck();
 
-# deck is now not in the same order
-# TODO
+# TODO: deck is now not in the same order
 
 # bottom card has changed
 isnt( $before_shuffling[-1], $after_shuffling[-1] );
