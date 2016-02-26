@@ -101,11 +101,11 @@ In the act of riffle shuffling a deck the deck is cut into two halves of approxi
 
 In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.
 
-### faro\_out
+#### faro out
 
 Faro out the deck.
 
-    $deck->faro_out();
+    $deck->faro( 'out' );
 
 In a "faro out" the top and bottom cards remain in their original positions.
 
@@ -113,11 +113,11 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
     1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
 
-### faro\_in
+#### faro in
 
 Faro in the deck.
 
-    $deck->faro_in();
+    $deck->faro( 'in' );
 
 In a "faro in" the top and bottom cards do not remain in their original positions (top card becomes second from the top, bottom card becomes second from the bottom).
 

@@ -184,11 +184,11 @@ sub riffle_shuffle {
 
 In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.
 
-=head3 faro_out
+=head4 faro out
 
 Faro out the deck.
 
-    $deck->faro_out();
+    $deck->faro( 'out' );
 
 In a "faro out" the top and bottom cards remain in their original positions.
 
@@ -196,20 +196,11 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
     1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
 
-=cut
-
-# TODO: faro in and faro out should be just one method with an option
-sub faro_out {
-	my $self = shift;
-
-	$self->_faro( 'out' );
-}
-
-=head3 faro_in
+=head4 faro in
 
 Faro in the deck.
 
-    $deck->faro_in();
+    $deck->faro( 'in' );
 
 In a "faro in" the top and bottom cards do not remain in their original positions (top card becomes second from the top, bottom card becomes second from the bottom).
 
@@ -219,15 +210,9 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
 =cut
 
-sub faro_in {
+sub faro {
 	my $self = shift;
-
-	$self->_faro( 'in' );
-}
-
-sub _faro {
-	my $self = shift;
-	my $faro = shift;
+	my $faro = shift; # by default we're doing a faro in
 
 	# TODO: what happens when the deck is odd-sized?
 	my @first_half  = @{$self->get_deck};
