@@ -5,6 +5,11 @@ To Do list:
     * allow for user-specified order
     * start a deck with a specific number of cards
 
+ * checks
+    * get the position of a specific card
+    * get the relative position of one card to another
+    * get the card immediately before/after a specific card
+
  * changing a deck
     * remove cards from a deck
     * add cards to a deck (specific cards or random cards)
