@@ -27,11 +27,7 @@ To Do list:
 
  * cutting the deck
     * running cuts
-    * cut (somewhere between 10 and 43 cards)
-    * cut center (not the exact center but somewhere near the center, between 19 and 31)
-    * cut short (just the top of the deck; somewhere between 5 and 15 cards)
-    * cut deep (somewhere between 35 and 45)
-    * cut at a specific card (assume the operator has a way of doing this regardless of the position of the card)
+    * cut at a specific card (we assume the operator has a way of doing this regardless of the position of the card)
         * $deck->cut_below('AS'); # cutting right above the Ace of Spades
         * $deck->cut_above('KH'); # cutting right below the King of Hearts
 
