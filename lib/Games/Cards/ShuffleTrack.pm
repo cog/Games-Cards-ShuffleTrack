@@ -257,9 +257,9 @@ Cut at a precise position (moving X cards from top to bottom):
 
 Additional ways of cutting:
 
-	$deck->cut_short;  # in a 52 cards deck, somewhere between 5  and 15 cards
-	$deck->cut_center; # in a 52 cards deck, somewhere between 19 and 31 cards
-	$deck->cut_deep;   # in a 52 cards deck, somewhere between 35 and 45 cards
+	$deck->cut_short;  # on a 52 cards deck, somewhere between 5  and 15 cards
+	$deck->cut_center; # on a 52 cards deck, somewhere between 19 and 31 cards
+	$deck->cut_deep;   # on a 52 cards deck, somewhere between 35 and 45 cards
 	$deck->cut_below('AS'); # cutting right above the Ace of Spades
 	$deck->cut_above('KH'); # cutting right below the King of Hearts
 
@@ -267,22 +267,39 @@ Additional ways of cutting:
 
 sub cut {
 	my $self = shift;
+	my $position = shift; # TODO: what happens if the position doesn't exist?
+
+	if (not defined $position) {
+		my $size  = $self->_deck_size;
+		$position = _rand( $size * 0.19, $size * 0.82 );
+	}
 
 	# on a 52 cards deck, cut between 10 and 43 cards
-	my $size = $self->_deck_size;
-	$self->_cut( _rand( $size * 0.19, $size * 0.82 ) )
+	$self->_cut( $position );
 }
 
 sub cut_short {
+	my $self = shift;
 
+	# on a 52 cards deck, cut between 5  and 15 cards
+	my $size = $self->_deck_size;
+	$self->_cut( _rand( $size * 0.09, $size * 0.28 ) )
 }
 
 sub cut_center {
+	my $self = shift;
 
+	# on a 52 cards deck, cut between 19 and 31 cards
+	my $size = $self->_deck_size;
+	$self->_cut( _rand( $size * 0.36, $size * 0.59 ) )
 }
 
 sub cut_deep {
+	my $self = shift;
 
+	# on a 52 cards deck, cut between 35 and 45 cards
+	my $size = $self->_deck_size;
+	$self->_cut( _rand( $size * 0.67, $size * 0.86 ) )
 }
 
 sub _cut {
@@ -291,7 +308,7 @@ sub _cut {
 
 	my $deck = $self->get_deck;
 	unshift @$deck, splice @$deck, $position;
-	$self->_set_deck( $deck );
+	$self->_set_deck( @$deck );
 }
 
 
