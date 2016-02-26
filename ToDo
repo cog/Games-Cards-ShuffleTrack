@@ -26,6 +26,9 @@ To Do list:
     * document what happens if you try to faro a deck with an odd number of cards
     * acknowledgments
     * update the list of recommended books
+    * add a glossary
+        * balance of the deck
+        * top/bottom stock
 
  * shuffling
     * allow for an option on shuffles and cuts to do the procedure X times
@@ -34,6 +37,7 @@ To Do list:
         * $deck->riffle_shuffle( 'deep'  );
         * $deck->riffle_shuffle( 26 ); # divide the deck in precisely half
     	* riffle stacking
+        * on the riffle shuffle we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
  	* hindu shuffle
  	* overhand shuffle
     * faro

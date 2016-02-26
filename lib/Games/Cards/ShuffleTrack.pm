@@ -148,35 +148,32 @@ In the act of riffle shuffling a deck the deck is cut into two halves of approxi
 
 =cut
 
-# TODO: there should be an option for an out-shuffle or even to control either top or bottom stock
+# TODO: add an option for an out-shuffle
+# TODO: add an option to control top or bottom stock
 # TODO: add an option to select where the deck is cut before the shuffle
+# TODO: when dropping cards, should we favor numbers 2 and 3?
 sub riffle_shuffle {
 	my $self = shift;
 
-	# decide where to cut the deck; we're going to cut somewhere between 35% and 60% of the deck (if the deck has 52 cards, this should be somewhere between 18 and 31 cards)
+	# decide where to cut; somewhere between 18 and 31 cards
 	my $size = $self->_deck_size;
 
 	my $cut_depth = _rand( $size * 0.35, $size * 0.60 );
 
-	# cut the deck into two piles (left pile is the original top half)
+	# cut the deck (left pile is the original top half)
 	my @left  = @{$self->get_deck};
 	my @right = splice @left, $cut_depth;
 
 	my @halves = ( \@left, \@right );
 
-	# riffle cards from both halves, from the bottom to the top
-	# we're riffling 1-5 cards at a time (not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes)
+	# drop cards from the bottom of each half to the pile (1-5 at a time)
 	my @new_pile = ();
-
 	while ( @left and @right ) {
-		# drop X cards from the bottom of this half to the pile
-		# TODO: should we favor numbers 2 and 3 in favor or 1, 4 and 5?
 		my $current_half = $halves[0];
 		my $number_of_cards = int(rand( min(5, scalar @$current_half) ))+1;
 
 		unshift @new_pile, splice @$current_half, -$number_of_cards;
 
-		# alternate between left and right (we started with left
 		@halves = reverse @halves;
 	}
 
