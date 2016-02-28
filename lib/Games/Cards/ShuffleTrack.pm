@@ -5,7 +5,8 @@ use strict;
 use warnings;
 
 use List::Util qw/min/;
-use List::MoreUtils qw/zip/;
+use List::MoreUtils qw/zip first_index/;
+use Scalar::Util qw(looks_like_number);
 
 =head1 NAME
 
@@ -296,7 +297,19 @@ This method can also return the card at a specific position:
 =cut
 
 sub find {
+    my $self = shift;
+    my $card = shift;
     
+    my $deck = $self->get_deck();
+    if (looks_like_number($card)) {
+        # TODO: what happens when the desired position doesn't exist?
+        return $deck->[ $card - 1 ];
+    }
+    else {
+        # TODO: what happens when the desired card doesn't exist?
+        return 1 + first_index { $_ eq $card } @$deck;
+    }
+
 }
 
 
