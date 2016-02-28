@@ -10,7 +10,7 @@ Version 0.01
 
 This module is in development stage still. In fact, it's still under specification.
 
-Many of the methods documented here haven't been implemented yet (nor has the module been uploaded to CPAN yet).
+Some of the methods documented here haven't been fully implemented yet (nor has the module been uploaded to CPAN yet).
 
 # SYNOPSIS
 
@@ -22,7 +22,7 @@ This module allows you to simulate true and false shuffles and cuts.
 
     $deck->riffle_shuffle();
     $deck->riffle_shuffle();
-    $deck->cut();
+    $deck->cut( 'short' );
     print $deck->get_deck();
 
 Or perhaps with more control:
@@ -30,7 +30,7 @@ Or perhaps with more control:
     my $deck = Games::Cards::ShuffleTrack->new();
 
     $deck->faro_in();
-    $deck->cut(26);
+    $deck->cut( 26 );
     print $deck->get_deck();
 
 See the rest of the documentation for more advanced features.
@@ -97,7 +97,7 @@ Riffle shuffle the deck.
 
 In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 4 cards.
 
-### Faro
+### Faro shuffle
 
 In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.
 

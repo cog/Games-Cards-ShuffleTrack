@@ -31,7 +31,7 @@ our $cut_limits = {
 
 This module is in development stage still. In fact, it's still under specification.
 
-Many of the methods documented here haven't been implemented yet (nor has the module been uploaded to CPAN yet).
+Some of the methods documented here haven't been fully implemented yet (nor has the module been uploaded to CPAN yet).
 
 
 =head1 SYNOPSIS
@@ -44,7 +44,7 @@ This module allows you to simulate true and false shuffles and cuts.
 
     $deck->riffle_shuffle();
     $deck->riffle_shuffle();
-    $deck->cut();
+    $deck->cut( 'short' );
     print $deck->get_deck();
 
 Or perhaps with more control:
@@ -52,7 +52,7 @@ Or perhaps with more control:
     my $deck = Games::Cards::ShuffleTrack->new();
 
     $deck->faro_in();
-    $deck->cut(26);
+    $deck->cut( 26 );
     print $deck->get_deck();
 
 See the rest of the documentation for more advanced features.
