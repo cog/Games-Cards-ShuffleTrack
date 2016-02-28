@@ -6,8 +6,6 @@ To Do list:
     * start a deck with a specific number of cards
 
  * checks
-    * get the relative position of one card to another
-        * $deck->find( 'AS', 'KH' ); # find the relative position of the King of Hearts to the Ace of Spades
     * get the card immediately before/after a specific card
         * $deck->card_before( 'AS' );
         * $deck->card_after(  'AS' );
