@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 7;
+plan tests => 9;
 
 use Games::Cards::ShuffleTrack;
 
@@ -29,3 +29,9 @@ is( $deck->distance( '2H', 'AH' ), -1 );
 
 # AS is 51 cards away from AH
 is( $deck->distance( 'AH', 'AS' ), 51 );
+
+# managing errors
+is( $deck->find( ), () );
+#is( $deck->find( 0 ), () );
+is( $deck->find( 100 ), () );
+#is( $deck->find( 'no such card' ), () );
