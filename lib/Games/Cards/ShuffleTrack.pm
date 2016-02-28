@@ -293,6 +293,13 @@ This method can also return the card at a specific position:
 
     $deck->find( 3 );
 
+=cut
+
+sub find {
+    
+}
+
+
 =head4 find_relative
 
 Find the distance between two cards.
@@ -303,6 +310,13 @@ To find the distance between the Ace of Spades and the King of Hearts:
 
 If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
+=cut
+
+sub find_relative {
+    
+}
+
+
 =head4 find_card_before
 
 Finds the card immediately before another card:
@@ -311,6 +325,13 @@ Finds the card immediately before another card:
     $deck->find_card_before( 'AS' );
 
 If the specified card is on top of the deck you will get an undefined result.
+
+=cut
+
+sub find_card_before {
+    
+}
+
 
 =head4 find_card_after
 
@@ -322,6 +343,10 @@ Finds the card immediately after another card:
 If the specified card is on the bottom of the deck you will get an undefined result.
 
 =cut
+
+sub find_card_after {
+    
+}
 
 
 # subroutines
