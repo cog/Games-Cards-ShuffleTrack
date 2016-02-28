@@ -281,8 +281,7 @@ sub cut {
 
 sub _set_deck {
 	my $self = shift;
-	my $new_deck = [@_];
-	$self->{'deck'} = $new_deck;
+	$self->{'deck'} = [@_];
 }
 
 sub _deck_size {
