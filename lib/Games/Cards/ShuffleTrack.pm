@@ -326,7 +326,11 @@ If the King of Hearts is just after the Ace of Spades, then the result is 1. If 
 =cut
 
 sub find_relative {
+    my $self   = shift;
+    my $first  = shift;
+    my $second = shift;
     
+    return $self->find( $second) - $self->find( $first );
 }
 
 
