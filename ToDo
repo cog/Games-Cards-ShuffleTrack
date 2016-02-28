@@ -25,6 +25,7 @@ To Do list:
     * add a glossary
         * balance of the deck
         * top/bottom stock
+    * create links on README.md to facilitate navigation on Github
 
  * shuffling
     * allow for an option on shuffles and cuts to do the procedure X times
