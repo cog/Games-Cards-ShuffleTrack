@@ -1,273 +1,276 @@
-NAME
-    Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
+# NAME
 
-VERSION
-    Version 0.01
+Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
-WARNING
-    This module is in development stage still. In fact, it's still under
-    specification.
+# VERSION
 
-    Some of the methods documented here haven't been fully implemented yet
-    (nor has the module been uploaded to CPAN yet).
+Version 0.01
 
-SYNOPSIS
-    This module allows you to simulate true and false shuffles and cuts.
+# WARNING
 
-        use Games::Cards::ShuffleTrack;
+This module is in development stage still. In fact, it's still under specification.
 
-        my $deck = Games::Cards::ShuffleTrack->new();
+Some of the methods documented here haven't been fully implemented yet (nor has the module been uploaded to CPAN yet).
 
-        $deck->riffle_shuffle();
-        $deck->riffle_shuffle();
-        $deck->cut( 'short' );
-        print $deck->get_deck();
+# SYNOPSIS
 
-    Or perhaps with more control:
+This module allows you to simulate true and false shuffles and cuts.
 
-        my $deck = Games::Cards::ShuffleTrack->new();
+    use Games::Cards::ShuffleTrack;
 
-        $deck->faro_in();
-        $deck->cut( 26 );
-        print $deck->get_deck();
+    my $deck = Games::Cards::ShuffleTrack->new();
 
-    See the rest of the documentation for more advanced features.
+    $deck->riffle_shuffle();
+    $deck->riffle_shuffle();
+    $deck->cut( 'short' );
+    print $deck->get_deck();
 
-INSTALLATION
-    To install this module, run the following commands:
+Or perhaps with more control:
 
-        perl Makefile.PL
-        make
-        make test
-        make install
+    my $deck = Games::Cards::ShuffleTrack->new();
 
-DECK REPRESENTATION
-    At the moment a deck is represented as a list of strings; each string
-    represents a card where the first letter or digit (or digits, in the
-    case of a 10) is the value of the card and the following letter is the
-    suit:
+    $deck->faro_in();
+    $deck->cut( 26 );
+    print $deck->get_deck();
 
-            C - Clubs
-            H - Hearts
-            S - Spades
-            D - Diamonds
+See the rest of the documentation for more advanced features.
 
-    As an example, some card representations:
+# INSTALLATION
 
-            AC - Ace of Clubs
-            10S - Ten of Spades
-            4D - 4 of Diamonds
-            KH - King of Hearts
+To install this module, run the following commands:
 
-SUBROUTINES/METHODS
-  new
-    Create a new deck.
+    perl Makefile.PL
+    make
+    make test
+    make install
 
-        my $deck = Games::Cards::ShuffleTrack->new();
+# DECK REPRESENTATION
 
-    The order of the deck is from top to bottom, which means it is the
-    reverse of what you see when you spread a deck in your hands with the
-    cards facing you.
+At the moment a deck is represented as a list of strings; each string represents a card where the first letter or digit (or digits, in the case of a 10) is the value of the card and the following letter is the suit:
 
-    When you open most professional decks of cards you'll see the Ace of
-    Spades (AS) in the front; this means it will actually be the 52nd card
-    in the deck, since when you place the cards on the table facing down it
-    will be the bottom card.
+        C - Clubs
+        H - Hearts
+        S - Spades
+        D - Diamonds
 
-    Currently this module doesn't support specific orders or different
-    orders other than the new deck.
+As an example, some card representations:
 
-    The order of the cards is as follows:
+        AC - Ace of Clubs
+        10S - Ten of Spades
+        4D - 4 of Diamonds
+        KH - King of Hearts
 
-            Ace of Hearths through King of Hearts
-            Ace of Clubs through King of Clubs
-            King of Diamonds through Ace of Diamonds
-            King of Spades through Ace of Spades
+# SUBROUTINES/METHODS
 
-  get_deck
-    Returns the deck (a reference to a list of strings).
+## new
 
-        my $cards = $deck->get_deck();
+Create a new deck.
 
-  Shuffling
-    riffle_shuffle
-    Riffle shuffle the deck.
+    my $deck = Games::Cards::ShuffleTrack->new();
 
-        $deck->riffle_shuffle();
+The order of the deck is from top to bottom, which means it is the reverse of what you see when you spread a deck in your hands with the cards facing you.
 
-    In the act of riffle shuffling a deck the deck is cut into two halves of
-    approximately the same size; each half is riffled so that the cards of
-    both halves interlace; these cards usually drop in groups of 1 to 4
-    cards.
+When you open most professional decks of cards you'll see the Ace of Spades (AS) in the front; this means it will actually be the 52nd card in the deck, since when you place the cards on the table facing down it will be the bottom card.
 
-    Faro shuffle
-    In a faro shuffle the deck is split in half and the two halves are
-    interlaced perfectly so that each card from one half is inserted in
-    between two cards from the opposite half.
+Currently this module doesn't support specific orders or different orders other than the new deck.
 
-    faro out
-    Faro out the deck.
+The order of the cards is as follows:
 
-        $deck->faro( 'out' );
+        Ace of Hearths through King of Hearts
+        Ace of Clubs through King of Clubs
+        King of Diamonds through Ace of Diamonds
+        King of Spades through Ace of Spades
 
-    In a "faro out" the top and bottom cards remain in their original
-    positions.
+## get\_deck
 
-    Considering the positions on the cards from 1 to 52 the result of the
-    faro would be as follows:
+Returns the deck (a reference to a list of strings).
 
-        1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
+    my $cards = $deck->get_deck();
 
-    faro in
-    Faro in the deck.
+## Shuffling
 
-        $deck->faro( 'in' );
+### riffle\_shuffle
 
-    In a "faro in" the top and bottom cards do not remain in their original
-    positions (top card becomes second from the top, bottom card becomes
-    second from the bottom).
+Riffle shuffle the deck.
 
-    Considering the positions on the cards from 1 to 52 the result of the
-    faro would be as follows:
+    $deck->riffle_shuffle();
 
-            27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
+In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 4 cards.
 
-  Cutting
-    cut
-    Cut the deck.
+### Faro shuffle
 
-        $deck->cut();
+In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.
 
-    In a 52 cards deck, this would cut somewhere between 10 and 43 cards.
+#### faro out
 
-    Cut at a precise position (moving X cards from top to bottom):
+Faro out the deck.
 
-        $deck->cut(26);
+    $deck->faro( 'out' );
 
-    Additional ways of cutting:
+In a "faro out" the top and bottom cards remain in their original positions.
 
-            $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
-            $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
-            $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
-            $deck->cut_below('AS'); # cutting right above the Ace of Spades
-            $deck->cut_above('KH'); # cutting right below the King of Hearts
+Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
 
-    Finding cards
-    There are a few different routines to track down cards.
+    1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
 
-    find
-    Get the position of specific cards:
+#### faro in
 
-        $deck->find( 'AS' ); # find the position of the Ace of Spades
+Faro in the deck.
 
-        $deck->find( 'AS', 'KH' ); # find the position of two cards
+    $deck->faro( 'in' );
 
-    This method can also return the card at a specific position:
+In a "faro in" the top and bottom cards do not remain in their original positions (top card becomes second from the top, bottom card becomes second from the bottom).
 
-        $deck->find( 3 );
+Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
 
-    find_relative
-    Find the distance between two cards.
+        27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
 
-    To find the distance between the Ace of Spades and the King of Hearts:
+## Cutting
 
-        $deck->find_relative( 'AS', 'KH' );
+### cut
 
-    If the King of Hearts is just after the Ace of Spades, then the result
-    is 1. If it's immediately before, the result is -1.
+Cut the deck.
 
-    find_card_before
-    Finds the card immediately before another card:
+    $deck->cut();
 
-        # return the card immediately before the Ace of Spades
-        $deck->find_card_before( 'AS' );
+In a 52 cards deck, this would cut somewhere between 10 and 43 cards.
 
-    If the specified card is on top of the deck you will get an undefined
-    result.
+Cut at a precise position (moving X cards from top to bottom):
 
-    find_card_after
-    Finds the card immediately after another card:
+    $deck->cut(26);
 
-        # return the card immediately after the King of Hearts
-        $deck->find_card_before( 'KH' );
+Additional ways of cutting:
 
-    If the specified card is on the bottom of the deck you will get an
-    undefined result.
+        $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
+        $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
+        $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
+        $deck->cut_below('AS'); # cutting right above the Ace of Spades
+        $deck->cut_above('KH'); # cutting right below the King of Hearts
 
-AUTHOR
-    Jose Castro, `<cog at cpan.org>'
+### Finding cards
 
-BUGS
-    Please report any bugs or feature requests to
-    `bug-games-cards-shuffletrack at rt.cpan.org', or through the web
-    interface at
-    http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-Cards-ShuffleTrack.
-    I will be notified, and then you'll automatically be notified of
-    progress on your bug as I make changes.
+There are a few different routines to track down cards.
 
-SUPPORT
-    You can find documentation for this module with the perldoc command.
+#### find
 
-        perldoc Games::Cards::ShuffleTrack
+Get the position of specific cards:
 
-    You can also look for information at:
+    $deck->find( 'AS' ); # find the position of the Ace of Spades
 
-    * RT: CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack
+    $deck->find( 'AS', 'KH' ); # find the position of two cards
 
-    * AnnoCPAN: Annotated CPAN documentation
-        http://annocpan.org/dist/Games-Cards-ShuffleTrack
+This method can also return the card at a specific position:
 
-    * CPAN Ratings
-        http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack
+    $deck->find( 3 );
 
-    * Search CPAN
-        http://search.cpan.org/dist/Games-Cards-ShuffleTrack/
+#### find\_relative
 
-SEE ALSO
-    Recommended reading:
+Find the distance between two cards.
 
-        * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
+To find the distance between the Ace of Spades and the King of Hearts:
 
-        * The Annotated Erdnase, by Darwin Ortiz
+    $deck->find_relative( 'AS', 'KH' );
 
-ACKNOWLEDGEMENTS
-LICENSE AND COPYRIGHT
-    Copyright 2016 Jose Castro.
+If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
-    This program is free software; you can redistribute it and/or modify it
-    under the terms of the the Artistic License (2.0). You may obtain a copy
-    of the full license at:
+#### find\_card\_before
 
-    http://www.perlfoundation.org/artistic_license_2_0
+Finds the card immediately before another card:
 
-    Any use, modification, and distribution of the Standard or Modified
-    Versions is governed by this Artistic License. By using, modifying or
-    distributing the Package, you accept this license. Do not use, modify,
-    or distribute the Package, if you do not accept this license.
+    # return the card immediately before the Ace of Spades
+    $deck->find_card_before( 'AS' );
 
-    If your Modified Version has been derived from a Modified Version made
-    by someone other than you, you are nevertheless required to ensure that
-    your Modified Version complies with the requirements of this license.
+If the specified card is on top of the deck you will get an undefined result.
 
-    This license does not grant you the right to use any trademark, service
-    mark, tradename, or logo of the Copyright Holder.
+#### find\_card\_after
 
-    This license includes the non-exclusive, worldwide, free-of-charge
-    patent license to make, have made, use, offer to sell, sell, import and
-    otherwise transfer the Package with respect to any patent claims
-    licensable by the Copyright Holder that are necessarily infringed by the
-    Package. If you institute patent litigation (including a cross-claim or
-    counterclaim) against any party alleging that the Package constitutes
-    direct or contributory patent infringement, then this Artistic License
-    to you shall terminate on the date that such litigation is filed.
+Finds the card immediately after another card:
 
-    Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER
-    AND CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
-    THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-    PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY
-    YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
-    CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
-    CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
-    EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    # return the card immediately after the King of Hearts
+    $deck->find_card_before( 'KH' );
 
+If the specified card is on the bottom of the deck you will get an undefined result.
+
+# AUTHOR
+
+Jose Castro, `<cog at cpan.org>`
+
+# BUGS
+
+Please report any bugs or feature requests to `bug-games-cards-shuffletrack at rt.cpan.org`, or through
+the web interface at [http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-Cards-ShuffleTrack](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-Cards-ShuffleTrack).  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
+
+# SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Games::Cards::ShuffleTrack
+
+You can also look for information at:
+
+- RT: CPAN's request tracker (report bugs here)
+
+    [http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack)
+
+- AnnoCPAN: Annotated CPAN documentation
+
+    [http://annocpan.org/dist/Games-Cards-ShuffleTrack](http://annocpan.org/dist/Games-Cards-ShuffleTrack)
+
+- CPAN Ratings
+
+    [http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack](http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack)
+
+- Search CPAN
+
+    [http://search.cpan.org/dist/Games-Cards-ShuffleTrack/](http://search.cpan.org/dist/Games-Cards-ShuffleTrack/)
+
+# SEE ALSO
+
+Recommended reading:
+
+    * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
+
+    * The Annotated Erdnase, by Darwin Ortiz
+
+# ACKNOWLEDGEMENTS
+
+# LICENSE AND COPYRIGHT
+
+Copyright 2016 Jose Castro.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the the Artistic License (2.0). You may obtain a
+copy of the full license at:
+
+[http://www.perlfoundation.org/artistic\_license\_2\_0](http://www.perlfoundation.org/artistic_license_2_0)
+
+Any use, modification, and distribution of the Standard or Modified
+Versions is governed by this Artistic License. By using, modifying or
+distributing the Package, you accept this license. Do not use, modify,
+or distribute the Package, if you do not accept this license.
+
+If your Modified Version has been derived from a Modified Version made
+by someone other than you, you are nevertheless required to ensure that
+your Modified Version complies with the requirements of this license.
+
+This license does not grant you the right to use any trademark, service
+mark, tradename, or logo of the Copyright Holder.
+
+This license includes the non-exclusive, worldwide, free-of-charge
+patent license to make, have made, use, offer to sell, sell, import and
+otherwise transfer the Package with respect to any patent claims
+licensable by the Copyright Holder that are necessarily infringed by the
+Package. If you institute patent litigation (including a cross-claim or
+counterclaim) against any party alleging that the Package constitutes
+direct or contributory patent infringement, then this Artistic License
+to you shall terminate on the date that such litigation is filed.
+
+Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER
+AND CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY
+YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
+CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
