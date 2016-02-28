@@ -18,10 +18,10 @@ is( $deck->find('AH'), 1 );
 is( $deck->find( 1 ), 'AH' );
 
 # 2H is 1 card away from AH
-is( $deck->find_relative( 'AH', '2H' ), 1 );
+is( $deck->distance( 'AH', '2H' ), 1 );
 
 # AH is -1 card away from 2H
-is( $deck->find_relative( '2H', 'AH' ), -1 );
+is( $deck->distance( '2H', 'AH' ), -1 );
 
 # AS is 51 cards away from AH
-is( $deck->find_relative( 'AH', 'AS' ), 51 );
+is( $deck->distance( 'AH', 'AS' ), 51 );

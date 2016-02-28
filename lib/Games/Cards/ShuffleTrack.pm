@@ -325,7 +325,7 @@ If the King of Hearts is just after the Ace of Spades, then the result is 1. If 
 
 =cut
 
-sub find_relative {
+sub distance {
     my $self   = shift;
     my $first  = shift;
     my $second = shift;
