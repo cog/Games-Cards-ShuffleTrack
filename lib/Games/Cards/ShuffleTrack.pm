@@ -155,12 +155,12 @@ In the act of riffle shuffling a deck the deck is cut into two halves of approxi
 sub riffle_shuffle {
 	my $self = shift;
 
-	# decide where to cut; somewhere between 18 and 31 cards
+	# cut the deck (left pile is the original top half)
 	my $size = $self->_deck_size;
 
+	# we're cutting somewhere between 18 and 31 cards
 	my $cut_depth = _rand( $size * 0.35, $size * 0.60 );
 
-	# cut the deck (left pile is the original top half)
 	my @left  = @{$self->get_deck};
 	my @right = splice @left, $cut_depth;
 
