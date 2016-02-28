@@ -277,6 +277,53 @@ sub cut {
 }
 
 
+=head3 Finding cards
+
+There are a few different routines to track down cards.
+
+=head4 find
+
+Get the position of specific cards:
+
+    $deck->find( 'AS' ); # find the position of the Ace of Spades
+
+    $deck->find( 'AS', 'KH' ); # find the position of two cards
+
+This method can also return the card at a specific position:
+
+    $deck->find( 3 );
+
+=head4 find_relative
+
+Find the distance between two cards.
+
+To find the distance between the Ace of Spades and the King of Hearts:
+
+    $deck->find_relative( 'AS', 'KH' );
+
+If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
+
+=head4 find_card_before
+
+Finds the card immediately before another card:
+
+    # return the card immediately before the Ace of Spades
+    $deck->find_card_before( 'AS' );
+
+If the specified card is on top of the deck you will get an undefined result.
+
+=head4 find_card_after
+
+Finds the card immediately after another card:
+
+    # return the card immediately after the King of Hearts
+    $deck->find_card_before( 'KH' );
+
+If the specified card is on the bottom of the deck you will get an undefined result.
+
+=cut
+
+
 # subroutines
 
 sub _set_deck {
@@ -294,6 +341,7 @@ sub _rand {
 
 	return int($lower_limit + int(rand( $upper_limit - $lower_limit )));
 }
+
 
 =head1 AUTHOR
 
