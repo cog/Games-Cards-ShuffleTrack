@@ -306,8 +306,6 @@ the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-Card
 automatically be notified of progress on your bug as I make changes.
 
 
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
