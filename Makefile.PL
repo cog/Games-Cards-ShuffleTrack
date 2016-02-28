@@ -18,8 +18,9 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-        'List::MoreUtils'              => 0.413,
-        'List::Util'                   => 1.43,
+        'List::MoreUtils'               => 0.413,
+        'List::Util'                    => 1.43,
+        'Scalar::Util'                  => 1.43,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Games-Cards-ShuffleTrack-*' },
