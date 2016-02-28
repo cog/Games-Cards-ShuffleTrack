@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 5;
+plan tests => 7;
 
 use Games::Cards::ShuffleTrack;
 
@@ -16,6 +16,10 @@ is( $deck->find('AH'), 1 );
 
 # First card is AH
 is( $deck->find( 1 ), 'AH' );
+
+# AH is first card and AS is last card
+is_deeply( [$deck->find( 1, 52 )], ['AH', 'AS'] );
+is_deeply( [$deck->find( 'AH', 'AS' )], [1, 52] );
 
 # 2H is 1 card away from AH
 is( $deck->distance( 'AH', '2H' ), 1 );

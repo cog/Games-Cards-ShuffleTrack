@@ -297,19 +297,27 @@ This method can also return the card at a specific position:
 =cut
 
 sub find {
-    my $self = shift;
-    my $card = shift;
-    
+    my $self  = shift;
+    my @cards = @_;
+
+    my @results;
+
     my $deck = $self->get_deck();
-    if (looks_like_number($card)) {
-        # TODO: what happens when the desired position doesn't exist?
-        return $deck->[ $card - 1 ];
-    }
-    else {
-        # TODO: what happens when the desired card doesn't exist?
-        return 1 + first_index { $_ eq $card } @$deck;
+
+    for my $card ( @cards ) {
+
+        if (looks_like_number($card)) {
+            # TODO: what happens when the desired position doesn't exist?
+            push @results, $deck->[ $card - 1 ];
+        }
+        else {
+            # TODO: what happens when the desired card doesn't exist?
+            push @results, 1 + first_index { $_ eq $card } @$deck;
+        }
+
     }
 
+    return wantarray ? @results : $results[0];
 }
 
 
