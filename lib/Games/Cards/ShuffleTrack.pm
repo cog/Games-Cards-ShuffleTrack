@@ -216,16 +216,16 @@ Considering the positions on the cards from 1 to 52 the result of the faro would
 
 sub faro {
 	my $self = shift;
-	my $faro = shift; # by default we're doing a faro in
+	my $faro = shift; # by default we're doing a faro out
 
 	# TODO: what happens when the deck is odd-sized?
 	my @first_half  = @{$self->get_deck};
 	my @second_half = splice @first_half, $self->_deck_size / 2;
 
 	$self->_set_deck(
-			$faro eq 'out' ?
-			zip @first_half,  @second_half :
-			zip @second_half, @first_half
+			$faro eq 'in' ?
+			zip @second_half, @first_half :
+			zip @first_half,  @second_half
 		);
 
 	return $self;
