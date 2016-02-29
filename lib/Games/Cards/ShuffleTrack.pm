@@ -117,9 +117,9 @@ our $decks = {
 };
 
 sub new {
-  my ($self) = @_;
-  my $deck = $decks->{'new_deck_order'};
-  bless {'deck' => $deck}, $self;
+	my ($self) = @_;
+	my $deck = $decks->{'new_deck_order'};
+	return bless {'deck' => $deck}, $self;
 }
 
 
@@ -272,7 +272,7 @@ sub cut {
 	my @deck = @{$self->get_deck};
 	unshift @deck, splice @deck, $position;
 
-	$self->_set_deck( @deck );
+	return $self->_set_deck( @deck );
 }
 
 
@@ -402,7 +402,7 @@ sub find_card_after {
     my $self = shift;
     my $card = shift;
 
-    $self->find( $self->find( $card ) + 1 );
+    return $self->find( $self->find( $card ) + 1 );
 }
 
 
@@ -410,7 +410,7 @@ sub find_card_after {
 
 sub _set_deck {
 	my $self = shift;
-	$self->{'deck'} = [@_];
+	return $self->{'deck'} = [@_];
 }
 
 sub _deck_size {
