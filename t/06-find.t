@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 13;
+plan tests => 16;
 
 use Games::Cards::ShuffleTrack;
 
@@ -43,8 +43,8 @@ is( $deck->find_card_after(  'AS' ), undef );
 
 
 # managing errors
-is( $deck->find( ), () );
-#is( $deck->find( 0 ), () );
-is( $deck->find( 100 ), () );
-#is( $deck->find( 'no such card' ), () );
-
+is_deeply( [$deck->find( )], [] );
+is_deeply( [$deck->find( 0 )], [ undef ] );
+is_deeply( [$deck->find( 100 )], [ undef ] );
+is_deeply( [$deck->find( 0, 100 )], [ (undef, undef) ] );
+is_deeply( [$deck->find( 'no such card' )], [ (undef) ] );

@@ -294,6 +294,10 @@ This method can also return the card at a specific position:
 
     $deck->find( 3 );
 
+You can also request a card in a negative position (i.e., from the bottom of the deck). To get the second to last card in the deck:
+
+	$deck->find( -2 );
+
 =cut
 
 sub find {
@@ -306,13 +310,24 @@ sub find {
 
     for my $card ( @cards ) {
 
+    	# numbers
         if (looks_like_number($card)) {
-            # TODO: what happens when the desired position doesn't exist?
-            push @results, $deck->[ $card - 1 ];
+        	if ($card) {
+        		push @results, $deck->[ $card - 1 ];
+        	}
+        	else { # position 0
+        		push @results, undef;
+        	}
         }
+        # cards
         else {
-            # TODO: what happens when the desired card doesn't exist?
-            push @results, 1 + first_index { $_ eq $card } @$deck;
+            my $position = 1 + first_index { $_ eq $card } @$deck;
+            if ($position) {
+	            push @results, $position;
+            }
+            else {
+	            push @results, undef;
+            }
         }
 
     }

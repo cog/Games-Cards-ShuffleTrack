@@ -163,6 +163,10 @@ This method can also return the card at a specific position:
 
     $deck->find( 3 );
 
+You can also request a card in a negative position (i.e., from the bottom of the deck). To get the second to last card in the deck:
+
+        $deck->find( -2 );
+
 #### find\_relative
 
 Find the distance between two cards.
@@ -180,7 +184,7 @@ Finds the card immediately before another card:
     # return the card immediately before the Ace of Spades
     $deck->find_card_before( 'AS' );
 
-If the specified card is on top of the deck you will get an undefined result.
+If the specified card is on top of the deck you will get the card on the bottom of the deck.
 
 #### find\_card\_after
 
@@ -189,7 +193,7 @@ Finds the card immediately after another card:
     # return the card immediately after the King of Hearts
     $deck->find_card_before( 'KH' );
 
-If the specified card is on the bottom of the deck you will get an undefined result.
+If the specified card is on the bottom of the deck you will get the card on the top of the deck.
 
 # AUTHOR
 
