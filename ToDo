@@ -7,7 +7,7 @@ To Do list:
  * changing a deck
     * remove cards from a deck
         * $deck->remove_random();    # remove a random card
-        * $deck->remove_random( 5 ); # remove five cards
+        * $deck->remove_random( 5 ); # remove five cards or remove the 5th card?
     * add cards to a deck (specific cards or random cards)
         * $deck->add( $card ); # add $card to the deck at a random position
         * $deck->add( $card, 20 ); # add $card to the deck at position 20
