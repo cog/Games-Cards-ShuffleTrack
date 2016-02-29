@@ -27,6 +27,13 @@ our $cut_limits = {
 	deep 	=> [0.67, 0.86], # on a 52 cards deck, cut between 35 and 45 cards
 };
 
+our $decks = {
+	new_deck_order => [qw/AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
+						  AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
+						  KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
+						  KS QS JS 10S 9S 8S 7S 6S 5S 4S 3S 2S AS/],
+};
+
 
 =head1 WARNING
 
@@ -109,13 +116,6 @@ The order of the cards is as follows:
 
 =cut
 
-our $decks = {
-	new_deck_order => [qw/AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
-						  AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
-						  KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
-						  KS QS JS 10S 9S 8S 7S 6S 5S 4S 3S 2S AS/],
-};
-
 sub new {
 	my ($self) = @_;
 	my $deck = $decks->{'new_deck_order'};
@@ -162,14 +162,14 @@ sub riffle_shuffle {
 	# we're cutting somewhere between 18 and 31 cards
 	my $cut_depth = _rand( $size * 0.35, $size * 0.60 );
 
-	my @left  = @{$self->get_deck};
-	my @right = splice @left, $cut_depth;
+	my @left_pile  = @{$self->get_deck};
+	my @right_pile = splice @left_pile, $cut_depth;
 
-	my @halves = ( \@left, \@right );
+	my @halves = ( \@left_pile, \@right_pile );
 
 	# drop cards from the bottom of each half to the pile (1-5 at a time)
 	my @new_pile = ();
-	while ( @left and @right ) {
+	while ( @left_pile and @right_pile ) {
 		my $current_half = $halves[0];
 		my $number_of_cards = int(rand( min(5, scalar @$current_half) ))+1;
 
@@ -179,7 +179,7 @@ sub riffle_shuffle {
 	}
 
 	# drop the balance on top and set the deck to be the result
-	$self->_set_deck( @left, @right, @new_pile );
+	$self->_set_deck( @left_pile, @right_pile, @new_pile );
 
 	return $self;
 }
@@ -354,10 +354,10 @@ If the King of Hearts is just after the Ace of Spades, then the result is 1. If 
 
 sub distance {
     my $self   = shift;
-    my $first  = shift;
-    my $second = shift;
+    my $first_card  = shift;
+    my $second_card = shift;
     
-    return $self->find( $second) - $self->find( $first );
+    return $self->find( $second_card) - $self->find( $first_card );
 }
 
 
