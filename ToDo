@@ -1,7 +1,6 @@
 To Do list:
 
  * new deck
-    * implement other orders other than new deck order
     * allow for user-specified order
     * start a deck with a specific number of cards
 

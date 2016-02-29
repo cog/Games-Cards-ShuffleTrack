@@ -81,6 +81,13 @@ The order of the cards is as follows:
         King of Diamonds through Ace of Diamonds
         King of Spades through Ace of Spades
 
+You can also specify the starting order of the deck among the following:
+
+- new\_deck\_order (the default order)
+- fournier
+
+    my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
+
 ## get\_deck
 
 Returns the deck (a reference to a list of strings).
