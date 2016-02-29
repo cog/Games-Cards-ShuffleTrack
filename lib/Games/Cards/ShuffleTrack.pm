@@ -18,7 +18,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.01_1';
 
 our $cut_limits = {
 	normal	=> [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
