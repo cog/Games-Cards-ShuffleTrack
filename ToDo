@@ -5,11 +5,6 @@ To Do list:
     * allow for user-specified order
     * start a deck with a specific number of cards
 
- * checks
-    * get the card immediately before/after a specific card
-        * $deck->card_before( 'AS' );
-        * $deck->card_after(  'AS' );
-
  * changing a deck
     * remove cards from a deck
         * $deck->remove_random();    # remove a random card

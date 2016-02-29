@@ -349,12 +349,22 @@ Finds the card immediately before another card:
     # return the card immediately before the Ace of Spades
     $deck->find_card_before( 'AS' );
 
-If the specified card is on top of the deck you will get an undefined result.
+If the specified card is on top of the deck you will get the card on the bottom of the deck.
 
 =cut
 
 sub find_card_before {
-    
+    my $self = shift;
+    my $card = shift;
+
+    my $position = $self->find( $card );
+
+    if ($position == 1) {
+    	return undef;
+    }
+    else {
+		return $self->find( $position - 1 );
+    }
 }
 
 
@@ -365,12 +375,15 @@ Finds the card immediately after another card:
     # return the card immediately after the King of Hearts
     $deck->find_card_before( 'KH' );
 
-If the specified card is on the bottom of the deck you will get an undefined result.
+If the specified card is on the bottom of the deck you will get the card on the top of the deck.
 
 =cut
 
 sub find_card_after {
-    
+    my $self = shift;
+    my $card = shift;
+
+    $self->find( $self->find( $card ) + 1 );
 }
 
 

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 9;
+plan tests => 13;
 
 use Games::Cards::ShuffleTrack;
 
@@ -30,8 +30,21 @@ is( $deck->distance( '2H', 'AH' ), -1 );
 # AS is 51 cards away from AH
 is( $deck->distance( 'AH', 'AS' ), 51 );
 
+# 2H comes after AH
+is( $deck->find_card_after(  'AH' ), '2H' );
+# AH comes before 2H
+is( $deck->find_card_before( '2H' ), 'AH' );
+
+
+# Card before AH is AS (card before the first one is the last)
+is( $deck->find_card_before( 'AH' ), undef );
+# Card after AS is AH (card after last is the first one)
+is( $deck->find_card_after(  'AS' ), undef );
+
+
 # managing errors
 is( $deck->find( ), () );
 #is( $deck->find( 0 ), () );
 is( $deck->find( 100 ), () );
 #is( $deck->find( 'no such card' ), () );
+
