@@ -328,8 +328,8 @@ sub find {
     for my $card ( @cards ) {
 
     	push @results, looks_like_number( $card )
-    					? $self->_find_card_by_position( $card )
-    					: $self->_find_card_by_name( $card );
+    				 ? $self->_find_card_by_position( $card )
+    				 : $self->_find_card_by_name( $card );
 
     }
 
