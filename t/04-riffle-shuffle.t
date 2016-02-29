@@ -11,7 +11,7 @@ use Games::Cards::ShuffleTrack;
 my $deck = Games::Cards::ShuffleTrack->new();
 
 my @before_shuffling = $deck->get_deck();
-my ($first, $tenth) = $deck->find( 1, 10 );
+my ($bottom, $tenth_from_bottom) = $deck->find( -1, -10 );
 
 # shuffle the deck
 $deck->riffle_shuffle();
@@ -19,7 +19,7 @@ $deck->riffle_shuffle();
 my @after_shuffling = $deck->get_deck();
 
 # deck is now not in the same order
-cmp_ok( $deck->distance( $first, $tenth ), '>', 9);
+cmp_ok( $deck->distance( $tenth_from_bottom, $bottom ), '>', 9);
 
 # bottom card has changed
 isnt( $before_shuffling[-1], $after_shuffling[-1] );
