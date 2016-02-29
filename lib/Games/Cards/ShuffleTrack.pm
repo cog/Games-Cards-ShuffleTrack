@@ -313,7 +313,8 @@ sub find {
     	# numbers
         if (looks_like_number($card)) {
         	if ($card) {
-        		push @results, $deck->[ $card - 1 ];
+        		$card -= 1 if $card > 0;
+        		push @results, $deck->[ $card ];
         	}
         	else { # position 0
         		push @results, undef;
