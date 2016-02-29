@@ -4,9 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 6;
-
-# TODO: relative position of cards is the same
+plan tests => 7;
 
 use Games::Cards::ShuffleTrack;
 
@@ -36,6 +34,10 @@ my ($new_top_card, $new_bottom_card) = @cut_deck[0, -1];
 is( $top_card, $new_bottom_card);
 is( $second_card, $new_top_card);
 
+# relative position of cards (as long as they're kept in the same packet) is the same
+my $distance = $deck->distance( '3H', 'KH' );
+$deck->cut(26);
+is( $deck->distance( '3H', 'KH' ), $distance );
 
 # cut the deck normally changes top and bottom cards
 my @before_cutting = $deck->get_deck();
