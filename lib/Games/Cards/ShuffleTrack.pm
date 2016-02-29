@@ -280,7 +280,7 @@ sub cut {
 
 =head3 Finding cards
 
-There are a few different routines to track down cards.
+There are a few different methods to track down cards.
 
 =head4 find
 

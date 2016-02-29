@@ -149,7 +149,7 @@ Additional ways of cutting:
 
 ### Finding cards
 
-There are a few different routines to track down cards.
+There are a few different methods to track down cards.
 
 #### find
 
