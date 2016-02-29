@@ -315,6 +315,10 @@ You can also request a card in a negative position (i.e., from the bottom of the
 
     $deck->find( -2 );
 
+If you're dealing five hands of poker from the top of the deck, for instance, you can easily find which cards will fall on the dealer's hand:
+
+    $deck->find( 5, 10, 15, 20, 25 );
+
 =cut
 
 sub find {
