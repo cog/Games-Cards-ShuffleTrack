@@ -96,7 +96,9 @@ Returns the deck (a reference to a list of strings).
 
 ## Shuffling
 
-### riffle\_shuffle
+### Riffle Shuffle
+
+#### riffle\_shuffle
 
 Riffle shuffle the deck.
 
@@ -152,11 +154,11 @@ Additional ways of cutting:
         $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
         $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
 
-### Finding cards
+## Finding cards
 
 There are a few different methods to track down cards.
 
-#### find
+### find
 
 Get the position of specific cards:
 
@@ -172,7 +174,7 @@ You can also request a card in a negative position (i.e., from the bottom of the
 
         $deck->find( -2 );
 
-#### distance
+### distance
 
 Find the distance between two cards.
 
@@ -182,7 +184,7 @@ To find the distance between the Ace of Spades and the King of Hearts:
 
 If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
-#### find\_card\_before
+### find\_card\_before
 
 Finds the card immediately before another card:
 
@@ -191,7 +193,7 @@ Finds the card immediately before another card:
 
 If the specified card is on top of the deck you will get the card on the bottom of the deck.
 
-#### find\_card\_after
+### find\_card\_after
 
 Finds the card immediately after another card:
 

@@ -156,7 +156,9 @@ sub get_deck { # TODO: use wantarray to allow for an array to be returned
 
 =head2 Shuffling
 
-=head3 riffle_shuffle
+=head3 Riffle Shuffle
+
+=head4 riffle_shuffle
 
 Riffle shuffle the deck.
 
@@ -293,11 +295,11 @@ sub cut {
 }
 
 
-=head3 Finding cards
+=head2 Finding cards
 
 There are a few different methods to track down cards.
 
-=head4 find
+=head3 find
 
 Get the position of specific cards:
 
@@ -357,7 +359,7 @@ sub _find_card_by_name {
 }
 
 
-=head4 distance
+=head3 distance
 
 Find the distance between two cards.
 
@@ -378,7 +380,7 @@ sub distance {
 }
 
 
-=head4 find_card_before
+=head3 find_card_before
 
 Finds the card immediately before another card:
 
@@ -404,7 +406,7 @@ sub find_card_before {
 }
 
 
-=head4 find_card_after
+=head3 find_card_after
 
 Finds the card immediately after another card:
 
