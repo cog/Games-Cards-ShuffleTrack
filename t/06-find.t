@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 17;
+plan tests => 18;
 
 use Games::Cards::ShuffleTrack;
 
@@ -32,6 +32,9 @@ is( $deck->distance( '2H', 'AH' ), -1 );
 
 # AS is 51 cards away from AH
 is( $deck->distance( 'AH', 'AS' ), 51 );
+
+# distance between first and tenth cards is 9
+is( $deck->distance( $deck->find( 1, 10 ) ), 9 );
 
 # 2H comes after AH
 is( $deck->find_card_after(  'AH' ), '2H' );
