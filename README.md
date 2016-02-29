@@ -174,16 +174,6 @@ You can also request a card in a negative position (i.e., from the bottom of the
 
         $deck->find( -2 );
 
-### distance
-
-Find the distance between two cards.
-
-To find the distance between the Ace of Spades and the King of Hearts:
-
-    $deck->distance( 'AS', 'KH' );
-
-If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
-
 ### find\_card\_before
 
 Finds the card immediately before another card:
@@ -201,6 +191,16 @@ Finds the card immediately after another card:
     $deck->find_card_before( 'KH' );
 
 If the specified card is on the bottom of the deck you will get the card on the top of the deck.
+
+### distance
+
+Find the distance between two cards.
+
+To find the distance between the Ace of Spades and the King of Hearts:
+
+    $deck->distance( 'AS', 'KH' );
+
+If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
 # AUTHOR
 

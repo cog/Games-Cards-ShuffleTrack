@@ -359,27 +359,6 @@ sub _find_card_by_name {
 }
 
 
-=head3 distance
-
-Find the distance between two cards.
-
-To find the distance between the Ace of Spades and the King of Hearts:
-
-    $deck->distance( 'AS', 'KH' );
-
-If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
-
-=cut
-
-sub distance {
-    my $self   = shift;
-    my $first_card  = shift;
-    my $second_card = shift;
-    
-    return $self->find( $second_card) - $self->find( $first_card );
-}
-
-
 =head3 find_card_before
 
 Finds the card immediately before another card:
@@ -422,6 +401,27 @@ sub find_card_after {
     my $card = shift;
 
     return $self->find( $self->find( $card ) + 1 );
+}
+
+
+=head3 distance
+
+Find the distance between two cards.
+
+To find the distance between the Ace of Spades and the King of Hearts:
+
+    $deck->distance( 'AS', 'KH' );
+
+If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
+
+=cut
+
+sub distance {
+    my $self   = shift;
+    my $first_card  = shift;
+    my $second_card = shift;
+    
+    return $self->find( $second_card) - $self->find( $first_card );
 }
 
 
