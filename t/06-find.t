@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 16;
+plan tests => 17;
 
 use Games::Cards::ShuffleTrack;
 
@@ -16,6 +16,9 @@ is( $deck->find('AH'), 1 );
 
 # First card is AH
 is( $deck->find( 1 ), 'AH' );
+
+# Negative numbers
+is( $deck->find( -1 ), 'AS' );
 
 # AH is first card and AS is last card
 is_deeply( [$deck->find( 1, 52 )], ['AH', 'AS'] );
