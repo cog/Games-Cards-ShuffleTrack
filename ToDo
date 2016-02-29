@@ -34,6 +34,7 @@ To Do list:
     * faro
         * faro X cards from the top
         * anti-faro
+    * the wash
 
  * cutting the deck
     * running cuts
@@ -47,3 +48,4 @@ To Do list:
     * given a series of procedures and a desired final result, assert the initial order of the deck
     * maintain relationship through cards; from a specific order and through a series of procedures, ascertain axioms about the end result
     * moving cards between places (e.g., set three new positions - $hand, $table and $spectator - and deal cards from $hand alternatively to $table and $spectator)
+    * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
