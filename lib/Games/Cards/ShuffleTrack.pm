@@ -340,13 +340,13 @@ sub _find_card_by_name {
 }
 
 
-=head4 find_relative
+=head4 distance
 
 Find the distance between two cards.
 
 To find the distance between the Ace of Spades and the King of Hearts:
 
-    $deck->find_relative( 'AS', 'KH' );
+    $deck->distance( 'AS', 'KH' );
 
 If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
