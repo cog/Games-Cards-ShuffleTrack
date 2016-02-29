@@ -4,20 +4,22 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 2;
+plan tests => 3;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 
 my @before_shuffling = $deck->get_deck();
+my ($first, $tenth) = $deck->find( 1, 10 );
 
 # shuffle the deck
 $deck->riffle_shuffle();
 
 my @after_shuffling = $deck->get_deck();
 
-# TODO: deck is now not in the same order
+# deck is now not in the same order
+cmp_ok( $deck->distance( $first, $tenth ), '>', 9);
 
 # bottom card has changed
 isnt( $before_shuffling[-1], $after_shuffling[-1] );
