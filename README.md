@@ -144,8 +144,6 @@ Additional ways of cutting:
         $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
         $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
         $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
-        $deck->cut_below('AS'); # cutting right above the Ace of Spades
-        $deck->cut_above('KH'); # cutting right below the King of Hearts
 
 ### Finding cards
 
@@ -236,8 +234,6 @@ Recommended reading:
     * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
 
     * The Annotated Erdnase, by Darwin Ortiz
-
-# ACKNOWLEDGEMENTS
 
 # LICENSE AND COPYRIGHT
 
