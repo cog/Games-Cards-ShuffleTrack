@@ -313,7 +313,7 @@ This method can also return the card at a specific position:
 
 You can also request a card in a negative position (i.e., from the bottom of the deck). To get the second to last card in the deck:
 
-	$deck->find( -2 );
+    $deck->find( -2 );
 
 =cut
 
