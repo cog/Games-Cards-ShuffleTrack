@@ -220,17 +220,9 @@ You can find documentation for this module with the perldoc command.
 
 You can also look for information at:
 
-- RT: CPAN's request tracker (report bugs here)
+- Github
 
-    [http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack](http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack)
-
-- AnnoCPAN: Annotated CPAN documentation
-
-    [http://annocpan.org/dist/Games-Cards-ShuffleTrack](http://annocpan.org/dist/Games-Cards-ShuffleTrack)
-
-- CPAN Ratings
-
-    [http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack](http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack)
+    [https://github.com/cog/Games-Cards-ShuffleTrack](https://github.com/cog/Games-Cards-ShuffleTrack)
 
 - Search CPAN
 

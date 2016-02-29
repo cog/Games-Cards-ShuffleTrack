@@ -466,17 +466,9 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * Github
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-Cards-ShuffleTrack>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Games-Cards-ShuffleTrack>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Games-Cards-ShuffleTrack>
+L<https://github.com/cog/Games-Cards-ShuffleTrack>
 
 =item * Search CPAN
 
