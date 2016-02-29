@@ -310,30 +310,35 @@ sub find {
 
     for my $card ( @cards ) {
 
-    	# numbers
-        if (looks_like_number($card)) {
-        	if ($card) {
-        		$card -= 1 if $card > 0;
-        		push @results, $deck->[ $card ];
-        	}
-        	else { # position 0
-        		push @results, undef;
-        	}
-        }
-        # cards
-        else {
-            my $position = 1 + first_index { $_ eq $card } @$deck;
-            if ($position) {
-	            push @results, $position;
-            }
-            else {
-	            push @results, undef;
-            }
-        }
+    	push @results, looks_like_number( $card )
+    					? $self->_find_card_by_position( $card )
+    					: $self->_find_card_by_name( $card );
 
     }
 
     return wantarray ? @results : $results[0];
+}
+
+sub _find_card_by_position {
+	my $self = shift;
+	my $card = shift;
+
+	if ($card) {
+		if ($card > 0) { $card--; }
+		return $self->get_deck->[ $card ];
+	}
+	else {
+		return undef;
+	}
+}
+
+sub _find_card_by_name {
+	my $self = shift;
+	my $card = shift;
+
+	my $position = 1 + first_index { $_ eq $card } @{$self->get_deck};
+
+	return $position ? $position : undef;
 }
 
 
