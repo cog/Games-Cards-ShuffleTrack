@@ -292,22 +292,6 @@ sub cut {
 	return $self->_set_deck( @deck );
 }
 
-sub _cut_depth {
-	my $deck_size = shift;
-	my $position  = shift;
-
-	if (not defined $position) {
-		$position = 'normal';
-	}
-
-	if ($position =~ /^short|center|deep|normal$/) {
-		my ($lower, $upper) = @{$cut_limits->{ $position }};
-		$position = _rand( $deck_size * $lower, $deck_size * $upper );
-	}
-
-	return $position;
-}
-
 
 =head2 Finding cards
 
@@ -459,6 +443,22 @@ sub _rand {
 	my ($lower_limit, $upper_limit) = @_;
 
 	return int($lower_limit + int(rand( $upper_limit - $lower_limit )));
+}
+
+sub _cut_depth {
+	my $deck_size = shift;
+	my $position  = shift;
+
+	if (not defined $position) {
+		$position = 'normal';
+	}
+
+	if ($position =~ /^short|center|deep|normal$/) {
+		my ($lower, $upper) = @{$cut_limits->{ $position }};
+		$position = _rand( $deck_size * $lower, $deck_size * $upper );
+	}
+
+	return $position;
 }
 
 
