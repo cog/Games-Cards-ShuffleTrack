@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 7;
+plan tests => 17;
 
 use Games::Cards::ShuffleTrack;
 
@@ -49,3 +49,26 @@ my @after_cutting = $deck->get_deck();
 isnt( $before_cutting[0], $after_cutting[0] );
 isnt( $before_cutting[-1], $after_cutting[-1] );
 
+# cutting above a card moves it to the top_card
+for my $card ( qw/AS JS 10H/ ) {
+	$deck->cut_above( $card );
+	is( $deck->find( $card ), 1 );
+}
+
+# cutting below a card moves it to te bottom
+for my $card ( qw/AS JS 10H/ ) {
+	$deck->cut_below( $card );
+	is( $deck->find( $card ), 52 );
+}
+
+# cutting above a card that is already on top doesn't do anything
+$deck->cut_above( 'JS' );
+is( $deck->find( 'JS' ), 1 );
+$deck->cut_above( 'JS' );
+is( $deck->find( 'JS' ), 1 );
+
+# cutting below a card that is already on the bottom doesn't do anything
+$deck->cut_below( 'JS' );
+is( $deck->find( 'JS' ), 52 );
+$deck->cut_below( 'JS' );
+is( $deck->find( 'JS' ), 52 );

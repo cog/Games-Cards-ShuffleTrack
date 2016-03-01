@@ -278,10 +278,30 @@ Additional ways of cutting:
 	$deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
 	$deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
 
+=head3 cut_below
+
+You can cut below a specific card.
+
+	$deck->cut_below( '9D' );
+
+If the desired card is already on the bottom of the deck nothing will happen.
+
+For more information on how to cut to a specific card please refer to the L<SEE ALSO> section of this documentation.
+
+=head3 cut_above
+
+You can cut above a specific card.
+
+	$deck->cut_above( 'JS' );
+
+If the desired card is already on top of the deck nothing will happen.
+
+For more information on how to cut to a specific card please refer to the L<SEE ALSO> section of this documentation.
+
 =cut
 
 sub cut {
-	my $self = shift;
+	my $self     = shift;
 	my $position = shift; # TODO: what happens if the position doesn't exist?
 
 	my $cut_depth = _cut_depth( $self->_deck_size, $position );
@@ -290,6 +310,20 @@ sub cut {
 	unshift @deck, splice @deck, $cut_depth;
 
 	return $self->_set_deck( @deck );
+}
+
+sub cut_below {
+	my $self = shift;
+	my $card = shift;
+
+	return $self->cut( $self->find( $card ) );
+}
+
+sub cut_above {
+	my $self = shift;
+	my $card = shift;
+
+	return $self->cut( $self->find( $card ) - 1 );
 }
 
 

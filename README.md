@@ -163,6 +163,26 @@ Additional ways of cutting:
         $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
         $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
 
+### cut\_below
+
+You can cut below a specific card.
+
+        $deck->cut_below( '9D' );
+
+If the desired card is already on the bottom of the deck nothing will happen.
+
+For more information on how to cut to a specific card please refer to the ["SEE ALSO"](#see-also) section of this documentation.
+
+### cut\_above
+
+You can cut above a specific card.
+
+        $deck->cut_above( 'JS' );
+
+If the desired card is already on top of the deck nothing will happen.
+
+For more information on how to cut to a specific card please refer to the ["SEE ALSO"](#see-also) section of this documentation.
+
 ## Finding cards
 
 There are a few different methods to track down cards.

@@ -22,25 +22,21 @@ To Do list:
     * create links on README.md to facilitate navigation on Github
 
  * shuffling
-    * allow for an option on shuffles and cuts to do the procedure X times
+    * the wash
+    * hindu shuffle
+    * overhand shuffle
     * riffle shuffle
         * $deck->riffle_shuffle( 'short' );
         * $deck->riffle_shuffle( 'deep'  );
         * $deck->riffle_shuffle( 26 ); # divide the deck in precisely half
     	* riffle stacking
         * on the riffle shuffle we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
- 	* hindu shuffle
- 	* overhand shuffle
     * faro
         * faro X cards from the top
         * anti-faro
-    * the wash
 
  * cutting the deck
     * running cuts
-    * cut at a specific card (we assume the operator has a way of doing this regardless of the position of the card)
-        * $deck->cut_below('AS'); # cutting right above the Ace of Spades
-        * $deck->cut_above('KH'); # cutting right below the King of Hearts
     * controlled multiple cuts (e.g., cut the top X cards under position N)
 
  * advanced
