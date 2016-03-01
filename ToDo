@@ -25,6 +25,7 @@ To Do list:
     * the wash
     * hindu shuffle
     * overhand shuffle
+    * run cards (drop on top or bottom)
     * riffle shuffle
     	* riffle stacking
         * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
@@ -37,8 +38,11 @@ To Do list:
     * controlled multiple cuts (e.g., cut the top X cards under position N)
 
  * advanced
-    * include whether the deck is face up or face down so that you can do some moves with the cards facing the opposite direction (e.g., running cards from the face)
+    * orientation of the deck (face up or face down)
+        - this is so we can do some moves with the cards facing the opposite direction (e.g., running cards from the face)
     * given a series of procedures and a desired final result, assert the initial order of the deck
-    * maintain relationship through cards; from a specific order and through a series of procedures, ascertain axioms about the end result
-    * moving cards between places (e.g., set three new positions - $hand, $table and $spectator - and deal cards from $hand alternatively to $table and $spectator)
+    * track relationship between cards:
+        - from a specific order and through a series of procedures, present conclusions about the end relationship
+    * moving cards between places:
+        - e.g., set three new positions - $hand, $table and $spectator - and deal cards from $hand alternatively to $table and $spectator)
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
