@@ -26,11 +26,8 @@ To Do list:
     * hindu shuffle
     * overhand shuffle
     * riffle shuffle
-        * $deck->riffle_shuffle( 'short' );
-        * $deck->riffle_shuffle( 'deep'  );
-        * $deck->riffle_shuffle( 26 ); # divide the deck in precisely half
     	* riffle stacking
-        * on the riffle shuffle we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
+        * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
     * faro
         * faro X cards from the top
         * anti-faro
