@@ -166,17 +166,24 @@ Riffle shuffle the deck.
 
 In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 5 cards.
 
+You can also decide where to cut the deck for the shuffle:
+
+	$deck->riffle_shuffle( 'short' );  # closer to the top
+	$deck->riffle_shuffle( 'center' ); # near the center
+	$deck->riffle_shuffle( 'deep' );   # closer to the bottom
+	$deck->riffle_shuffle( 26 );       # precisely under the 26th card
+
 =cut
 
 # TODO: add an option for an out-shuffle
 # TODO: add an option to control top or bottom stock
-# TODO: add an option to select where the deck is cut before the shuffle
 # TODO: when dropping cards, should we favor numbers 2 and 3?
 sub riffle_shuffle {
-	my $self = shift;
+	my $self  = shift;
+	my $depth = shift;
 
 	# cut the deck (left pile is the original top half)
-	my $cut_depth = _cut_depth( $self->_deck_size, 'normal' );
+	my $cut_depth = _cut_depth( $self->_deck_size, $depth );
 
 	my @left_pile  = @{$self->get_deck};
 	my @right_pile = splice @left_pile, $cut_depth;

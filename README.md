@@ -106,6 +106,13 @@ Riffle shuffle the deck.
 
 In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 5 cards.
 
+You can also decide where to cut the deck for the shuffle:
+
+        $deck->riffle_shuffle( 'short' );  # closer to the top
+        $deck->riffle_shuffle( 'center' ); # near the center
+        $deck->riffle_shuffle( 'deep' );   # closer to the bottom
+        $deck->riffle_shuffle( 26 );       # precisely under the 26th card
+
 ### Faro shuffle
 
 In a faro shuffle the deck is split in half and the two halves are interlaced perfectly so that each card from one half is inserted in between two cards from the opposite half.

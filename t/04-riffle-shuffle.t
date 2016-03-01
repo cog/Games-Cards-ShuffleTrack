@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 3;
+plan tests => 4;
 
 use Games::Cards::ShuffleTrack;
 
@@ -26,3 +26,8 @@ isnt( $before_shuffling[-1], $after_shuffling[-1] );
 
 # deck has the same amount of cards as in the beginning
 is( scalar @before_shuffling, scalar @after_shuffling );
+
+# riffle shuffling at the 26th position will leave the 27th card above the 26th
+my ($card_26, $card_27) = $deck->find( 26, 27 );
+$deck->riffle_shuffle( 26 );
+cmp_ok( $deck->find( $card_26 ) , '>', $deck->find( $card_27 ));
