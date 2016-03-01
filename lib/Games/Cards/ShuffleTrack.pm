@@ -310,8 +310,9 @@ sub cut {
 	my $self     = shift;
 	my $position = shift;
 
-	if (defined $position and $position > $self->_deck_size) {
+	if (defined $position and abs($position) > $self->_deck_size) {
 		warn "Tried to cut the deck at a non-existing position ($position).\n";
+		return $self;
 	}
 
 	my $cut_depth = _cut_depth( $self->_deck_size, $position );
