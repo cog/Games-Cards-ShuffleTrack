@@ -99,7 +99,9 @@ As an example, some card representations:
 
 =head1 SUBROUTINES/METHODS
 
-=head2 new
+=head2 Standard methods
+
+=head3 new
 
 Create a new deck.
 
@@ -140,7 +142,7 @@ sub new {
 }
 
 
-=head2 get_deck
+=head3 get_deck
 
 Returns the deck (a reference to a list of strings).
 

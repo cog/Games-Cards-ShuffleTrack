@@ -62,7 +62,9 @@ As an example, some card representations:
 
 # SUBROUTINES/METHODS
 
-## new
+## Standard methods
+
+### new
 
 Create a new deck.
 
@@ -88,7 +90,7 @@ You can also specify the starting order of the deck among the following:
 
     my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
 
-## get\_deck
+### get\_deck
 
 Returns the deck (a reference to a list of strings).
 
