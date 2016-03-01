@@ -278,20 +278,28 @@ sub cut {
 	my $self = shift;
 	my $position = shift; # TODO: what happens if the position doesn't exist?
 
+	my $cut_depth = _cut_depth( $self->_deck_size, $position );
+
+	my @deck = @{$self->get_deck};
+	unshift @deck, splice @deck, $cut_depth;
+
+	return $self->_set_deck( @deck );
+}
+
+sub _cut_depth {
+	my $deck_size = shift;
+	my $position  = shift;
+
 	if (not defined $position) {
 		$position = 'normal';
 	}
 
 	if ($position =~ /^short|center|deep|normal$/) {
 		my ($lower, $upper) = @{$cut_limits->{ $position }};
-		my $size = $self->_deck_size;
-		$position = _rand( $size * $lower, $size * $upper );
+		$position = _rand( $deck_size * $lower, $deck_size * $upper );
 	}
 
-	my @deck = @{$self->get_deck};
-	unshift @deck, splice @deck, $position;
-
-	return $self->_set_deck( @deck );
+	return $position;
 }
 
 
