@@ -176,10 +176,7 @@ sub riffle_shuffle {
 	my $self = shift;
 
 	# cut the deck (left pile is the original top half)
-	my $size = $self->_deck_size;
-
-	# we're cutting somewhere between 18 and 31 cards
-	my $cut_depth = _rand( $size * 0.35, $size * 0.60 );
+	my $cut_depth = _cut_depth( $self->_deck_size, 'normal' );
 
 	my @left_pile  = @{$self->get_deck};
 	my @right_pile = splice @left_pile, $cut_depth;
