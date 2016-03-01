@@ -4,7 +4,7 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 # VERSION
 
-Version 0.01
+Version 0.01\_2
 
 # WARNING
 
@@ -141,7 +141,7 @@ In a "faro in" the top and bottom cards do not remain in their original position
 
 Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
 
-        27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
+    27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
 
 ## Cutting
 
@@ -157,17 +157,17 @@ Cut at a precise position (moving X cards from top to bottom):
 
     $deck->cut(26);
 
-If you try to cut to a position that doesn't exist nothing will happen.
+If you try to cut to a position that doesn't exist nothing will happen (apart from a warning that you tried to cut to a non-existing position, of course).
 
-You can also cut at negative positions, meaning that you're counting from the bottom of the deck. For instance, to cut the bottom two cards to the top:
+You can also cut at negative positions, meaning that you're counting from the bottom of the deck and cutting above that card. For instance, to cut the bottom two cards to the top:
 
         $deck->cut(-2);
 
 Additional ways of cutting:
 
-        $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
-        $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
-        $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
+    $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
+    $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
+    $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
 
 ### cut\_below
 
@@ -271,9 +271,8 @@ You can also look for information at:
 
 Recommended reading:
 
-    * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
-
-    * The Annotated Erdnase, by Darwin Ortiz
+- The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
+- The Annotated Erdnase, by Darwin Ortiz
 
 # LICENSE AND COPYRIGHT
 
