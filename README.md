@@ -157,6 +157,12 @@ Cut at a precise position (moving X cards from top to bottom):
 
     $deck->cut(26);
 
+If you try to cut to a position that doesn't exist nothing will happen.
+
+You can also cut at negative positions, meaning that you're counting from the bottom of the deck. For instance, to cut the bottom two cards to the top:
+
+        $deck->cut(-2);
+
 Additional ways of cutting:
 
         $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
