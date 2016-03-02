@@ -4,7 +4,7 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 # VERSION
 
-Version 0.01\_2
+Version 0.01\_3
 
 # WARNING
 
@@ -96,7 +96,54 @@ Returns the deck (a reference to a list of strings).
 
     my $cards = $deck->get_deck();
 
+### orientation
+
+Return whether the deck is face up or face down:
+
+        if ( $deck->orientation eq 'down' ) {
+                ...
+        }
+
+The deck's orientation is either 'up' or 'down'.
+
+### turn
+
+If the deck was face up, it is turned face down; if the deck was face down, it is turned face up.
+
+Turning the deck reverses its order.
+
+        $deck->turn;
+
 ## Shuffling
+
+### Overhand Shuffle
+
+#### overhand\_shuffle
+
+WARNING: This method has not been implemented yet!!!
+
+In an overhand shuffle the cards are moved from hand to the other in packets, the result being similar to that of running cuts (the difference being that the packets in an overhand shuffle may be smaller than the ones in a running cut sequence).
+
+        $deck->overhand_shuffle;
+
+You can specify how many times you want to go through the deck (which is basically the same thing as calling the method that many times):
+
+        $deck->overhand_shuffle( 2 );
+
+#### run
+
+The act of running cards is similar to the overhand shuffle, but instead of in packets the cards are run singly.
+
+        $deck->run( 10 );
+
+When running cards you can choose whether to drop those cards on the top or on the bottom of the deck. By default, the cards are moved to the bottom of the deck.
+
+        $deck->run( 10, 'drop-top' );
+        $deck->run( 10, 'drop-bottom' );
+
+Running cards basically reverses their order.
+
+If no number is given then no cards are run.
 
 ### Riffle Shuffle
 

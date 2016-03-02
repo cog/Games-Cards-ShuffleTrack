@@ -159,7 +159,110 @@ sub get_deck { # TODO: use wantarray to allow for an array to be returned
 }
 
 
+=head3 orientation
+
+Return whether the deck is face up or face down:
+
+	if ( $deck->orientation eq 'down' ) {
+		...
+	}
+
+The deck's orientation is either 'up' or 'down'.
+
+=cut
+
+sub orientation {
+	my $self = shift;
+
+	return $self->{'orientation'};
+}
+
+
+=head3 turn
+
+If the deck was face up, it is turned face down; if the deck was face down, it is turned face up.
+
+Turning the deck reverses its order.
+
+	$deck->turn;
+
+=cut
+
+sub turn {
+	my $self = shift;
+
+	$self->{'orientation'} = $self->orientation eq 'down' ?
+							 'up' : 'down';
+
+
+	$self->_set_deck( reverse @{$self->get_deck} );
+
+	return $self;
+}
+
+
 =head2 Shuffling
+
+=head3 Overhand Shuffle
+
+=head4 overhand_shuffle
+
+WARNING: This method has not been implemented yet!!!
+
+In an overhand shuffle the cards are moved from hand to the other in packets, the result being similar to that of running cuts (the difference being that the packets in an overhand shuffle may be smaller than the ones in a running cut sequence).
+
+	$deck->overhand_shuffle;
+
+You can specify how many times you want to go through the deck (which is basically the same thing as calling the method that many times):
+
+	$deck->overhand_shuffle( 2 );
+
+=cut
+
+sub overhand_shuffle {
+	# TODO
+}
+
+
+=head4 run
+
+The act of running cards is similar to the overhand shuffle, but instead of in packets the cards are run singly.
+
+	$deck->run( 10 );
+
+When running cards you can choose whether to drop those cards on the top or on the bottom of the deck. By default, the cards are moved to the bottom of the deck.
+
+	$deck->run( 10, 'drop-top' );
+	$deck->run( 10, 'drop-bottom' );
+
+Running cards basically reverses their order.
+
+If no number is given then no cards are run.
+
+=cut
+
+sub run {
+	my $self            = shift;
+	my $number_of_cards = shift;
+	my $where_to_drop   = shift || 'drop-bottom';
+
+	$number_of_cards > 0 or return $self;
+
+
+	# take cards from top and reverse their order
+	my @deck = @{$self->get_deck};
+	my @run  = reverse splice @deck, 0, $number_of_cards;
+
+	if ( $where_to_drop eq 'drop-top' ) {
+		$self->_set_deck( @run, @deck );
+	}
+	else { # drop-bottom is the default
+		$self->_set_deck( @deck, @run );
+	}
+
+	return $self;
+}
+
 
 =head3 Riffle Shuffle
 
