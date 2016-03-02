@@ -185,9 +185,7 @@ Turning the deck reverses its order.
 sub turn {
 	my $self = shift;
 
-	$self->{'orientation'} = $self->orientation eq 'down' ?
-							 'up' : 'down';
-
+	$self->{'orientation'} = $self->orientation eq 'down' ? 'up' : 'down';
 
 	$self->_set_deck( reverse @{$self->get_deck} );
 
@@ -587,7 +585,7 @@ If the King of Hearts is just after the Ace of Spades, then the result is 1. If 
 =cut
 
 sub distance {
-	my $self   = shift;
+	my $self        = shift;
 	my $first_card  = shift;
 	my $second_card = shift;
 
