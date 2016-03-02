@@ -485,6 +485,29 @@ sub cut_above {
 	return $self->cut( $self->find( $card ) - 1 );
 }
 
+=head3 Running Cuts
+
+Cut packets:
+
+    $deck->running_cuts();
+
+To do the procedure twice:
+
+    $deck->running_cuts( 2 );
+
+=cut
+
+sub running_cuts {
+	my $self  = shift;
+	my $times = shift || 1;
+
+	$self->_packet_transfer( 5, 15 );
+
+	return $times > 1 ?
+		   $self->overhand_shuffle( $times - 1 ) :
+		   $self
+}
+
 
 =head2 Finding cards
 

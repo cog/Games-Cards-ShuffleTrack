@@ -243,6 +243,16 @@ If the desired card is already on top of the deck nothing will happen.
 
 For more information on how to cut to a specific card please refer to the ["SEE ALSO"](#see-also) section of this documentation.
 
+### Running Cuts
+
+Cut packets:
+
+    $deck->running_cuts();
+
+To do the procedure twice:
+
+    $deck->running_cuts( 2 );
+
 ## Finding cards
 
 There are a few different methods to track down cards.

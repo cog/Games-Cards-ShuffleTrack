@@ -33,8 +33,10 @@ To Do list:
         * anti-faro
 
  * cutting the deck
-    * running cuts
     * controlled multiple cuts (e.g., cut the top X cards under position N)
+
+ * testing
+    * test the running cuts
 
  * advanced
     * given a series of procedures and a desired final result, assert the initial order of the deck
