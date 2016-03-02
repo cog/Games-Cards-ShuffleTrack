@@ -21,10 +21,10 @@ To Do list:
         * balance of the deck
         * top/bottom stock
     * create links on README.md to facilitate navigation on Github
+    * update the descriptions of the different shuffles
 
  * shuffling
     * the wash
-    * hindu shuffle
     * riffle shuffle
     	* riffle stacking
         * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
