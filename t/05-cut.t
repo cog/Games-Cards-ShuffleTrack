@@ -74,17 +74,21 @@ is( $deck->find( 'JS' ), 52 );
 $deck->cut_below( 'JS' );
 is( $deck->find( 'JS' ), 52 );
 
-# cut at a non-existing position doesn't alter the order of the deck and issues warnings
-my $deck_before_cutting_too_deep = $deck->get_deck;
-warnings_exist {$deck->cut( 100 )} [qr/Tried to cut the deck at a non-existing position/];
-is_deeply( $deck_before_cutting_too_deep, $deck->get_deck );
-warnings_exist {$deck->cut( -100 )} [qr/Tried to cut the deck at a non-existing position/];
-is_deeply( $deck_before_cutting_too_deep, $deck->get_deck );
-
 # cutting at the top or bottom of the deck doesn't do anything
+my $deck_before_cutting = $deck->get_deck;
 $deck->cut( 0 );
-is_deeply( $deck_before_cutting_too_deep, $deck->get_deck );
+is_deeply( $deck_before_cutting, $deck->get_deck );
 $deck->cut( 52 );
-is_deeply( $deck_before_cutting_too_deep, $deck->get_deck );
+is_deeply( $deck_before_cutting, $deck->get_deck );
 $deck->cut( -52 );
-is_deeply( $deck_before_cutting_too_deep, $deck->get_deck );
+is_deeply( $deck_before_cutting, $deck->get_deck );
+
+# cut at a non-existing position doesn't alter the order of the deck and issues warnings
+my $min_tp = 0.30;
+eval "use Test::Warn $min_tp";
+plan skip_all => "Test::Warn $min_tp required for testing warnings" if $@;
+
+warnings_exist {$deck->cut( 100 )} [qr/Tried to cut the deck at a non-existing position/];
+is_deeply( $deck_before_cutting, $deck->get_deck );
+warnings_exist {$deck->cut( -100 )} [qr/Tried to cut the deck at a non-existing position/];
+is_deeply( $deck_before_cutting, $deck->get_deck );
