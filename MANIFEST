@@ -10,6 +10,7 @@ t/03-faro.t
 t/04-riffle-shuffle.t
 t/05-cut.t
 t/06-find.t
+t/07-overhand-shuffle.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
