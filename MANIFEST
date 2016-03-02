@@ -14,3 +14,4 @@ t/07-overhand-shuffle.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+t/08-hindu-shuffle.t
