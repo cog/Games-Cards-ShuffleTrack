@@ -4,9 +4,9 @@ use 5.006;
 use strict;
 use warnings;
 
-use List::Util qw/min/;
+use List::Util      qw/min/;
 use List::MoreUtils qw/zip first_index/;
-use Scalar::Util qw(looks_like_number);
+use Scalar::Util    qw/looks_like_number/;
 
 =head1 NAME
 
