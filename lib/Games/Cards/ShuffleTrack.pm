@@ -136,9 +136,12 @@ You can also specify the starting order of the deck among the following:
 
 sub new {
 	my ($self, $order) = @_;
-	$order ||= 'new_deck_order';
-	my $deck = $decks->{ $order };
-	return bless {'deck' => $deck}, $self;
+	   $order ||= 'new_deck_order';
+	my $deck    = $decks->{ $order };
+	return bless {
+		'deck'        => $deck,
+		'orientation' => 'down',
+	}, $self;
 }
 
 

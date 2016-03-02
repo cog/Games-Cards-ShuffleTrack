@@ -38,8 +38,6 @@ To Do list:
     * controlled multiple cuts (e.g., cut the top X cards under position N)
 
  * advanced
-    * orientation of the deck (face up or face down)
-        - this is so we can do some moves with the cards facing the opposite direction (e.g., running cards from the face)
     * given a series of procedures and a desired final result, assert the initial order of the deck
     * track relationship between cards:
         - from a specific order and through a series of procedures, present conclusions about the end relationship
