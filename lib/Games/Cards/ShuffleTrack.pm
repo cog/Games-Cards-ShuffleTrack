@@ -220,6 +220,33 @@ sub overhand_shuffle {
 		   $self
 }
 
+=head3 Hindu Shuffle
+
+=head4 hindu_shuffle
+
+In a Hindu shuffle the cards are moved from hand to the other in packets, the result being similar to that of running cuts (the difference being that the packets in an overhand shuffle may be smaller than the ones in a running cut sequence).
+
+	$deck->hindu_shuffle;
+
+You can specify how many times you want to go through the deck (which is basically the same thing as calling the method that many times):
+
+	$deck->hindu_shuffle( 2 );
+
+The Hindu shuffle differs in result from the Overhand shuffle in that the packets are usually thicker; the reason for this is that while in the Overhand shuffle it's the thumb that grabs the cards (and the thumb can easily carry just one or two cards) in the Hindu shuffle it's more than one finger accomplishing this task, grabbing the deck by the sides, which makes it more difficult (hence, rare) to cut just one or two cards.
+
+=cut
+
+sub hindu_shuffle {
+	my $self  = shift;
+	my $times = shift || 1;
+
+	$self->_packet_transfer( 4, 10 );
+
+	return $times > 1 ?
+		   $self->hindu_shuffle( $times - 1 ) :
+		   $self
+}
+
 sub _packet_transfer {
 	my $self = shift;
 	my $min  = shift;
