@@ -14,17 +14,17 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 =head1 VERSION
 
-Version 0.01_2
+Version 0.01_3
 
 =cut
 
-our $VERSION = '0.01_2';
+our $VERSION = '0.01_3';
 
 our $cut_limits = {
-	normal	=> [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
-	short 	=> [0.09, 0.28], # on a 52 cards deck, cut between 5  and 15 cards
-	center 	=> [0.36, 0.59], # on a 52 cards deck, cut between 19 and 31 cards
-	deep 	=> [0.67, 0.86], # on a 52 cards deck, cut between 35 and 45 cards
+	normal  => [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
+	short   => [0.09, 0.28], # on a 52 cards deck, cut between 5  and 15 cards
+	center  => [0.36, 0.59], # on a 52 cards deck, cut between 19 and 31 cards
+	deep    => [0.67, 0.86], # on a 52 cards deck, cut between 35 and 45 cards
 };
 
 our $decks = {
@@ -32,7 +32,7 @@ our $decks = {
 						  AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
 						  KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
 						  KS QS JS 10S 9S 8S 7S 6S 5S 4S 3S 2S AS/],
-	fournier =>		  [qw/AS 2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS
+	fournier =>       [qw/AS 2S 3S 4S 5S 6S 7S 8S 9S 10S JS QS KS
 						  AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
 						  KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
 						  KC QC JC 10C 9C 8C 7C 6C 5C 4C 3C 2C AC/],
