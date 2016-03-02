@@ -50,22 +50,22 @@ Some of the methods documented here haven't been fully implemented yet (nor has 
 
 This module allows you to simulate true and false shuffles and cuts.
 
-    use Games::Cards::ShuffleTrack;
+	use Games::Cards::ShuffleTrack;
 
-    my $deck = Games::Cards::ShuffleTrack->new();
+	my $deck = Games::Cards::ShuffleTrack->new();
 
-    $deck->riffle_shuffle();
-    $deck->riffle_shuffle();
-    $deck->cut( 'short' );
-    print $deck->get_deck();
+	$deck->riffle_shuffle();
+	$deck->riffle_shuffle();
+	$deck->cut( 'short' );
+	print $deck->get_deck();
 
 Or perhaps with more control:
 
-    my $deck = Games::Cards::ShuffleTrack->new();
+	my $deck = Games::Cards::ShuffleTrack->new();
 
-    $deck->faro_in();
-    $deck->cut( 26 );
-    print $deck->get_deck();
+	$deck->faro_in();
+	$deck->cut( 26 );
+	print $deck->get_deck();
 
 See the rest of the documentation for more advanced features.
 
@@ -74,10 +74,10 @@ See the rest of the documentation for more advanced features.
 
 To install this module, run the following commands:
 
-    perl Makefile.PL
-    make
-    make test
-    make install
+	perl Makefile.PL
+	make
+	make test
+	make install
 
 
 =head1 DECK REPRESENTATION
@@ -105,7 +105,7 @@ As an example, some card representations:
 
 Create a new deck.
 
-    my $deck = Games::Cards::ShuffleTrack->new();
+	my $deck = Games::Cards::ShuffleTrack->new();
 
 The order of the deck is from top to bottom, which means it is the reverse of what you see when you spread a deck in your hands with the cards facing you.
 
@@ -130,7 +130,7 @@ You can also specify the starting order of the deck among the following:
 
 =back
 
-    my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
+	my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
 
 =cut
 
@@ -149,7 +149,7 @@ sub new {
 
 Returns the deck (a reference to a list of strings).
 
-    my $cards = $deck->get_deck();
+	my $cards = $deck->get_deck();
 
 =cut
 
@@ -270,7 +270,7 @@ sub run {
 
 Riffle shuffle the deck.
 
-    $deck->riffle_shuffle();
+	$deck->riffle_shuffle();
 
 In the act of riffle shuffling a deck the deck is cut into two halves of approximately the same size; each half is riffled so that the cards of both halves interlace; these cards usually drop in groups of 1 to 5 cards.
 
@@ -324,25 +324,25 @@ In a faro shuffle the deck is split in half and the two halves are interlaced pe
 
 Faro out the deck.
 
-    $deck->faro( 'out' );
+	$deck->faro( 'out' );
 
 In a "faro out" the top and bottom cards remain in their original positions.
 
 Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
 
-    1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
+	1, 27, 2, 28, 3, 29, 4, 30, 5, 31, 6, 32, 7, 33, ...
 
 =head4 faro in
 
 Faro in the deck.
 
-    $deck->faro( 'in' );
+	$deck->faro( 'in' );
 
 In a "faro in" the top and bottom cards do not remain in their original positions (top card becomes second from the top, bottom card becomes second from the bottom).
 
 Considering the positions on the cards from 1 to 52 the result of the faro would be as follows:
 
-    27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
+	27, 1, 28, 2, 29, 3, 30, 4, 31, 5, 32, 6, 33, 7, ...
 
 =cut
 
@@ -370,13 +370,13 @@ sub faro {
 
 Cut the deck.
 
-    $deck->cut();
+	$deck->cut();
 
 In a 52 cards deck, this would cut somewhere between 10 and 43 cards.
 
 Cut at a precise position (moving X cards from top to bottom):
 
-    $deck->cut(26);
+	$deck->cut(26);
 
 If you try to cut to a position that doesn't exist nothing will happen (apart from a warning that you tried to cut to a non-existing position, of course).
 
@@ -386,9 +386,9 @@ You can also cut at negative positions, meaning that you're counting from the bo
 
 Additional ways of cutting:
 
-    $deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
-    $deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
-    $deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
+	$deck->cut( 'short'  ); # on a 52 cards deck, somewhere between 5  and 15 cards
+	$deck->cut( 'center' ); # on a 52 cards deck, somewhere between 19 and 31 cards
+	$deck->cut( 'deep'   ); # on a 52 cards deck, somewhere between 35 and 45 cards
 
 =head3 cut_below
 
@@ -452,41 +452,41 @@ There are a few different methods to track down cards.
 
 Get the position of specific cards:
 
-    $deck->find( 'AS' ); # find the position of the Ace of Spades
+	$deck->find( 'AS' ); # find the position of the Ace of Spades
 
-    $deck->find( 'AS', 'KH' ); # find the position of two cards
+	$deck->find( 'AS', 'KH' ); # find the position of two cards
 
 This method can also return the card at a specific position:
 
-    $deck->find( 3 );
+	$deck->find( 3 );
 
 You can also request a card in a negative position (i.e., from the bottom of the deck). To get the second to last card in the deck:
 
-    $deck->find( -2 );
+	$deck->find( -2 );
 
 If you're dealing five hands of poker from the top of the deck, for instance, you can easily find which cards will fall on the dealer's hand:
 
-    $deck->find( 5, 10, 15, 20, 25 );
+	$deck->find( 5, 10, 15, 20, 25 );
 
 =cut
 
 sub find {
-    my $self  = shift;
-    my @cards = @_;
+	my $self  = shift;
+	my @cards = @_;
 
-    my @results;
+	my @results;
 
-    my $deck = $self->get_deck();
+	my $deck = $self->get_deck();
 
-    for my $card ( @cards ) {
+	for my $card ( @cards ) {
 
-    	push @results, looks_like_number( $card )
-    				 ? $self->_find_card_by_position( $card )
-    				 : $self->_find_card_by_name( $card );
+		push @results, looks_like_number( $card )
+					 ? $self->_find_card_by_position( $card )
+					 : $self->_find_card_by_name( $card );
 
-    }
+	}
 
-    return wantarray ? @results : $results[0];
+	return wantarray ? @results : $results[0];
 }
 
 sub _find_card_by_position {
@@ -516,25 +516,25 @@ sub _find_card_by_name {
 
 Finds the card immediately before another card:
 
-    # return the card immediately before the Ace of Spades
-    $deck->find_card_before( 'AS' );
+	# return the card immediately before the Ace of Spades
+	$deck->find_card_before( 'AS' );
 
 If the specified card is on top of the deck you will get the card on the bottom of the deck.
 
 =cut
 
 sub find_card_before {
-    my $self = shift;
-    my $card = shift;
+	my $self = shift;
+	my $card = shift;
 
-    my $position = $self->find( $card );
+	my $position = $self->find( $card );
 
-    if ($position == 1) {
-    	return undef;
-    }
-    else {
+	if ($position == 1) {
+		return undef;
+	}
+	else {
 		return $self->find( $position - 1 );
-    }
+	}
 }
 
 
@@ -542,18 +542,18 @@ sub find_card_before {
 
 Finds the card immediately after another card:
 
-    # return the card immediately after the King of Hearts
-    $deck->find_card_before( 'KH' );
+	# return the card immediately after the King of Hearts
+	$deck->find_card_before( 'KH' );
 
 If the specified card is on the bottom of the deck you will get the card on the top of the deck.
 
 =cut
 
 sub find_card_after {
-    my $self = shift;
-    my $card = shift;
+	my $self = shift;
+	my $card = shift;
 
-    return $self->find( $self->find( $card ) + 1 );
+	return $self->find( $self->find( $card ) + 1 );
 }
 
 
@@ -563,18 +563,18 @@ Find the distance between two cards.
 
 To find the distance between the Ace of Spades and the King of Hearts:
 
-    $deck->distance( 'AS', 'KH' );
+	$deck->distance( 'AS', 'KH' );
 
 If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
 =cut
 
 sub distance {
-    my $self   = shift;
-    my $first_card  = shift;
-    my $second_card = shift;
-    
-    return $self->find( $second_card) - $self->find( $first_card );
+	my $self   = shift;
+	my $first_card  = shift;
+	my $second_card = shift;
+
+	return $self->find( $second_card) - $self->find( $first_card );
 }
 
 
@@ -628,7 +628,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Games::Cards::ShuffleTrack
+	perldoc Games::Cards::ShuffleTrack
 
 
 You can also look for information at:
