@@ -218,9 +218,14 @@ You can specify how many times you want to go through the deck (which is basical
 =cut
 
 sub overhand_shuffle {
-	my $self = shift;
+	my $self  = shift;
+	my $times = shift || 1;
 
-	return $self->_packet_transfer( 1, 10 );
+	$self->_packet_transfer( 1, 10 );
+
+	return $times > 1 ?
+		   $self->overhand_shuffle( $times - 1 ) :
+		   $self
 }
 
 sub _packet_transfer {
