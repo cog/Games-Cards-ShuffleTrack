@@ -207,8 +207,6 @@ sub turn {
 
 =head4 overhand_shuffle
 
-WARNING: This method has not been implemented yet!!!
-
 In an overhand shuffle the cards are moved from hand to the other in packets, the result being similar to that of running cuts (the difference being that the packets in an overhand shuffle may be smaller than the ones in a running cut sequence).
 
 	$deck->overhand_shuffle;
@@ -220,7 +218,27 @@ You can specify how many times you want to go through the deck (which is basical
 =cut
 
 sub overhand_shuffle {
-	# TODO
+	my $self = shift;
+
+	return $self->_packet_transfer( 1, 10 );
+}
+
+sub _packet_transfer {
+	my $self = shift;
+	my $min  = shift;
+	my $max  = shift;
+
+	my @deck = @{$self->get_deck};
+
+	my @new_deck;
+
+	while ( @deck ) {
+		if (@deck < $max) { $max = scalar @deck }
+		if (@deck < $min) { $min = scalar @deck }
+		unshift @new_deck, splice @deck, 0, _rand( $min, $max );
+	}
+
+	return $self->_set_deck( @new_deck );
 }
 
 

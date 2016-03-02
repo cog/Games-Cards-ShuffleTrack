@@ -120,8 +120,6 @@ Turning the deck reverses its order.
 
 #### overhand\_shuffle
 
-WARNING: This method has not been implemented yet!!!
-
 In an overhand shuffle the cards are moved from hand to the other in packets, the result being similar to that of running cuts (the difference being that the packets in an overhand shuffle may be smaller than the ones in a running cut sequence).
 
         $deck->overhand_shuffle;

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 6;
+plan tests => 8;
 
 use Games::Cards::ShuffleTrack;
 
@@ -31,3 +31,13 @@ is( $deck->find($top_card),    52 );
 my $tenth_card = $deck->find(10);
 $deck->run(10);
 is( $deck->find(-10), $tenth_card);
+
+
+# overhand shuffling changes top and bottom cards
+
+my ($t, $b) = $deck->find( 1, -1 );
+
+$deck->overhand_shuffle;
+
+isnt( $deck->find(  1 ), $t );
+isnt( $deck->find( -1 ), $b );
