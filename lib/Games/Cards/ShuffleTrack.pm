@@ -39,13 +39,6 @@ my $decks = {
 };
 
 
-=head1 WARNING
-
-This module is in development stage still. In fact, it's still under specification.
-
-Some of the methods documented here haven't been fully implemented yet (nor has the module been uploaded to CPAN yet).
-
-
 =head1 SYNOPSIS
 
 This module allows you to simulate true and false shuffles and cuts.

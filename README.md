@@ -6,12 +6,6 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 Version 0.01\_4
 
-# WARNING
-
-This module is in development stage still. In fact, it's still under specification.
-
-Some of the methods documented here haven't been fully implemented yet (nor has the module been uploaded to CPAN yet).
-
 # SYNOPSIS
 
 This module allows you to simulate true and false shuffles and cuts.
