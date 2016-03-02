@@ -21,6 +21,7 @@ my @after_8_faro_outs = $deck->get_deck();
 is_deeply( \@after_8_faro_outs, \@original_deck );
 
 
+# TODO: something is wrong here: this should happen after 26 faro-ins, not 52
 # a deck of 52 cards after 52 faro-ins should see its order reversed
 $deck->faro( 'in' ) for 1 .. 52;
 
