@@ -37,6 +37,7 @@ To Do list:
 
  * testing
     * test the running cuts
+    * testing without Test::Warn present complains about the number of planned tests being wrong
 
  * advanced
     * given a series of procedures and a desired final result, assert the initial order of the deck
