@@ -486,7 +486,7 @@ sub cut_above {
 	return $self->cut( $self->find( $card ) - 1 );
 }
 
-=head3 Running Cuts
+=head3 running_cuts
 
 Cut packets:
 
