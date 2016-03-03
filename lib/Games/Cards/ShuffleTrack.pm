@@ -510,7 +510,7 @@ sub running_cuts {
 }
 
 
-=head2 Finding cards
+=head2 Handling cards
 
 There are a few different methods to track down cards.
 

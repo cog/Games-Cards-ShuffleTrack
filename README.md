@@ -253,7 +253,7 @@ To do the procedure twice:
 
     $deck->running_cuts( 2 );
 
-## Finding cards
+## Handling cards
 
 There are a few different methods to track down cards.
 
