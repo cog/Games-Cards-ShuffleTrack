@@ -72,6 +72,9 @@ To Do list:
     * replace? ("to replace a card in the deck")
     * lose? ("to lose a card in the deck")
 
+ * games
+    * analyse hands in different games (poker, blackjack, etc)
+
  * examples
     * add example of a game simulation
     * add example of a magic trick
