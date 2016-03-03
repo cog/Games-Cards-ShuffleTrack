@@ -140,17 +140,17 @@ sub new {
 	}, $self;
 }
 
-=head3 reset
+=head3 reorder
 
 Reset the deck to its original status. The original is whatever you selected when you created the deck.
 
-	$deck->reset;
+	$deck->reorder;
 
 Do bear in mind that by doing so you are replinishing the deck of whatever cards you took out of it.
 
 =cut
 
-sub reset {
+sub reorder {
 	my $self = shift;
 	return $self->_set_deck( @{$self->{'original'}} );
 }
