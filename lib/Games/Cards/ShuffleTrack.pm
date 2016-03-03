@@ -28,6 +28,7 @@ my $cut_limits = {
 };
 
 my $decks = {
+	empty =>          [],
 	new_deck_order => [qw/AH 2H 3H 4H 5H 6H 7H 8H 9H 10H JH QH KH
 						  AC 2C 3C 4C 5C 6C 7C 8C 9C 10C JC QC KC
 						  KD QD JD 10D 9D 8D 7D 6D 5D 4D 3D 2D AD
