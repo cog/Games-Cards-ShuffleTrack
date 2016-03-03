@@ -792,7 +792,10 @@ sub take_random {
 	my $lower_limit = shift || 1;
 	my $upper_limit = shift;
 
-	$upper_limit = min( $upper_limit, $self->_deck_size );
+
+	$upper_limit = defined $upper_limit ?
+					$upper_limit :
+					$self->_deck_size;
 
 	return $self->remove( _rand( $lower_limit, $upper_limit ) );
 }
