@@ -20,7 +20,7 @@ This module allows you to simulate true and false shuffles and cuts.
         $deck->riffle_shuffle();
         print $deck->get_deck();
 
-Or perhaps with more control:
+Or perhaps with more precision:
 
         my $deck = Games::Cards::ShuffleTrack->new();
 
