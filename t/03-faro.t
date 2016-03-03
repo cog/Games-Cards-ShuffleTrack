@@ -4,27 +4,31 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 2;
+plan tests => 3;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 
-my @original_deck = $deck->get_deck();
-
+my @original_deck = @{$deck->get_deck()};
 
 # a deck of 52 cards after 8 faro-outs should result in the original order
 $deck->faro( 'out' ) for 1 .. 8;
 
-my @after_8_faro_outs = $deck->get_deck();
+my @after_8_faro_outs = @{$deck->get_deck()};
 
 is_deeply( \@after_8_faro_outs, \@original_deck );
 
+# a deck of 52 cards after 26 faro-ins should see its order reversed
+$deck->faro( 'in' ) for 1 .. 26;
 
-# TODO: something is wrong here: this should happen after 26 faro-ins, not 52
-# a deck of 52 cards after 52 faro-ins should see its order reversed
-$deck->faro( 'in' ) for 1 .. 52;
+my @after_26_faro_ins = @{$deck->get_deck};
 
-my @after_52_faro_ins = $deck->get_deck;
+is_deeply( [@after_26_faro_ins], [reverse @original_deck] );
 
-is_deeply( \@after_52_faro_ins, [reverse @original_deck] );
+# a deck that has been through 26 faro-ins will get to its original order with 26 more
+$deck->faro( 'in' ) for 1 .. 26;
+
+my @after_52_faro_ins = @{$deck->get_deck};
+
+is_deeply( [@after_52_faro_ins], [@original_deck] );
