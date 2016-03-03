@@ -39,6 +39,13 @@ my $decks = {
 						  KC QC JC 10C 9C 8C 7C 6C 5C 4C 3C 2C AC/],
 };
 
+my $shortcuts = {
+	'top'		=> 1,
+	'second'	=> 2,
+	'greek'		=> -2,
+	'bottom'	=> -1,
+};
+
 
 =head1 SYNOPSIS
 
@@ -660,6 +667,137 @@ sub distance {
 }
 
 
+=head3 put
+
+Put a card on top of the deck. This is a new card, and not a card already on the deck.
+
+	$deck->put( $card );
+
+If the card was already on the deck, you now have a duplicate card.
+
+=cut
+
+sub put {
+	my $self = shift;
+	my $card = shift;
+
+	$self->_set_deck( $card, @{$self->get_deck} );
+
+	return $self;
+}
+
+
+=head3 deal
+
+Deals a card, removing it from the deck.
+
+	my $removed_card = $deck->deal();
+
+Just as in regular gambling, you can deal cards from other positions:
+
+	# deal the second card from the top
+    my $card = $deck->deal( 'second' );
+
+    # deal the second card from the bottom
+    my $card = $deck->deal( 'greek' );
+
+    # deal the card from the bottom of the deck
+    my $card = $deck->deal( 'bottom' );
+
+For more information on false dealing see the L<SEE ALSO> section.
+
+=cut
+
+sub deal {
+	my $self = shift;
+	my $deal = shift || 'top';
+
+	# TODO: what if $deal is unknown?
+	my $position = $shortcuts->{$deal};
+
+	return $self->remove( $position );
+}
+
+=head3 remove
+
+Removes a card from the deck.
+
+	# remove the 4th card from the top
+	my $card = $deck->remove( 4 );
+
+=cut
+
+sub remove {
+	my $self = shift;
+	my $position = shift;
+
+	my @deck = @{$self->get_deck};
+
+	my $card = splice @deck, $position - 1, 1;
+
+	$self->_set_deck( @deck );
+	return $card;
+}
+
+
+=head3 peek
+
+Peek at a position in the deck (this is essentially the same thing as &find()).
+
+	# peek the top card
+	my $card = $deck->peek( 1 );
+
+You can also peek the top and bottom card by using an alias:
+
+	# peek the top card
+	my $card = $deck->peek( 'top' );
+
+	# peek the bottom card
+	my $card = $deck->peek( 'bottom' );
+
+Negative indexes are also supported:
+
+	# peek the second from bottom card
+	my $card = $deck->peek( -2 );
+
+=cut
+
+sub peek {
+	my $self     = shift;
+	my $position = shift || 1;
+
+	if (_is_shortcut( $position )) {
+		$position = $shortcuts->{$position};
+	}
+
+	return $self->find( $position );
+}
+
+
+=head3 take_random
+
+Remove a random card from the deck.
+
+	my $random_card = $deck->take_random();
+
+You can also specify limits (if you're somehow directing the person taking the card to a particular section of the deck):
+
+	my $random_card = $deck->take_random( 13, 39 );
+
+=cut
+
+sub take_random {
+	my $self = shift;
+
+	my $lower_limit = shift || 1;
+	my $upper_limit = shift;
+
+	$upper_limit = min( $upper_limit, $self->_deck_size );
+
+	return $self->remove( _rand( $lower_limit, $upper_limit ) );
+}
+
+
 # subroutines
 
 sub _set_deck {
@@ -692,6 +830,12 @@ sub _cut_depth {
 	}
 
 	return $position;
+}
+
+sub _is_shortcut {
+	my $shortcut = shift;
+
+	return exists $shortcuts->{$shortcut};
 }
 
 

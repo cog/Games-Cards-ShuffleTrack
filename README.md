@@ -313,6 +313,70 @@ To find the distance between the Ace of Spades and the King of Hearts:
 
 If the King of Hearts is just after the Ace of Spades, then the result is 1. If it's immediately before, the result is -1.
 
+### put
+
+Put a card on top of the deck. This is a new card, and not a card already on the deck.
+
+        $deck->put( $card );
+
+If the card was already on the deck, you now have a duplicate card.
+
+### deal
+
+Deals a card, removing it from the deck.
+
+        my $removed_card = $deck->deal();
+
+Just as in regular gambling, you can deal cards from other positions:
+
+        # deal the second card from the top
+    my $card = $deck->deal( 'second' );
+
+    # deal the second card from the bottom
+    my $card = $deck->deal( 'greek' );
+
+    # deal the card from the bottom of the deck
+    my $card = $deck->deal( 'bottom' );
+
+For more information on false dealing see the ["SEE ALSO"](#see-also) section.
+
+### remove
+
+Removes a card from the deck.
+
+        # remove the 4th card from the top
+        my $card = $deck->remove( 4 );
+
+### peek
+
+Peek at a position in the deck (this is essentially the same thing as &find()).
+
+        # peek the top card
+        my $card = $deck->peek( 1 );
+
+You can also peek the top and bottom card by using an alias:
+
+        # peek the top card
+        my $card = $deck->peek( 'top' );
+
+        # peek the bottom card
+        my $card = $deck->peek( 'bottom' );
+
+Negative indexes are also supported:
+
+        # peek the second from bottom card
+        my $card = $deck->peek( -2 );
+
+### take\_random
+
+Remove a random card from the deck.
+
+        my $random_card = $deck->take_random();
+
+You can also specify limits (if you're somehow directing the person taking the card to a particular section of the deck):
+
+        my $random_card = $deck->take_random( 13, 39 );
+
 # AUTHOR
 
 Jose Castro, `<cog at cpan.org>`
