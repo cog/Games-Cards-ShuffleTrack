@@ -46,7 +46,6 @@ To Do list:
     * moving cards between places:
         - e.g., set three new positions - $hand, $table and $spectator - and deal cards from $hand alternatively to $table and $spectator)
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
-    * reset (after you dealt cards away and you need to get everything back to its place); a deck should store its initial disposition, so that you can always go back to it
 
  * cleanup
     * cleanup the variable names in the tests
@@ -61,6 +60,9 @@ To Do list:
         $deck->deal( 'center' ); # how do we implement this one?
     * peek # peeks a card, accepts a position
         $deck->peek( 1 ); # peeks the top card
+        $deck->peek( 'top' );
+        $deck->peek( 'bottom' );
+        $deck->peek( -1 ); # peeks the bottom card
     * take_random # takes a random card from the deck, removing it from the deck
         my $card = $deck->take_random();
         my $card = $deck->take_random( 14, -1 ); # block the top 13 cards from being taken

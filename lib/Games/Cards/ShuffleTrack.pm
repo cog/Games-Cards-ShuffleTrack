@@ -135,8 +135,24 @@ sub new {
 	my $deck    = $decks->{ $order };
 	return bless {
 		'deck'        => $deck,
+		'original'    => $deck,
 		'orientation' => 'down',
 	}, $self;
+}
+
+=head3 reset
+
+Reset the deck to its original status. The original is whatever you selected when you created the deck.
+
+	$deck->reset;
+
+Do bear in mind that by doing so you are replinishing the deck of whatever cards you took out of it.
+
+=cut
+
+sub reset {
+	my $self = shift;
+	return $self->_set_deck( @{$self->{'original'}} );
 }
 
 

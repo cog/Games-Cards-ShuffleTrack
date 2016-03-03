@@ -85,6 +85,14 @@ You can also specify the starting order of the deck among the following:
 
         my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
 
+### reset
+
+Reset the deck to its original status. The original is whatever you selected when you created the deck.
+
+        $deck->reset;
+
+Do bear in mind that by doing so you are replinishing the deck of whatever cards you took out of it.
+
 ### get\_deck
 
 Returns the deck (a reference to a list of strings).
