@@ -11,7 +11,8 @@ t/04-riffle-shuffle.t
 t/05-cut.t
 t/06-find.t
 t/07-overhand-shuffle.t
+t/08-hindu-shuffle.t
+t/09-handling-cards.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
-t/08-hindu-shuffle.t
