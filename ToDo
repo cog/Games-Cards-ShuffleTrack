@@ -37,7 +37,6 @@ To Do list:
 
  * testing
     * test the running cuts
-    * testing without Test::Warn present complains about the number of planned tests being wrong
     * rearrange the tests and cleanup the variable names in the tests
 
  * advanced
