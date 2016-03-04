@@ -733,7 +733,9 @@ sub remove {
 
 	my @deck = @{$self->get_deck};
 
-	my $card = splice @deck, $position - 1, 1;
+    if ($position > 0) { $position--; }
+
+	my $card = splice @deck, $position, 1;
 
 	$self->_set_deck( @deck );
 	return $card;
