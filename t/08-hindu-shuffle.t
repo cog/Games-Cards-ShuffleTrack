@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 2;
+plan tests => 4;
 
 use Games::Cards::ShuffleTrack;
 
@@ -16,7 +16,10 @@ my @initial_deck = @{$deck->get_deck};
 
 my ($t, $b) = $deck->find( 1, -1 );
 
-$deck->hindu_shuffle;
+ok( $deck->hindu_shuffle );
 
 isnt( $deck->find(  1 ), $t );
 isnt( $deck->find( -1 ), $b );
+
+# hindu shuffle accepts a parameter
+ok( $deck->hindu_shuffle( 2 ) );

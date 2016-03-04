@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 8;
+plan tests => 10;
 
 use Games::Cards::ShuffleTrack;
 
@@ -37,7 +37,10 @@ is( $deck->find(-10), $tenth_card);
 
 my ($t, $b) = $deck->find( 1, -1 );
 
-$deck->overhand_shuffle;
+ok( $deck->overhand_shuffle );
 
 isnt( $deck->find(  1 ), $t );
 isnt( $deck->find( -1 ), $b );
+
+# overhand shuffle accepts a parameter
+ok( $deck->overhand_shuffle( 2 ) );

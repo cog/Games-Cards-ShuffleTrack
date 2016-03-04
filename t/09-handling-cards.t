@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 60;
+plan tests => 61;
 
 use Games::Cards::ShuffleTrack;
 
@@ -35,6 +35,10 @@ for ( 1 .. $deck->deck_size ) {
     $card = $deck->find( $_ );
     is( $deck->peek($_), $card );
 }
+
+# peeking without a parameter peeks the top card
+my $top_card = $deck->find( 1 );
+is( $deck->peek, $top_card );
 
 # taking a random card decreases the deck size and the card is no longer there
 $deck->restart;
