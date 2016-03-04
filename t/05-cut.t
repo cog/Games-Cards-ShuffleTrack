@@ -5,7 +5,7 @@ use warnings;
 use Test::More;
 use Test::Warn;
 
-plan tests => 24;
+plan tests => 27;
 
 use Games::Cards::ShuffleTrack;
 
@@ -73,6 +73,11 @@ $deck->cut_below( 'JS' );
 is( $deck->find( 'JS' ), 52 );
 $deck->cut_below( 'JS' );
 is( $deck->find( 'JS' ), 52 );
+
+# additional ways of cutting also work
+ok( $deck->cut( 'short'  ) );
+ok( $deck->cut( 'center' ) );
+ok( $deck->cut( 'deep'   ) );
 
 # cutting at the top or bottom of the deck doesn't do anything
 my $deck_before_cutting = $deck->get_deck;
