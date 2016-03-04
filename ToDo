@@ -36,7 +36,6 @@ To Do list:
     * controlled multiple cuts (e.g., cut the top X cards under position N)
 
  * testing
-    * test the running cuts
     * rearrange the tests and cleanup the variable names in the tests
 
  * advanced
@@ -49,21 +48,6 @@ To Do list:
 
  * handling cards
     * finding cards should return 0 instead of undef on failure
-    * put # places a card on top of the deck, adding it to the deck
-        $deck->put( 'AS' );
-    * deal # deals the top card, removing it from the deck
-        $deck->deal( 'bottom' );
-        $deck->deal( 'greek' );
-        $deck->deal( 'second' );
-        $deck->deal( 'center' ); # how do we implement this one?
-    * peek # peeks a card, accepts a position
-        $deck->peek( 1 ); # peeks the top card
-        $deck->peek( 'top' );
-        $deck->peek( 'bottom' );
-        $deck->peek( -1 ); # peeks the bottom card
-    * take_random # takes a random card from the deck, removing it from the deck
-        my $card = $deck->take_random();
-        my $card = $deck->take_random( 14, -1 ); # block the top 13 cards from being taken
     * replace? ("to replace a card in the deck")
     * lose? ("to lose a card in the deck")
 
