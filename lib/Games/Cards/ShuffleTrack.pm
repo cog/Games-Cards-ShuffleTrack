@@ -40,10 +40,10 @@ my $decks = {
 };
 
 my $shortcuts = {
-	'top'		=> 1,
-	'second'	=> 2,
-	'greek'		=> -2,
-	'bottom'	=> -1,
+    'top'     => 1,
+    'second'  => 2,
+    'greek'   => -2,
+    'bottom'  => -1,
 };
 
 
@@ -809,7 +809,6 @@ sub take_random {
 
 	my $lower_limit = shift || 1;
 	my $upper_limit = shift;
-
 
 	$upper_limit = defined $upper_limit ?
 					$upper_limit :
