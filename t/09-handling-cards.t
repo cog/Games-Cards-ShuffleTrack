@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 7;
+plan tests => 59;
 
 use Games::Cards::ShuffleTrack;
 
@@ -25,8 +25,16 @@ for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
     is( $deck->deal( $_->[1] ), $card );
 }
 
+# peeking works
+for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
+    $card = $deck->find( $_->[0] );
+    is( $deck->peek( $_->[1] ), $card );
+}
 
-# TODO: peeking works
+for ( 1 .. $deck->_deck_size ) { # TODO: change this to &deck_size
+    $card = $deck->find( $_ );
+    is( $deck->peek($_), $card );
+}
 
 
 # TODO: taking a random card decreases the deck size and the card is no longer there
