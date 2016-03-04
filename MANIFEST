@@ -16,3 +16,8 @@ t/10-running-cuts.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+examples/games/poker.pl
+examples/magic/key_card.pl
+examples/shuffling/faro-in.pl
+examples/shuffling/faro-out.pl
+examples/shuffling/random_riffle_shuffles.pl
