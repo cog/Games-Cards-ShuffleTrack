@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 10;
+plan tests => 16;
 
 use Games::Cards::ShuffleTrack;
 
@@ -32,6 +32,14 @@ my $tenth_card = $deck->find(10);
 $deck->run(10);
 is( $deck->find(-10), $tenth_card);
 
+# running no cards does nothing
+my @deck = @{$deck->get_deck};
+ok($deck->run);
+is_deeply( \@deck, $deck->get_deck );
+
+# running a negative number of cards does nothing
+ok($deck->run( -2 ));
+is_deeply( \@deck, $deck->get_deck );
 
 # overhand shuffling changes top and bottom cards
 
@@ -44,3 +52,10 @@ isnt( $deck->find( -1 ), $b );
 
 # overhand shuffle accepts a parameter
 ok( $deck->overhand_shuffle( 2 ) );
+
+
+# running cards in an empty deck does nothing and the deck remains with no cards
+my $empty_deck = Games::Cards::ShuffleTrack->new( 'empty' );
+ok($empty_deck->run(3));
+is($empty_deck->deck_size, 0);
+
