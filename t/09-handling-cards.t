@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 3;
+plan tests => 7;
 
 use Games::Cards::ShuffleTrack;
 
@@ -19,7 +19,11 @@ my $card = $deck->deal();
 is( $card, 'AS' );
 is( $deck->_deck_size, 52 );
 
-# TODO: dealing from special positions deals the right cards
+# dealing from special positions deals the right cards
+for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
+    $card = $deck->find( $_->[0] );
+    is( $deck->deal( $_->[1] ), $card );
+}
 
 
 # TODO: peeking works
