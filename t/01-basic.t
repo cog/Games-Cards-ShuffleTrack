@@ -54,8 +54,8 @@ for ( 1 .. 26, 40 .. 52 ) {
 my $empty_deck = Games::Cards::ShuffleTrack->new( 'empty' );
 is_deeply( $empty_deck->get_deck, [] );
 
-# reseting an empty deck results in an empty deck
-$empty_deck->reorder;
+# restarting an empty deck results in an empty deck
+$empty_deck->restart;
 is_deeply( $empty_deck->get_deck, [] );
 
 # reseting a shuffled deck that started with new_deck order results in a deck in new deck order
@@ -63,10 +63,10 @@ my $other_new_deck = Games::Cards::ShuffleTrack->new;
 
 $new_deck->riffle_shuffle;
 $new_deck->riffle_shuffle;
-$new_deck->reorder;
+$new_deck->restart;
 is_deeply( $new_deck->get_deck, $other_new_deck->get_deck );
 $new_deck->riffle_shuffle;
-$new_deck->reorder;
+$new_deck->restart;
 is_deeply( $new_deck->get_deck, $other_new_deck->get_deck );
 
 
