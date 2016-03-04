@@ -4,11 +4,14 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 116;
+plan tests => 117;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+
+# deck has 52 cards
+is( $deck->deck_size(), 52 );
 
 # deck is face down
 is( $deck->orientation, 'down' );

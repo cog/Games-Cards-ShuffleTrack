@@ -163,6 +163,22 @@ sub restart {
 }
 
 
+=head3 deck_size
+
+Returns the size of the deck.
+
+    for ( 1 .. $deck->deck_size ) {
+        ...
+    }
+
+=cut
+
+sub deck_size {
+	my $self = shift;
+	return scalar @{$self->{'deck'}};
+}
+
+
 =head3 get_deck
 
 Returns the deck (a reference to a list of strings).
@@ -357,7 +373,7 @@ sub riffle_shuffle {
 	my $depth = shift;
 
 	# cut the deck (left pile is the original top half)
-	my $cut_depth = _cut_depth( $self->_deck_size, $depth );
+	my $cut_depth = _cut_depth( $self->deck_size, $depth );
 
 	my @left_pile  = @{$self->get_deck};
 	my @right_pile = splice @left_pile, $cut_depth;
@@ -418,7 +434,7 @@ sub faro {
 
 	# TODO: what happens when the deck is odd-sized?
 	my @first_half  = @{$self->get_deck};
-	my @second_half = splice @first_half, $self->_deck_size / 2;
+	my @second_half = splice @first_half, $self->deck_size / 2;
 
 	$self->_set_deck(
 			$faro eq 'in' ?
@@ -482,12 +498,12 @@ sub cut {
 	my $self     = shift;
 	my $position = shift;
 
-	if (defined $position and abs($position) > $self->_deck_size) {
+	if (defined $position and abs($position) > $self->deck_size) {
 		warn "Tried to cut the deck at a non-existing position ($position).\n";
 		return $self;
 	}
 
-	my $cut_depth = _cut_depth( $self->_deck_size, $position );
+	my $cut_depth = _cut_depth( $self->deck_size, $position );
 
 	my @deck = @{$self->get_deck};
 	unshift @deck, splice @deck, $cut_depth;
@@ -797,7 +813,7 @@ sub take_random {
 
 	$upper_limit = defined $upper_limit ?
 					$upper_limit :
-					$self->_deck_size;
+					$self->deck_size;
 
 	return $self->remove( _rand( $lower_limit, $upper_limit ) );
 }
@@ -808,11 +824,6 @@ sub take_random {
 sub _set_deck {
 	my $self = shift;
 	return $self->{'deck'} = [@_];
-}
-
-sub _deck_size {
-	my $self = shift;
-	return scalar @{$self->{'deck'}};
 }
 
 sub _rand {

@@ -5,9 +5,6 @@ To Do list:
     * start a deck with a specific number of cards
     * move the different deck orders to submodules
 
- * general
-    * deck_size
-
  * changing a deck
     * remove cards from a deck
         * $deck->remove_random();    # remove a random card
