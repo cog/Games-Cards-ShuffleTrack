@@ -325,7 +325,7 @@ If no number is given then no cards are run.
 
 sub run {
 	my $self            = shift;
-	my $number_of_cards = shift;
+	my $number_of_cards = shift || return $self;
 	my $where_to_drop   = shift || 'drop-bottom';
 
 	$number_of_cards > 0 or return $self;
