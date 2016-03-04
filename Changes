@@ -1,7 +1,13 @@
 Revision history for Games-Cards-ShuffleTrack
 
-0.01_1	
+0.02
 		Added other initial orders
+		Different kinds of shuffles (overhand, hindu, running cards)
+		Different kinds of cuts
+		Methods for handling cards (peeks, removing and adding cards, etc.)
+		Added examples
+		Added tests
+		Improved documentation
 
 0.01    2016-02-29
         First version, released on an unsuspecting world.
