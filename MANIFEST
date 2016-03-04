@@ -12,6 +12,7 @@ t/06-find.t
 t/07-overhand-shuffle.t
 t/08-hindu-shuffle.t
 t/09-handling-cards.t
+t/10-running-cuts.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
