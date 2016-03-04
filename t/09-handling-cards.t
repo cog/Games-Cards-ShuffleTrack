@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 59;
+plan tests => 60;
 
 use Games::Cards::ShuffleTrack;
 
@@ -36,6 +36,8 @@ for ( 1 .. $deck->_deck_size ) { # TODO: change this to &deck_size
     is( $deck->peek($_), $card );
 }
 
-
-# TODO: taking a random card decreases the deck size and the card is no longer there
-
+# taking a random card decreases the deck size and the card is no longer there
+$deck->restart;
+my $deck_size = $deck->_deck_size(); # TODO: change this to &deck_size
+$deck->remove( 1 );
+is( $deck->_deck_size(), $deck_size - 1 );
