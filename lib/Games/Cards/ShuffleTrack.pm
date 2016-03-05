@@ -559,13 +559,15 @@ There are a few different methods to track down cards.
 
 Get the position of specific cards:
 
-	$deck->find( 'AS' ); # find the position of the Ace of Spades
+	my $position = $deck->find( 'AS' ); # find the position of the Ace of Spades
 
-	$deck->find( 'AS', 'KH' ); # find the position of two cards
+	my @positions = $deck->find( 'AS', 'KH' ); # find the position of two cards
+
+If a card is not present on the deck the position returned will be a 0.
 
 This method can also return the card at a specific position:
 
-	$deck->find( 3 );
+	my $card = $deck->find( 3 );
 
 You can also request a card in a negative position (i.e., from the bottom of the deck). To get the second to last card in the deck:
 
@@ -602,10 +604,12 @@ sub _find_card_by_position {
 
 	if ($card) {
 		if ($card > 0) { $card--; }
-		return $self->get_deck->[ $card ];
+		return $card > $self->deck_size - 1 ?
+		        q{} :
+		        $self->get_deck->[ $card ];
 	}
 	else {
-		return undef;
+		return q{};
 	}
 }
 
@@ -615,7 +619,7 @@ sub _find_card_by_name {
 
 	my $position = 1 + first_index { $_ eq $card } @{$self->get_deck};
 
-	return $position ? $position : undef;
+	return $position ? $position : 0;
 }
 
 
@@ -637,7 +641,7 @@ sub find_card_before {
 	my $position = $self->find( $card );
 
 	if ($position == 1) {
-		return undef;
+		return 0;
 	}
 	else {
 		return $self->find( $position - 1 );
@@ -659,6 +663,12 @@ If the specified card is on the bottom of the deck you will get the card on the 
 sub find_card_after {
 	my $self = shift;
 	my $card = shift;
+
+    my $position = 1 + $self->find( $card );
+    
+    if ( $position > $self->deck_size ) {
+        return 0;
+    }
 
 	return $self->find( $self->find( $card ) + 1 );
 }

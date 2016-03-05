@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 18;
+plan tests => 20;
 
 use Games::Cards::ShuffleTrack;
 
@@ -43,14 +43,18 @@ is( $deck->find_card_before( '2H' ), 'AH' );
 
 
 # Card before AH is AS (card before the first one is the last)
-is( $deck->find_card_before( 'AH' ), undef );
+is( $deck->find_card_before( 'AH' ), 0 );
 # Card after AS is AH (card after last is the first one)
-is( $deck->find_card_after(  'AS' ), undef );
+is( $deck->find_card_after(  'AS' ), 0 );
 
 
 # managing errors
 is_deeply( [$deck->find( )], [] );
-is_deeply( [$deck->find( 0 )], [ undef ] );
-is_deeply( [$deck->find( 100 )], [ undef ] );
-is_deeply( [$deck->find( 0, 100 )], [ (undef, undef) ] );
-is_deeply( [$deck->find( 'no such card' )], [ (undef) ] );
+is( $deck->find( 0 ), q{} );
+is( $deck->find( 100 ), q{} );
+is_deeply( [$deck->find( 0, 100 )], [ (q{}, q{}) ] );
+is_deeply( [$deck->find( 'no such card' )], [ 0 ] );
+
+# can get card 52 but not 53
+ok( $deck->find( 52 ) );
+is_deeply( [$deck->find( 53 )], [ q{} ] );
