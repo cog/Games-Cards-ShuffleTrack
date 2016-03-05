@@ -93,15 +93,13 @@ Reset the deck to its original status. The original is whatever you selected whe
 
         $deck->restart;
 
-Do bear in mind that by doing so you are replinishing the deck of whatever cards you took out of it.
+Do bear in mind that by doing so you are replenishing the deck of whatever cards you took out of it.
 
 ### deck\_size
 
 Returns the size of the deck.
 
-    for ( 1 .. $deck->deck_size ) {
-        ...
-    }
+    my $size = $deck->deck_size;
 
 ### get\_deck
 
