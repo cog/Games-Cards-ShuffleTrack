@@ -36,6 +36,8 @@ To Do list:
 
  * testing
     * rearrange the tests and cleanup the variable names in the tests
+    * bottom dealing to the top is the same as double uppercut
+    * bottom replacement a second deal is the same as a double undercut
 
  * advanced
     * controlled multiple cuts (e.g., cut the top X cards under position N)
