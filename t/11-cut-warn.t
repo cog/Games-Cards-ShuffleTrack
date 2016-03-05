@@ -12,7 +12,12 @@ my $deck = Games::Cards::ShuffleTrack->new();
 # Ensure a recent version of Test::Warn
 my $min_tw = 0.30;
 eval "use Test::Warn $min_tw";
-plan skip_all => "Test::Warn $min_tw required for testing warnings" if $@;
+if ($@) {
+    plan skip_all => "Test::Warn $min_tw required for testing warnings";
+}
+else {
+    plan tests => 4;
+}
 
 # cut at a non-existing position doesn't alter the order of the deck and issues warnings
 
