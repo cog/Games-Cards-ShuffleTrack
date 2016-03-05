@@ -12,6 +12,17 @@ To Do list:
     * add cards to a deck (specific cards or random cards)
         * $deck->add( $card ); # add $card to the deck at a random position
         * $deck->add( $card, 20 ); # add $card to the deck at position 20
+    * replace? ("to replace a card in the deck")
+    * lose? ("to lose a card in the deck")
+
+ * shuffling
+    * the wash
+    * riffle shuffle
+    	* riffle stacking
+        * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
+    * faro
+        * faro X cards from the top
+        * anti-faro
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
@@ -23,32 +34,17 @@ To Do list:
     * create links on README.md to facilitate navigation on Github
     * update the descriptions of the different shuffles
 
- * shuffling
-    * the wash
-    * riffle shuffle
-    	* riffle stacking
-        * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
-    * faro
-        * faro X cards from the top
-        * anti-faro
-
- * cutting the deck
-    * controlled multiple cuts (e.g., cut the top X cards under position N)
-
  * testing
     * rearrange the tests and cleanup the variable names in the tests
 
  * advanced
+    * controlled multiple cuts (e.g., cut the top X cards under position N)
     * given a series of procedures and a desired final result, assert the initial order of the deck
     * track relationship between cards:
         - from a specific order and through a series of procedures, present conclusions about the end relationship
     * moving cards between places:
         - e.g., set three new positions - $hand, $table and $spectator - and deal cards from $hand alternatively to $table and $spectator)
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
-
- * handling cards
-    * replace? ("to replace a card in the deck")
-    * lose? ("to lose a card in the deck")
 
  * games
     * analyze hands in different games (poker, blackjack, etc)
