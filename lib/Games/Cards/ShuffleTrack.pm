@@ -542,7 +542,7 @@ You can specify exactly how many cards to cut or delimit the randomness of the c
 
 If the position doesn't exist yet you can also automatically create it:
 
-	my $pile = $deck->cut_to( 'new' );
+	my $pile = $deck->cut_to();
 
 This method returns the new pile.
 
@@ -550,17 +550,20 @@ This method returns the new pile.
 
 sub cut_to {
 	my $self        = shift;
-	my $new_pile    = shift;
-	my $lower_limit = shift;
-	my $upper_limit = shift;
 
 	# create the new pile if required
-	if ( ref($new_pile) ne 'Games::Cards::ShuffleTrack' ) {
+	my $new_pile;
+	if ( defined($_[0]) and ref( $_[0] ) eq 'Games::Cards::ShuffleTrack' ) {
+		$new_pile = shift;
+	}
+	else {
 		$new_pile = Games::Cards::ShuffleTrack->new( 'empty' );
 	}
 
-
 	# set the position
+	my $lower_limit = shift;
+	my $upper_limit = shift;
+
 	my $position;
 
 	if ( not defined $lower_limit ) {
@@ -578,6 +581,7 @@ sub cut_to {
 
 	return $new_pile;
 }
+
 
 =head3 place_on_top
 
@@ -598,6 +602,14 @@ sub place_on_top {
 
 =head3 complete_cut, move_to
 
+Complete the cut by moving all cards from one deck onto another:
+
+	$deck->complete_cut( $new_pile );
+	
+	# or
+
+	$deck->move_to( $table );
+
 =cut
 
 sub complete_cut {
@@ -612,7 +624,7 @@ sub complete_cut {
 sub move_to {
 	my $self = shift;
 
-	$self->complete_cut( @_ );
+	return $self->complete_cut( @_ );
 }
 
 

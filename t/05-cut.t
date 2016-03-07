@@ -5,7 +5,7 @@ use warnings;
 use Test::More;
 use Test::Warn;
 
-plan tests => 37;
+plan tests => 39;
 
 use Games::Cards::ShuffleTrack;
 
@@ -102,9 +102,15 @@ cmp_ok( $deck->deck_size, '>', 36 );
 cmp_ok( $pile->deck_size, '>', 10 );
 cmp_ok( $pile->deck_size, '<', 16 );
 
+$deck->restart;
+$pile->restart;
+$deck->cut_to( $pile, 12 );
+is( $deck->deck_size, 40 );
+is( $pile->deck_size, 12 );
+
 # cut_to is able to create new piles
 $deck->restart;
-my $hand = $deck->cut_to( 'hand', 5 );
+my $hand = $deck->cut_to( 5 );
 is( ref($hand), 'Games::Cards::ShuffleTrack' );
 is( $deck->deck_size, 47);
 is( $hand->deck_size, 5 );
