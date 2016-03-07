@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use List::Util      qw/min/;
+use List::Util      qw/any min/;
 use List::MoreUtils qw/zip first_index/;
 use Scalar::Util    qw/looks_like_number/;
 
@@ -849,7 +849,7 @@ sub _cut_depth {
 		$position = 'normal';
 	}
 
-	if ($position =~ /^short|center|deep|normal$/) {
+	if ( any { $_ eq $position } keys %$cut_limits ) {
 		my ($lower, $upper) = @{$cut_limits->{ $position }};
 		$position = _rand( $deck_size * $lower, $deck_size * $upper );
 	}
