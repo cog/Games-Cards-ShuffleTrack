@@ -1,5 +1,8 @@
 Revision history for Games-Cards-ShuffleTrack
 
+0
+		Fixed the tests regarding Test::Warn's presence
+
 0.02    2016-03-05
 		Added other initial orders
 		Different kinds of shuffles (overhand, hindu, running cards)
