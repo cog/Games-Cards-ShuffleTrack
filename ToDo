@@ -9,11 +9,9 @@ To Do list:
     * remove cards from a deck
         * $deck->remove_random();    # remove a random card
         * $deck->remove_random( 5 ); # remove five cards or remove the 5th card?
-    * add cards to a deck (specific cards or random cards)
-        * $deck->add( $card ); # add $card to the deck at a random position
-        * $deck->add( $card, 20 ); # add $card to the deck at position 20
     * replace? ("to replace a card in the deck")
     * lose? ("to lose a card in the deck")
+    * count how many of a specific card are present in the deck
 
  * shuffling
     * the wash
@@ -27,10 +25,8 @@ To Do list:
 
  * cutting
     * cut a pile on to another pile
-        * $deck->cut_to( $another_deck );
-        * $deck->cut_to( $another_deck, 10 );
         * $deck->complete_cut_to( $another_deck );
-    * move a pile on to another pile
+    * move a pile on to another pile # isn't this the same as complete_cut_to?
         * $deck->move_to( $another_pile );
     * bury top 10 cards under next 5
         * $deck->uncut( 10, 5 );

@@ -5,12 +5,12 @@ use warnings;
 use Test::More;
 use Test::Warn;
 
-plan tests => 23;
+plan tests => 37;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
-
+my $pile = Games::Cards::ShuffleTrack->new( 'empty' );
 
 # cutting 26 twice results in the original order
 my $deck_1 = $deck->get_deck;
@@ -87,3 +87,41 @@ $deck->cut( 52 );
 is_deeply( $deck_before_cutting, $deck->get_deck );
 $deck->cut( -52 );
 is_deeply( $deck_before_cutting, $deck->get_deck );
+
+
+# test cut_to
+$deck->restart;
+$pile->restart;
+$deck->cut_to( $pile, 10 );
+is( $deck->deck_size, 42 );
+is( $pile->deck_size, 10 );
+
+$deck->cut_to( $pile, 1, 5 );
+cmp_ok( $deck->deck_size, '<', 42 );
+cmp_ok( $deck->deck_size, '>', 36 );
+cmp_ok( $pile->deck_size, '>', 10 );
+cmp_ok( $pile->deck_size, '<', 16 );
+
+# cut_to is able to create new piles
+$deck->restart;
+my $hand = $deck->cut_to( 'hand', 5 );
+is( ref($hand), 'Games::Cards::ShuffleTrack' );
+is( $deck->deck_size, 47);
+is( $hand->deck_size, 5 );
+
+# test place_on_top
+$deck->restart;
+$deck->place_on_top( 'Joker' );
+is( $deck->find( 'Joker' ), 1 );
+is( $deck->deck_size, 53 );
+
+# complete a cut and move_to
+$deck->restart;
+$pile->restart;
+$deck->cut_to( $pile );
+$deck->move_to( $pile );
+is( $deck->deck_size, 0 );
+is( $pile->deck_size, 52 );
+$pile->cut_above( 'AH' );
+$deck->restart;
+is_deeply( $deck->get_deck, $pile->get_deck );

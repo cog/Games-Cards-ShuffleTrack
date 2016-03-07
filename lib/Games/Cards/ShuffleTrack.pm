@@ -526,6 +526,101 @@ sub cut_above {
 	return $self->cut( $self->find( $card ) - 1 );
 }
 
+=head3 cut_to
+
+Cuts a portion of the deck to another position
+
+	$deck->cut_to( $pile );
+
+You can specify exactly how many cards to cut or delimit the randomness of the cut:
+
+	# cut exactly 15 cards to $pile
+	$deck->cut_to( $pile, 15 );
+
+	# cut between 10 and 26 cards to $pile
+	$deck->cut_to( $pile, 10, 26 );
+
+If the position doesn't exist yet you can also automatically create it:
+
+	my $pile = $deck->cut_to( 'new' );
+
+This method returns the new pile.
+
+=cut
+
+sub cut_to {
+	my $self        = shift;
+	my $new_pile    = shift;
+	my $lower_limit = shift;
+	my $upper_limit = shift;
+
+	# create the new pile if required
+	if ( ref($new_pile) ne 'Games::Cards::ShuffleTrack' ) {
+		$new_pile = Games::Cards::ShuffleTrack->new( 'empty' );
+	}
+
+
+	my $position;
+
+	if ( not defined $lower_limit ) {
+
+	}
+	elsif ( not defined $upper_limit ) {
+
+	}
+	else {
+		
+	}
+
+
+	# set the position
+	my $position = defined $upper_limit?
+					_rand( $lower_limit, $upper_limit ) :
+					$lower_limit;
+
+	# cut the deck
+	$new_pile->place_on_top( splice @{$self->get_deck}, 0, $position );
+
+	return $new_pile;
+}
+
+=head3 place_on_top
+
+Places a pile of cards on top of the deck.
+
+	$deck->place_on_top( qw/AS KS QS JS 10S/ );
+
+=cut
+
+sub place_on_top {
+	my $self = shift;
+	my @pile = @_;
+
+	$self->_set_deck( @pile, @{$self->get_deck} );
+
+	return $self;
+}
+
+=head3 complete_cut, move_to
+
+=cut
+
+sub complete_cut {
+	my $self = shift;
+	my $destination = shift;
+
+	$self->cut_to( $destination, $self->deck_size );
+
+	return $self;
+}
+
+sub move_to {
+	my $self = shift;
+
+	$self->complete_cut( @_ );
+}
+
+
 =head3 running_cuts
 
 Cut packets:
@@ -709,6 +804,40 @@ sub put {
 	my $card = shift;
 
 	$self->_set_deck( $card, @{$self->get_deck} );
+
+	return $self;
+}
+
+
+=head3 insert
+
+Inserts a card in a specified position in the deck. If the position isn't specified than the card is inserted somewhere at random.
+
+	# insert a Joker at position 20
+	$deck->insert( 'Joker', 20 );
+
+	# replace a card somewhere in the deck at random
+	$deck->insert( $card );
+
+If the position doesn't exist the card will be replaced at the bottom of the deck.
+
+=cut
+
+# TODO: inserting in negative position?
+# TODO: what if the user inserts at position 0?
+sub insert {
+	my $self     = shift;
+	my $card     = shift;
+	my $position = shift;
+
+	if ( not defined $position ) {
+		$position = _rand( 1, $self->deck_size );
+	}
+	elsif ( $position > $self->deck_size ) {
+		$position = $self->deck_size + 1;
+	}
+
+	splice @{$self->get_deck}, $position - 1, 0, $card;
 
 	return $self;
 }

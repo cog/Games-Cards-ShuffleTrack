@@ -260,6 +260,30 @@ If the desired card is already on top of the deck nothing will happen.
 
 For more information on how to cut to a specific card please refer to the ["SEE ALSO"](#see-also) section of this documentation.
 
+### cut\_to
+
+Cuts a portion of the deck to another position
+
+        $deck->cut_to( $pile );
+
+You can specify exactly how many cards to cut or delimit the randomness of the cut:
+
+        # cut exactly 15 cards to $pile
+        $deck->cut_to( $pile, 15 );
+
+        # cut between 10 and 26 cards to $pile
+        $deck->cut_to( $pile, 10, 26 );
+
+If the position doesn't exist yet you can also automatically create it:
+
+        my $pile = $deck->cut_to( 'new' );
+
+### place\_on\_top
+
+Places a pile of cards on top of the deck.
+
+        $deck->place_on_top( qw/AS KS QS JS 10S/ );
+
 ### running\_cuts
 
 Cut packets:
@@ -331,6 +355,18 @@ Put a card on top of the deck. This is a new card, and not a card already on the
         $deck->put( $card );
 
 If the card was already on the deck, you now have a duplicate card.
+
+### insert
+
+Inserts a card in a specified position in the deck. If the position isn't specified than the card is inserted somewhere at random.
+
+        # insert a Joker at position 20
+        $deck->insert( 'Joker', 20 );
+
+        # replace a card somewhere in the deck at random
+        $deck->insert( $card );
+
+If the position doesn't exist the card will be replaced at the bottom of the deck.
 
 ### deal
 
