@@ -3,9 +3,9 @@
 use strict;
 use Games::Cards::ShuffleTrack;
 
-###															###
+###                                                         ###
 ### This is a simple demonstration of a friendly poker game ###
-###															###
+###                                                         ###
 
 my $deck = Games::Cards::ShuffleTrack->new();
 my @hands;

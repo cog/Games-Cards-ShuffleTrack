@@ -4,9 +4,9 @@ use strict;
 
 use Games::Cards::ShuffleTrack;
 
-###													###
-### This is a demonstration of a simple card trick  ###
-###													###
+###                                                ###
+### This is a demonstration of a simple card trick ###
+###                                                ###
 
 my $deck = Games::Cards::ShuffleTrack->new();
 $deck->riffle_shuffle() for 1 .. 4;
