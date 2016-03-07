@@ -560,23 +560,18 @@ sub cut_to {
 	}
 
 
+	# set the position
 	my $position;
 
 	if ( not defined $lower_limit ) {
-
+		$position = _rand( 1, $self->deck_size );
 	}
 	elsif ( not defined $upper_limit ) {
-
+		$position = $lower_limit;
 	}
 	else {
-		
+		$position = _rand( $lower_limit, $upper_limit );
 	}
-
-
-	# set the position
-	my $position = defined $upper_limit?
-					_rand( $lower_limit, $upper_limit ) :
-					$lower_limit;
 
 	# cut the deck
 	$new_pile->place_on_top( splice @{$self->get_deck}, 0, $position );
