@@ -59,7 +59,7 @@ This module allows you to simulate true and false shuffles and cuts.
 	$deck->riffle_shuffle();
 	$deck->cut( 'short' );
 	$deck->riffle_shuffle();
-	print $deck->get_deck();
+	print "@{$deck->get_deck()}";
 
 Or perhaps with more precision:
 
@@ -69,7 +69,7 @@ Or perhaps with more precision:
 	$deck->cut( 26 );
 	print $deck->get_deck();
 
-See the rest of the documentation for more advanced features.
+See the rest of the documentation for more advanced features. See the examples folder for more detailed usage.
 
 
 =head1 INSTALLATION
@@ -492,6 +492,7 @@ For more information on how to cut to a specific card please refer to the L<SEE 
 
 =cut
 
+# TODO: delimit randomness of the cut between two numbers: $deck->cut( 1, 25 );
 sub cut {
 	my $self     = shift;
 	my $position = shift;
@@ -754,7 +755,7 @@ Removes a card from the deck.
 =cut
 
 sub remove {
-	my $self = shift;
+	my $self     = shift;
 	my $position = shift;
 
 	my @deck = @{$self->get_deck};

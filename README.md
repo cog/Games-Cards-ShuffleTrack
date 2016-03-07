@@ -1,5 +1,6 @@
 [![CPAN version](https://badge.fury.io/pl/Games-Cards-ShuffleTrack.svg)](https://badge.fury.io/pl/Games-Cards-ShuffleTrack)
 
+
 # NAME
 
 Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
@@ -20,7 +21,7 @@ This module allows you to simulate true and false shuffles and cuts.
         $deck->riffle_shuffle();
         $deck->cut( 'short' );
         $deck->riffle_shuffle();
-        print $deck->get_deck();
+        print "@{$deck->get_deck()}";
 
 Or perhaps with more precision:
 
@@ -30,7 +31,7 @@ Or perhaps with more precision:
         $deck->cut( 26 );
         print $deck->get_deck();
 
-See the rest of the documentation for more advanced features.
+See the rest of the documentation for more advanced features. See the examples folder for more detailed usage.
 
 # INSTALLATION
 
@@ -277,13 +278,15 @@ There are a few different methods to track down cards.
 
 Get the position of specific cards:
 
-        $deck->find( 'AS' ); # find the position of the Ace of Spades
+        my $position = $deck->find( 'AS' ); # find the position of the Ace of Spades
 
-        $deck->find( 'AS', 'KH' ); # find the position of two cards
+        my @positions = $deck->find( 'AS', 'KH' ); # find the position of two cards
+
+If a card is not present on the deck the position returned will be a 0.
 
 This method can also return the card at a specific position:
 
-        $deck->find( 3 );
+        my $card = $deck->find( 3 );
 
 You can also request a card in a negative position (i.e., from the bottom of the deck). To get the second to last card in the deck:
 
