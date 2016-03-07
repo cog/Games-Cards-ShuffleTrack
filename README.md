@@ -6,7 +6,7 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 # VERSION
 
-Version 0.02
+Version 0.02\_1
 
 # SYNOPSIS
 
