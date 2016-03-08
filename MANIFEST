@@ -19,6 +19,7 @@ t/pod-coverage.t
 t/pod.t
 examples/games/poker.pl
 examples/magic/key_card.pl
+examples/magic/key_card2.pl
 examples/shuffling/faro-in.pl
 examples/shuffling/faro-out.pl
 examples/shuffling/random_riffle_shuffles.pl
