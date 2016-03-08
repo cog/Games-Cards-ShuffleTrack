@@ -1,17 +1,16 @@
 [![CPAN version](https://badge.fury.io/pl/Games-Cards-ShuffleTrack.svg)](https://badge.fury.io/pl/Games-Cards-ShuffleTrack)
 
-
 # NAME
 
 Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 # VERSION
 
-Version 0.03
+Version 0.03\_1
 
 # SYNOPSIS
 
-This module allows you to simulate true and false shuffles and cuts.
+This module allows you to simulate shuffles and cuts.
 
         use Games::Cards::ShuffleTrack;
 
@@ -464,10 +463,10 @@ You can also look for information at:
 
 # SEE ALSO
 
-Recommended reading:
+The following is a very, very, very, very extremely small list of recommended books:
 
-- The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
-- The Annotated Erdnase, by Darwin Ortiz
+- The Expert at the Card Table, by S. W. Erdnase
+- Card College, by Roberto Giobbi
 
 # LICENSE AND COPYRIGHT
 

@@ -14,11 +14,11 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 =head1 VERSION
 
-Version 0.03
+Version 0.03_1
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.03_1';
 
 my $cut_limits = {
 	normal  => [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
@@ -49,7 +49,7 @@ my $shortcuts = {
 
 =head1 SYNOPSIS
 
-This module allows you to simulate true and false shuffles and cuts.
+This module allows you to simulate shuffles and cuts.
 
 	use Games::Cards::ShuffleTrack;
 
@@ -185,7 +185,9 @@ Returns the deck (a reference to a list of strings).
 
 =cut
 
-sub get_deck { # TODO: use wantarray to allow for an array to be returned
+# TODO: should we return a copy of the list instead of the list itself?
+# TODO: use wantarray to allow for an array to be returned?
+sub get_deck {
 	my $self = shift;
 	return $self->{'deck'};
 }
@@ -327,7 +329,6 @@ sub run {
 	my $where_to_drop   = shift || 'drop-bottom';
 
 	$number_of_cards > 0 or return $self;
-
 
 	# take cards from top and reverse their order
 	my @deck = @{$self->get_deck};
@@ -549,7 +550,7 @@ This method returns the new pile.
 =cut
 
 sub cut_to {
-	my $self        = shift;
+	my $self = shift;
 
 	# create the new pile if required
 	my $new_pile;
@@ -560,6 +561,7 @@ sub cut_to {
 		$new_pile = Games::Cards::ShuffleTrack->new( 'empty' );
 	}
 
+	# TODO: could this be done with _cut_depth? (perhaps changing it a bit)
 	# set the position
 	my $lower_limit = shift;
 	my $upper_limit = shift;
@@ -890,6 +892,7 @@ Removes a card from the deck.
 
 =cut
 
+# TODO: allow removal of several cards (do note that positions change as cards are removed)
 sub remove {
 	my $self     = shift;
 	my $position = shift;
@@ -1036,13 +1039,13 @@ L<http://search.cpan.org/dist/Games-Cards-ShuffleTrack/>
 
 =head1 SEE ALSO
 
-Recommended reading:
+The following is a very, very, very, very extremely small list of recommended books:
 
 =over 4
 
-=item * The Expert at the Card Table: The Classic Treatise on Card Manipulation, by S. W. Erdnase
+=item * The Expert at the Card Table, by S. W. Erdnase
 
-=item * The Annotated Erdnase, by Darwin Ortiz
+=item * Card College, by Roberto Giobbi
 
 =back
 
