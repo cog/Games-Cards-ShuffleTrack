@@ -8,13 +8,15 @@ To Do list:
  * changing a deck
     * remove cards from a deck
         * $deck->remove_random();    # remove a random card
-        * $deck->remove_random( 5 ); # remove five cards or remove the 5th card?
+        * $deck->remove_random( 5 ); # remove five cards
     * replace? ("to replace a card in the deck")
     * lose? ("to lose a card in the deck")
     * count how many of a specific card are present in the deck
 
  * shuffling
     * the wash
+    * run multiple times
+        * ->run( 10, 11, 12 ) instead of ->run(10)->run(11)->run(12)
     * riffle shuffle
     	* riffle stacking
         * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
@@ -24,17 +26,18 @@ To Do list:
     * milk shuffle and variations
 
  * cutting
-    * cut a pile on to another pile
-        * $deck->complete_cut_to( $another_deck );
-    * move a pile on to another pile # isn't this the same as complete_cut_to?
-        * $deck->move_to( $another_pile );
     * bury top 10 cards under next 5
         * $deck->uncut( 10, 5 );
+        * $deck->undo( 10, 5 );
+    * slip cut
+
+ * dealing
+    * deal to a specific position:
+        * $deck->deal( $hand) instead of $hand->put( $deck->deal() )
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
     * acknowledgments
-    * update the list of recommended books
     * add a glossary
         * balance of the deck
         * top/bottom stock
@@ -43,17 +46,13 @@ To Do list:
 
  * testing
     * rearrange the tests and cleanup the variable names in the tests
-    * bottom dealing to the top is the same as double uppercut
-    * bottom replacement a second deal is the same as a double undercut
 
  * advanced
     * controlled multiple cuts (e.g., cut the top X cards under position N)
     * given a series of procedures and a desired final result, assert the initial order of the deck
-    * track relationship between cards:
-        - from a specific order and through a series of procedures, present conclusions about the end relationship
-    * moving cards between places:
-        - e.g., set three new positions - $hand, $table and $spectator - and deal cards from $hand alternatively to $table and $spectator)
+    * track relationship between cards: from a specific order and through a series of procedures, present conclusions about the end relationship
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
+    * implement counting systems
 
  * games
-    * analyze hands in different games (poker, blackjack, etc)
+    * analyze and compare hands in different games (poker, blackjack, etc)

@@ -36,6 +36,9 @@ for ( 1 .. $deck->deck_size ) {
     is( $deck->peek($_), $card );
 }
 
+# TODO: bottom dealing to the top is the same as double uppercut
+# TODO: bottom replacement a second deal is the same as a double undercut
+
 # peeking without a parameter peeks the top card
 my $top_card = $deck->find( 1 );
 is( $deck->peek, $top_card );
