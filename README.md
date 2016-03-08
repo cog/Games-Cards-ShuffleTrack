@@ -7,7 +7,7 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 # VERSION
 
-Version 0.02\_1
+Version 0.03
 
 # SYNOPSIS
 
@@ -276,13 +276,25 @@ You can specify exactly how many cards to cut or delimit the randomness of the c
 
 If the position doesn't exist yet you can also automatically create it:
 
-        my $pile = $deck->cut_to( 'new' );
+        my $pile = $deck->cut_to();
+
+This method returns the new pile.
 
 ### place\_on\_top
 
 Places a pile of cards on top of the deck.
 
         $deck->place_on_top( qw/AS KS QS JS 10S/ );
+
+### complete\_cut, move\_to
+
+Complete the cut by moving all cards from one deck onto another:
+
+        $deck->complete_cut( $new_pile );
+        
+        # or
+
+        $deck->move_to( $table );
 
 ### running\_cuts
 
