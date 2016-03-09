@@ -15,8 +15,6 @@ To Do list:
 
  * shuffling
     * the wash
-    * run multiple times
-        * ->run( 10, 11, 12 ) instead of ->run(10)->run(11)->run(12)
     * riffle shuffle
     	* riffle stacking
         * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes

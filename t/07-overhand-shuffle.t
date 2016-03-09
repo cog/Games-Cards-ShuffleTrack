@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 16;
+plan tests => 21;
 
 use Games::Cards::ShuffleTrack;
 
@@ -59,3 +59,14 @@ my $empty_deck = Games::Cards::ShuffleTrack->new( 'empty' );
 ok($empty_deck->run(3));
 is($empty_deck->deck_size, 0);
 
+
+# we can run several amounts at the same time
+$deck->restart;
+my ( $c1, $c2, $c3, $c4, $c5 ) = $deck->find( 1 .. 5 );
+$deck->run( 2, 2 );
+
+is( $deck->find( 1 ), $c5 );
+is( $deck->find( -1 ), $c3 );
+is( $deck->find( -2 ), $c4 );
+is( $deck->find( -3 ), $c1 );
+is( $deck->find( -4 ), $c2 );

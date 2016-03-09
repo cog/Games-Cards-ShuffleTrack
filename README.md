@@ -168,6 +168,10 @@ Running cards basically reverses their order.
 
 If no number is given then no cards are run.
 
+If we're doing multiple runs we can set everything at the same time:
+
+        $deck->run( 4, 6, 2 );
+
 ### Riffle Shuffle
 
 #### riffle\_shuffle

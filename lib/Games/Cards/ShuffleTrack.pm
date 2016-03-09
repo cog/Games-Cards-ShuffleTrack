@@ -321,13 +321,32 @@ Running cards basically reverses their order.
 
 If no number is given then no cards are run.
 
+If we're doing multiple runs we can set everything at the same time:
+
+	$deck->run( 4, 6, 2 );
+
 =cut
 
+# TODO: review this code
 sub run {
-	my $self            = shift;
-	my $number_of_cards = shift || return $self;
-	my $where_to_drop   = shift || 'drop-bottom';
+	my $self = shift;
 
+	my @number_of_cards;
+	my $where_to_drop;
+
+	while ( my $param = shift ) {
+		if ( looks_like_number( $param ) ) {
+			push @number_of_cards, $param;
+		}
+		else {
+			$where_to_drop = $param;
+		}
+	}
+
+	@number_of_cards || return $self;
+	$where_to_drop   ||= 'drop-bottom';
+
+	my $number_of_cards = shift @number_of_cards;
 	$number_of_cards > 0 or return $self;
 
 	# take cards from top and reverse their order
@@ -341,7 +360,7 @@ sub run {
 		$self->_set_deck( @deck, @run );
 	}
 
-	return $self;
+	return $self->run( @number_of_cards, $where_to_drop );
 }
 
 
