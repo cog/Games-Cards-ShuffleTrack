@@ -905,6 +905,7 @@ You can still do a false deal to a pile:
 
 =cut
 
+# TODO: deal from an empty deck?
 sub deal {
 	my $self = shift;
 
@@ -922,6 +923,7 @@ sub deal {
 	my $position = $shortcuts->{$deal};
 
 	my $card = $self->remove( $position );
+
 	if ( defined $destination ) {
 		return $destination->put( $card );
 	}
