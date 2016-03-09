@@ -68,6 +68,8 @@ for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
 }
 
 
+# TODO: dealing from a pile onto itself does nothing
+
 
 # peeking works
 for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
