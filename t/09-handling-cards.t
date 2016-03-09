@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 154;
+plan tests => 156;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my $top_card = $deck->peek( 1 );
 
 # putting a card on top of the deck increases its size
 $deck->put( 'AS' );
@@ -19,9 +20,14 @@ my $card = $deck->deal();
 is( $card, 'AS' );
 is( $deck->deck_size, 52 );
 
+# dealing from a non existing position defaults to the top of the deck (also document this behavior)
+$deck->restart;
+$top_card = $deck->peek( 1 );
 
-# TODO: dealing from a non existing position defaults to the top of the deck (also document this behavior)
+$card  = $deck->deal( 'nowhere' );
 
+is( $card, $top_card );
+is( $deck->deck_size, 51 );
 
 # dealing from special positions deals the right cards
 for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
@@ -33,7 +39,7 @@ for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
 $deck->restart;
 my $pile = Games::Cards::ShuffleTrack->new( 'empty' );
 
-my $top_card = $deck->find( 1 );
+$top_card = $deck->find( 1 );
 
 $deck->deal( $pile );
 is( $deck->deck_size, 51 );
