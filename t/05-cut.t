@@ -5,7 +5,7 @@ use warnings;
 use Test::More;
 use Test::Warn;
 
-plan tests => 39;
+plan tests => 42;
 
 use Games::Cards::ShuffleTrack;
 
@@ -114,6 +114,12 @@ my $hand = $deck->cut_to( 5 );
 is( ref($hand), 'Games::Cards::ShuffleTrack' );
 is( $deck->deck_size, 47);
 is( $hand->deck_size, 5 );
+
+$deck->restart;
+my $new_location = $deck->cut_to();
+cmp_ok( $new_location->deck_size, '>', 0 );
+cmp_ok( $deck->deck_size, '>', 0 );
+is( $new_location->deck_size + $deck->deck_size, 52 );
 
 # test place_on_top
 $deck->restart;
