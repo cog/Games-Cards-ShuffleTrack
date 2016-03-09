@@ -1,4 +1,4 @@
--[![CPAN version](https://badge.fury.io/pl/Games-Cards-ShuffleTrack.svg)](https://badge.fury.io/pl/Games-Cards-ShuffleTrack)
+[![CPAN version](https://badge.fury.io/pl/Games-Cards-ShuffleTrack.svg)](https://badge.fury.io/pl/Games-Cards-ShuffleTrack)
 
 # NAME
 
