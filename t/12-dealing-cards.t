@@ -63,5 +63,6 @@ for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
     is( $pile->find( 1 ), $card );
 }
 
-
 # TODO: dealing from a pile onto itself does nothing
+# TODO: bottom dealing to the top is the same as double uppercut
+# TODO: bottom replacement a second deal is the same as a double undercut

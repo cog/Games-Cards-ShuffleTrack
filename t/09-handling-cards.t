@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 123;
+plan tests => 65;
 
 use Games::Cards::ShuffleTrack;
 
@@ -15,24 +15,6 @@ my $card;
 # putting a card on top of the deck increases its size
 $deck->put( 'AS' );
 is( $deck->deck_size, 53 );
-
-# peeking works
-for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
-    $card = $deck->find( $_->[0] );
-    is( $deck->peek( $_->[1] ), $card );
-}
-
-for ( 1 .. $deck->deck_size ) {
-    $card = $deck->find( $_ );
-    is( $deck->peek($_), $card );
-}
-
-# TODO: bottom dealing to the top is the same as double uppercut
-# TODO: bottom replacement a second deal is the same as a double undercut
-
-# peeking without a parameter peeks the top card
-$top_card = $deck->find( 1 );
-is( $deck->peek, $top_card );
 
 # taking a random card decreases the deck size and the card is no longer there
 $deck->restart;
