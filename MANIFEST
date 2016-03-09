@@ -14,6 +14,10 @@ t/08-hindu-shuffle.t
 t/09-handling-cards.t
 t/10-running-cuts.t
 t/11-cut-warn.t
+t/12-dealing-cards.t
+t/13-peeking-cards.t
+t/14-taking-cards.t
+t/15-inserting-cards.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
