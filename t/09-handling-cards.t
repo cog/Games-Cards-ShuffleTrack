@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 124;
+plan tests => 154;
 
 use Games::Cards::ShuffleTrack;
 
@@ -19,11 +19,49 @@ my $card = $deck->deal();
 is( $card, 'AS' );
 is( $deck->deck_size, 52 );
 
+
+# TODO: dealing from a non existing position defaults to the top of the deck (also document this behavior)
+
+
 # dealing from special positions deals the right cards
 for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
     $card = $deck->find( $_->[0] );
     is( $deck->deal( $_->[1] ), $card );
 }
+
+# dealing a card to a pile is possible
+$deck->restart;
+my $pile = Games::Cards::ShuffleTrack->new( 'empty' );
+
+my $top_card = $deck->find( 1 );
+
+$deck->deal( $pile );
+is( $deck->deck_size, 51 );
+is( $pile->deck_size,  1 );
+is( $pile->find( 1 ), $top_card );
+
+# dealing a card to a pile works, regardless of the type of deal
+for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
+    $pile->restart;
+    $deck->restart;
+    $card = $deck->find( $_->[0] );
+    $deck->deal( $_->[1], $pile );
+
+    is( $deck->deck_size, 51 );
+    is( $pile->deck_size,  1 );
+    is( $pile->find( 1 ), $card );
+
+    $pile->restart;
+    $deck->restart;
+    $card = $deck->find( $_->[0] );
+    $deck->deal( $pile, $_->[1] );
+
+    is( $deck->deck_size, 51 );
+    is( $pile->deck_size,  1 );
+    is( $pile->find( 1 ), $card );
+}
+
+
 
 # peeking works
 for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
@@ -40,7 +78,7 @@ for ( 1 .. $deck->deck_size ) {
 # TODO: bottom replacement a second deal is the same as a double undercut
 
 # peeking without a parameter peeks the top card
-my $top_card = $deck->find( 1 );
+$top_card = $deck->find( 1 );
 is( $deck->peek, $top_card );
 
 # taking a random card decreases the deck size and the card is no longer there

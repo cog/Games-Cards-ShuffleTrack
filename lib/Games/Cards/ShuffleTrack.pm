@@ -890,16 +890,43 @@ Just as in regular gambling, you can deal cards from other positions:
 
 For more information on false dealing see the L<SEE ALSO> section.
 
+If you're dealing cards to a pile you can actually state where you're dealing:
+
+	$deck->deal( $pile );
+
+You can still do a false deal to a pile:
+
+	$deck->deal( 'second', $pile );
+
+	# or
+
+	$deck->deal( $pile, 'second' );
+
 =cut
 
 sub deal {
 	my $self = shift;
-	my $deal = shift || 'top';
 
-	# TODO: what if $deal is unknown?
+	my $deal        = 'top';
+	my $destination = undef;
+	while (my $param = shift) {
+		if ( ref( $param ) eq 'Games::Cards::ShuffleTrack' ) {
+			$destination = $param;
+		}
+		elsif ( exists $shortcuts->{$param} ) {
+			$deal = $param;
+		}
+	}
+
 	my $position = $shortcuts->{$deal};
 
-	return $self->remove( $position );
+	my $card = $self->remove( $position );
+	if ( defined $destination ) {
+		return $destination->put( $card );
+	}
+	else {
+		return $card;
+	}
 }
 
 =head3 remove

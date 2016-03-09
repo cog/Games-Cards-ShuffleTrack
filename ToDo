@@ -4,6 +4,7 @@ To Do list:
     * allow for user-specified order
     * start a deck with a specific number of cards
     * move the different deck orders to submodules
+    * ->deck_size should probably be ->size
 
  * changing a deck
     * remove cards from a deck
@@ -28,10 +29,6 @@ To Do list:
         * $deck->uncut( 10, 5 );
         * $deck->undo( 10, 5 );
     * slip cut
-
- * dealing
-    * deal to a specific position:
-        * $deck->deal( $hand ) instead of $hand->put( $deck->deal() )
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards

@@ -402,6 +402,18 @@ Just as in regular gambling, you can deal cards from other positions:
 
 For more information on false dealing see the ["SEE ALSO"](#see-also) section.
 
+If you're dealing cards to a pile you can actually state where you're dealing:
+
+        $deck->deal( $pile );
+
+You can still do a false deal to a pile:
+
+        $deck->deal( 'second', $pile );
+
+        # or
+
+        $deck->deal( $pile, 'second' );
+
 ### remove
 
 Removes a card from the deck.
