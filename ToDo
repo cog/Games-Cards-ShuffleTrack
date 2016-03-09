@@ -4,7 +4,7 @@ To Do list:
     * allow for user-specified order
     * start a deck with a specific number of cards
     * move the different deck orders to submodules
-    * ->deck_size should probably be ->size
+    * ->deck_size should probably be ->size or ->get_size (perhaps implement aliases?)
 
  * changing a deck
     * remove cards from a deck
