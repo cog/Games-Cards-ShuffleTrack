@@ -1,5 +1,9 @@
 Revision history for Games-Cards-ShuffleTrack
 
+0
+		We can now $deck->run( 3, 5, 2 );
+		We can now $deck->deal( $pile );
+
 0.03    2016-03-08
         Added a few more methods
 		Fixed the tests regarding Test::Warn's presence
