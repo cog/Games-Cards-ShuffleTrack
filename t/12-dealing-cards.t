@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 35;
+plan tests => 40;
 
 use Games::Cards::ShuffleTrack;
 
@@ -63,6 +63,18 @@ for ( [ 1, 'top' ], [ 2, 'second' ], [ -2, 'greek' ], [ -1, 'bottom' ] ) {
     is( $pile->find( 1 ), $card );
 }
 
-# TODO: dealing from a pile onto itself does nothing
-# TODO: bottom dealing to the top is the same as double uppercut
-# TODO: bottom replacement a second deal is the same as a double undercut
+# dealing from a pile onto itself does nothing
+$deck->restart;
+$top_card = $deck->peek( 1 );
+$deck->deal( $deck );
+is( $deck->deck_size, 52 );
+is( $deck->peek( 1 ), $top_card );
+
+# bottom dealing to the top is the same as double uppercut
+$deck->restart;
+$top_card = $deck->peek( 1 );
+my $bottom_card = $deck->peek( -1 );
+$deck->deal( 'bottom', $deck );
+is( $deck->deck_size, 52 );
+is( $deck->peek( 1 ), $bottom_card );
+is( $deck->peek( 2 ), $top_card );

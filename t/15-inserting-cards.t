@@ -4,12 +4,13 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 8;
+plan tests => 10;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 my $top_card = $deck->peek( 1 );
+my $bottom_card = $deck->peek( -1 );
 my $card;
 
 # inserting cards in the deck
@@ -35,3 +36,9 @@ $deck->restart;
 is( $deck->find( 'Joker' ), 0 );
 $deck->insert(   'Joker' );
 cmp_ok( $deck->find( 'Joker' ), '>', 0 );
+
+# inserting at the last position shifts the last card
+$deck->restart;
+$deck->insert( 'Joker', 52 );
+is( $deck->find( 'Joker' ), 52 );
+is( $deck->find( 53 ), $bottom_card );
