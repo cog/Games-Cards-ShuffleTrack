@@ -383,6 +383,14 @@ Inserts a card in a specified position in the deck. If the position isn't specif
 
 If the position doesn't exist the card will be replaced at the bottom of the deck.
 
+You can also add cards to negative positions, meaning that the resulting position will be that negative position:
+
+    # insert card so that it ends up being the last one in the deck
+        $deck->insert( $card, -1 );
+
+    # insert card so that it ends up being the 10th from the bottom
+        $deck->insert( $card, -10 );
+
 ### deal
 
 Deals a card, removing it from the deck.

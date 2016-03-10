@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 10;
+plan tests => 12;
 
 use Games::Cards::ShuffleTrack;
 
@@ -42,3 +42,12 @@ $deck->restart;
 $deck->insert( 'Joker', 52 );
 is( $deck->find( 'Joker' ), 52 );
 is( $deck->find( 53 ), $bottom_card );
+
+# inserting at negative positions works
+$deck->restart;
+$deck->insert( 'Joker', -1 );
+is( $deck->peek( -1 ), 'Joker' );
+
+$deck->restart;
+$deck->insert( 'Joker', -52 );
+is( $deck->peek( 2 ), 'Joker' );

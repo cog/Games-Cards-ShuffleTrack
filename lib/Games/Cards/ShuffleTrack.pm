@@ -850,9 +850,16 @@ Inserts a card in a specified position in the deck. If the position isn't specif
 
 If the position doesn't exist the card will be replaced at the bottom of the deck.
 
+You can also add cards to negative positions, meaning that the resulting position will be that negative position:
+
+    # insert card so that it ends up being the last one in the deck
+	$deck->insert( $card, -1 );
+
+    # insert card so that it ends up being the 10th from the bottom
+	$deck->insert( $card, -10 );
+
 =cut
 
-# TODO: inserting in negative position?
 # TODO: what if the user inserts at position 0?
 sub insert {
 	my $self     = shift;
@@ -864,6 +871,9 @@ sub insert {
 	}
 	elsif ( $position > $self->deck_size ) {
 		$position = $self->deck_size + 1;
+	}
+	elsif ( $position < 0 ) {
+		$position = $self->deck_size + $position + 2;
 	}
 
 	splice @{$self->get_deck}, $position - 1, 0, $card;
