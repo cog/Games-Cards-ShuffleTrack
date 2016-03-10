@@ -3,7 +3,6 @@ use 5.006;
 use strict;
 use warnings;
 use Test::More;
-use Test::Warn;
 
 plan tests => 42;
 
