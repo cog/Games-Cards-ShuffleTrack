@@ -9,15 +9,14 @@ use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 my @hands;
-for ( 1 .. 5 ) {
-    push @hands, Games::Cards::ShuffleTrack->new('empty');
-}
+push @hands, Games::Cards::ShuffleTrack->new('empty') for 1 .. 5;
+
 $deck->riffle_shuffle() for 1 .. 12;
 $deck->cut();
 
 for ( 1 .. 5 ) {
     for my $hand ( @hands ) {
-        $hand->put( $deck->deal() );
+        $deck->deal( $hand );
     }
 }
 
