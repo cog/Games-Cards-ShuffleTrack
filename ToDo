@@ -50,4 +50,11 @@ To Do list:
     * implement counting systems
 
  * games
-    * analyze and compare hands in different games (poker, blackjack, etc)
+    * poker
+        * order cards in a hand
+        * analyze hands (value)
+        * make the best hand out of X cards
+        * compare hands
+    * blackjack
+        * analyze hands (value)
+        * compare hands
