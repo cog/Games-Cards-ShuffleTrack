@@ -87,6 +87,10 @@ You can also specify the starting order of the deck among the following:
 
         my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
 
+You can also set your own order:
+
+        my $pile = Games::Cards::ShufleTrack->new( [qw/10S JS QS KS AS/] );
+
 ### restart
 
 Reset the deck to its original status. The original is whatever you selected when you created the deck.

@@ -134,15 +134,28 @@ You can also specify the starting order of the deck among the following:
 
 	my $deck = Games::Cards::ShuffleTrack->new( 'fournier' );
 
+You can also set your own order:
+
+	my $pile = Games::Cards::ShufleTrack->new( [qw/10S JS QS KS AS/] );
+
 =cut
 
+# TODO: What happens if the user has a typo in the order?
 sub new {
 	my ($self, $order) = @_;
 	   $order ||= 'new_deck_order';
-	my $deck    = $decks->{ $order };
+
+	my $cards;
+	if ( ref $order eq 'ARRAY' ) {
+		$cards = $order;
+	}
+	else {
+		$cards = $decks->{ $order };
+	}
+
 	return bless {
-		'deck'        => $deck,
-		'original'    => $deck,
+		'deck'        => $cards,
+		'original'    => $cards,
 		'orientation' => 'down',
 	}, $self;
 }

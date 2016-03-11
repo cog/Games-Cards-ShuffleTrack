@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 117;
+plan tests => 119;
 
 use Games::Cards::ShuffleTrack;
 
@@ -73,3 +73,7 @@ $new_deck->restart;
 is_deeply( $new_deck->get_deck, $other_new_deck->get_deck );
 
 
+# creating a pile with just 4 cards works well
+my $pile = Games::Cards::ShuffleTrack->new( [qw/AC AH AS AD/] );
+is( $pile->deck_size, 4 );
+is( $pile->find( 1 ), 'AC' );
