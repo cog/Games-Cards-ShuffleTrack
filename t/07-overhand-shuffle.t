@@ -12,6 +12,9 @@ my $deck = Games::Cards::ShuffleTrack->new();
 
 my @initial_deck = @{$deck->get_deck};
 
+# TODO: separate overhand shuffle and running tests into two files
+# TODO: test multiple runs whilte dropping on top
+
 # running two cards on top reverses top and second cards
 my ($top_card, $second_card) = $deck->find( 1, 2 );
 $deck->run( 2, 'drop-top' );

@@ -249,6 +249,8 @@ You can specify how many times you want to go through the deck (which is basical
 
 =cut
 
+# TODO: overhand shuffling 0 times should really be 0 times
+# FIXME: overhand shuffling a negative number of times won't ever stop
 sub overhand_shuffle {
 	my $self  = shift;
 	my $times = shift || 1;
@@ -613,6 +615,7 @@ Places a pile of cards on top of the deck.
 
 =cut
 
+# TODO place_on_top and put share similar code; review
 sub place_on_top {
 	my $self = shift;
 	my @pile = @_;
