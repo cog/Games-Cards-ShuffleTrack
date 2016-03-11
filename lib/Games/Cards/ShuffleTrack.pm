@@ -240,9 +240,7 @@ sub turn {
 
 	$self->{'orientation'} = $self->orientation eq 'down' ? 'up' : 'down';
 
-	$self->_set_deck( reverse @{$self->get_deck} );
-
-	return $self;
+	return $self->_set_deck( reverse @{$self->get_deck} );
 }
 
 
