@@ -13,6 +13,12 @@ To Do list:
     * lose? ("to lose a card in the deck")
     * count how many of a specific card are present in the deck
     * dribble cards
+        $deck->dribble( $pile );
+        $pile = $deck->dribble;
+        $deck->dribble( 10 );
+        $deck->dribble( -10 );
+        $deck->dribble( 10, 20 );
+        $deck->dribble( 10, -10 );
 
  * shuffling
     * the wash
