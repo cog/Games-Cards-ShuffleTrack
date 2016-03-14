@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 21;
+plan tests => 25;
 
 use Games::Cards::ShuffleTrack;
 
@@ -13,7 +13,7 @@ my $deck = Games::Cards::ShuffleTrack->new();
 my @initial_deck = @{$deck->get_deck};
 
 # TODO: separate overhand shuffle and running tests into two files
-# TODO: test multiple runs whilte dropping on top
+# TODO: test multiple runs whilst dropping on top
 
 # running two cards on top reverses top and second cards
 my ($top_card, $second_card) = $deck->find( 1, 2 );
@@ -73,3 +73,11 @@ is( $deck->find( -1 ), $c3 );
 is( $deck->find( -2 ), $c4 );
 is( $deck->find( -3 ), $c1 );
 is( $deck->find( -4 ), $c2 );
+
+# overhand shuffling 0 or negative times does nothing
+$deck->restart;
+my $initial_order = $deck->get_deck;
+ok( $deck->overhand_shuffle( 0 ) );
+is_deeply( $deck->get_deck, $initial_order );
+ok( $deck->overhand_shuffle( -10 ) );
+is_deeply( $deck->get_deck, $initial_order );

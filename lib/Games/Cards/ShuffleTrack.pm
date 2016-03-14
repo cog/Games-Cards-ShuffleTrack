@@ -264,11 +264,15 @@ You can specify how many times you want to go through the deck (which is basical
 
 =cut
 
-# TODO: overhand shuffling 0 times should really be 0 times
-# FIXME: overhand shuffling a negative number of times won't ever stop
 sub overhand_shuffle {
 	my $self  = shift;
-	my $times = shift || 1;
+	my $times = shift;
+
+	if (not defined $times) {
+		$times = 1;
+	}
+
+	return $self if $times < 1;
 
 	$self->_packet_transfer( 1, 10 );
 
