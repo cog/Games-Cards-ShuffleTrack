@@ -7,11 +7,17 @@ To Do list:
 
  * changing a deck
     * remove cards from a deck
-        * $deck->remove_random();    # remove a random card
-        * $deck->remove_random( 5 ); # remove five cards
+        $deck->remove_random();    # remove a random card
+        $deck->remove_random( 5 ); # remove five cards
+        $deck->remove_all( 'Joker' ); # remove all Jokers
+        $deck->remove( 'AS' ); # remove the Ace of Spades
     * replace? ("to replace a card in the deck")
     * lose? ("to lose a card in the deck")
     * count how many of a specific card are present in the deck
+        # TODO: document very well what happens with user-specified cards
+        $deck->count( 'C' ); # count how many Clubs are in the deck
+        $deck->count( '10' ); # count how many tens
+        $deck->count( 'Joker' ); # count how many Jokers there are in the deck
     * dribble cards
         $deck->dribble( $pile );
         $pile = $deck->dribble;
@@ -19,6 +25,11 @@ To Do list:
         $deck->dribble( -10 );
         $deck->dribble( 10, 20 );
         $deck->dribble( 10, -10 );
+    * drop cards from the deck
+        $deck->drop( 10 ); # same as dribble, but completely discarding the cards
+    * start a deck with 4 decks
+        Games::Cards::ShuffleTrack->new( 4 );
+        # TODO: riffle shuffling when you have a lot of cards should be done breaking the deck in piles
 
  * shuffling
     * the wash
@@ -28,13 +39,18 @@ To Do list:
     * faro
         * faro X cards from the top
         * anti-faro
+            $deck->anti-faro( $pile1, $pile2 );
     * milk shuffle and variations
 
  * cutting
     * bury top 10 cards under next 5
-        * $deck->uncut( 10, 5 );
-        * $deck->undo( 10, 5 );
+        $deck->uncut( 10, 5 );
+        $deck->undo( 10, 5 );
     * slip cut
+        $deck->slip_cut( $pile );
+        my $pile = $deck->slip_cut;
+        $deck->slip_cut( $pile, 10 ); # break under 10 cards (counting the slip card)
+        my $pile = $deck->slip_cut( 10 ); # break under 10 cards (counting the slip card)
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
@@ -47,6 +63,11 @@ To Do list:
 
  * testing
     * rearrange the tests and cleanup the variable names in the tests
+
+ * inner-working
+    my $params = _parse_params( @_ );
+    # number_params
+    # decks and piles
 
  * advanced
     * controlled multiple cuts (e.g., cut the top X cards under position N)
@@ -64,3 +85,4 @@ To Do list:
     * blackjack
         * analyze hands (value)
         * compare hands
+    * gin rummy?
