@@ -4,6 +4,11 @@ To Do list:
     * start a deck with a specific number of cards
     * move the different deck orders to submodules
     * ->deck_size should probably be ->size or ->get_size (perhaps implement aliases?)
+        $deck->size
+    * original_size
+        $deck->original_size; # return the original size
+    * is_original
+        $deck->is_original; # check if the order or contents of the deck has changed
 
  * changing a deck
     * remove cards from a deck
@@ -40,6 +45,10 @@ To Do list:
         * faro X cards from the top
         * anti-faro
             $deck->anti-faro( $pile1, $pile2 );
+    * shuffle the deck
+        $deck->shuffle
+        $deck->shuffle( 'table' ); # shuffle on the table
+        $deck->shuffle( 'hands' ); # shuffle in the hand
     * milk shuffle and variations
 
  * cutting
