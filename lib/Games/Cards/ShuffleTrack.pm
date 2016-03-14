@@ -98,6 +98,10 @@ As an example, some card representations:
 	4D - 4 of Diamonds
 	KH - King of Hearts
 
+Still, you can add whichever cards you want to the deck:
+
+	$deck->put( 'Joker' ); # place a Joker on top of the deck
+
 
 =head1 SUBROUTINES/METHODS
 
