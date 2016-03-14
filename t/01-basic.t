@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 119;
+plan tests => 124;
 
 use Games::Cards::ShuffleTrack;
 
@@ -12,6 +12,15 @@ my $deck = Games::Cards::ShuffleTrack->new();
 
 # deck has 52 cards
 is( $deck->deck_size(), 52 );
+is( $deck->size(), 52 );
+is( $deck->original_size, 52 );
+$deck->put( 'Joker' );
+cmp_ok( $deck->size, '>', $deck->original_size );
+$deck->take_random;
+$deck->take_random;
+cmp_ok( $deck->size, '<', $deck->original_size );
+$deck->restart;
+is( $deck->size, $deck->original_size );
 
 # deck is face down
 is( $deck->orientation, 'down' );

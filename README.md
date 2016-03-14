@@ -103,11 +103,19 @@ Reset the deck to its original status. The original is whatever you selected whe
 
 Do bear in mind that by doing so you are replenishing the deck of whatever cards you took out of it.
 
-### deck\_size
+### size, deck\_size
 
 Returns the size of the deck.
 
     my $size = $deck->deck_size;
+
+### original\_size
+
+Returns the original size of the deck.
+
+        if ($size < 0.5 * $deck->original_size) {
+                # if the deck has been exausted by over 50%
+        }
 
 ### get\_deck
 

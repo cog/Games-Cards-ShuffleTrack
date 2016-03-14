@@ -180,7 +180,7 @@ sub restart {
 }
 
 
-=head3 deck_size
+=head3 size, deck_size
 
 Returns the size of the deck.
 
@@ -188,9 +188,30 @@ Returns the size of the deck.
 
 =cut
 
+sub size {
+	my $self = shift;
+	return $self->deck_size;
+}
+
 sub deck_size {
 	my $self = shift;
 	return scalar @{$self->{'deck'}};
+}
+
+
+=head3 original_size
+
+Returns the original size of the deck.
+
+	if ($size < 0.5 * $deck->original_size) {
+		# if the deck has been exausted by over 50%
+	}
+
+=cut
+
+sub original_size {
+	my $self = shift;
+	return scalar @{$self->{'original'}};
 }
 
 
