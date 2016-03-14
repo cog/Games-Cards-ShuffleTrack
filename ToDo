@@ -30,7 +30,6 @@ To Do list:
         $deck->drop( 10 ); # same as dribble, but completely discarding the cards
     * start a deck with 4 decks
         Games::Cards::ShuffleTrack->new( 4 );
-        # TODO: riffle shuffling when you have a lot of cards should be done breaking the deck in piles
 
  * shuffling
     * the wash
