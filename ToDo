@@ -61,11 +61,6 @@ To Do list:
  * testing
     * rearrange the tests and cleanup the variable names in the tests
 
- * inner-working
-    my $params = _parse_params( @_ );
-    # number_params
-    # decks and piles
-
  * advanced
     * controlled multiple cuts (e.g., cut the top X cards under position N)
     * given a series of procedures and a desired final result, assert the initial order of the deck
