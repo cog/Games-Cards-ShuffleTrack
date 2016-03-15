@@ -19,13 +19,6 @@ To Do list:
         $deck->count( 'C' ); # count how many Clubs are in the deck
         $deck->count( '10' ); # count how many tens
         $deck->count( 'Joker' ); # count how many Jokers there are in the deck
-    * dribble cards
-        $deck->dribble( $pile );
-        $pile = $deck->dribble;
-        $deck->dribble( 10 );
-        $deck->dribble( -10 );
-        $deck->dribble( 10, 20 );
-        $deck->dribble( 10, -10 );
     * drop cards from the deck
         $deck->drop( 10 ); # same as dribble, but completely discarding the cards
     * start a deck with 4 decks

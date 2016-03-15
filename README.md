@@ -475,6 +475,28 @@ You can also specify limits (if you're somehow directing the person taking the c
 
         my $random_card = $deck->take_random( 13, 39 );
 
+### dribble
+
+Dribble the cards (usually to select one, which could either be the last one to fall or the one that would be next).
+
+        # dribble cards onto $pile
+        $deck->dribble( $pile );
+
+        # same thing, but declaring $pile
+    $pile = $deck->dribble;
+
+    # dribble to position 10 (in a 52 card deck, 42 cards would fall)
+    $deck->dribble( 10 );
+
+    # dribble 10 cards
+    $deck->dribble( -10 );
+
+    # dribble to position between 10 and 20
+    $deck->dribble( 10, 20 );
+
+    # dribble to position between 10th from the top and 10th from the bottom
+    $deck->dribble( 10, -10 );
+
 # AUTHOR
 
 Jose Castro, `<cog at cpan.org>`

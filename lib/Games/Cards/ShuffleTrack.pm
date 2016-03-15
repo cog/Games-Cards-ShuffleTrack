@@ -1070,8 +1070,96 @@ sub take_random {
 	return $self->remove( _rand( $lower_limit, $upper_limit ) );
 }
 
+=head3 dribble
+
+Dribble the cards (usually to select one, which could either be the last one to fall or the one that would be next).
+
+	# dribble cards onto $pile
+	$deck->dribble( $pile );
+
+	# same thing, but declaring $pile
+    $pile = $deck->dribble;
+
+    # dribble to position 10 (in a 52 card deck, 42 cards would fall)
+    $deck->dribble( 10 );
+
+    # dribble 10 cards
+    $deck->dribble( -10 );
+
+    # dribble to position between 10 and 20
+    $deck->dribble( 10, 20 );
+
+    # dribble to position between 10th from the top and 10th from the bottom
+    $deck->dribble( 10, -10 );
+
+=cut
+
+# TODO: what happens if you're dribbling and have no cards?
+sub dribble {
+	my $self   = shift;
+	my $params = _parse_params( @_ );
+
+	my $has_destination = @{$params->{'places'}};
+	my $destination = $has_destination ?
+						$params->{'places'}[0] :
+						Games::Cards::ShuffleTrack->new( 'empty' );
+
+	my ($lower_limit, $upper_limit) = $self->_fix_limits( @{$params->{'numbers'}} );
+
+	if ( defined $lower_limit ) {
+		$lower_limit = $self->size - $lower_limit;
+		$upper_limit = defined $upper_limit ?
+						$self->size - $upper_limit :
+						$lower_limit;
+	}
+	else {
+		# FIXME: this means we can't dribble if we have just 5 cards
+		$lower_limit = 5; # minimum amount of cards to hold back
+		$upper_limit = $self->size - 5; # minimum amount of cards to dribble
+	}
+
+	$self->turn;
+	my $transfer = $self->cut_to( $lower_limit, $upper_limit );
+	$transfer->turn;
+	$transfer->move_to( $destination );
+
+	return $has_destination ? $self : $destination;
+}
 
 # subroutines
+
+# TODO: fix limits in other methods (just being used in dribble)
+sub _fix_limits {
+	my $self = shift;
+	my @limits;
+
+	while ( my $limit = shift ) {
+		push @limits, $limit < 0 ? $self->size + $limit : $limit;
+	}
+
+	return @limits;
+}
+
+# TODO: use this for every method (just being used in dribble)
+sub _parse_params {
+	my $params = {
+		numbers => [],
+		places  => [],
+		options => [],
+	};
+	while (my $param = shift) {
+		if (looks_like_number($param)) {
+			push @{$params->{'numbers'}}, $param;
+		}
+		elsif (ref $param eq 'Games::Cards::ShuffleTrack') {
+			push @{$params->{'places'}}, $param;
+		}
+		else {
+			push @{$params->{'options'}}, $param;
+		}
+	}
+	return $params;
+}
 
 sub _set_deck {
 	my $self = shift;
