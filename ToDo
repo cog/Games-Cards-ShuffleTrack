@@ -20,7 +20,7 @@ To Do list:
         $deck->count( '10' ); # count how many tens
         $deck->count( 'Joker' ); # count how many Jokers there are in the deck
     * drop cards from the deck
-        $deck->drop( 10 ); # same as dribble, but completely discarding the cards
+        $deck->drop( 10 ); # same as dribble, but targeted at the cards being dropped instead of the cards held
     * start a deck with 4 decks
         Games::Cards::ShuffleTrack->new( 4 );
 
