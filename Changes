@@ -3,6 +3,7 @@ Revision history for Games-Cards-ShuffleTrack
 0
 		We can now $deck->run( 3, 5, 2 );
 		We can now $deck->deal( $pile );
+		We can now $deck->dribble( $pile );
 
 0.03    2016-03-08
         Added a few more methods
