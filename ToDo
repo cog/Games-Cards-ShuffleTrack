@@ -18,6 +18,12 @@ To Do list:
         $deck->drop( 10 ); # same as dribble, but targeted at the cards being dropped instead of the cards held
     * start a deck with 4 decks
         Games::Cards::ShuffleTrack->new( 4 );
+    * deal X cards
+        $deck->deal( 5, $pile );
+        $deck->deal( $pile, 5 );
+        my $pile = $deck->deal( 5 );
+        $deck->deal( 5, @hands, 'alternate' ); # deals one card at a time to all hands
+        $deck->deal( 5, @hands, 'together' );  # deals 5 cards to a hand at a time
 
  * shuffling
     * the wash
@@ -33,6 +39,9 @@ To Do list:
         $deck->shuffle( 'table' ); # shuffle on the table
         $deck->shuffle( 'hands' ); # shuffle in the hand
     * milk shuffle and variations
+    * hindu shuffle with bottom card control
+    * overhand shuffle with top stock control
+    * overhand shuffle with bottom card or bottom stock control
 
  * cutting
     * bury top 10 cards under next 5
