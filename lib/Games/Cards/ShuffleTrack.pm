@@ -1077,6 +1077,11 @@ You can still do a false deal to a pile:
 sub deal {
 	my $self = shift;
 
+	if (not $self->size) {
+		warn "Tried to deal without cards.\n";
+		return $self;
+	}
+
 	my $deal        = 'top';
 	my $destination = undef;
 	while (my $param = shift) {
