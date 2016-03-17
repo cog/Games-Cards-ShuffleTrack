@@ -78,3 +78,5 @@ $deck->deal( 'bottom', $deck );
 is( $deck->deck_size, 52 );
 is( $deck->peek( 1 ), $bottom_card );
 is( $deck->peek( 2 ), $top_card );
+
+# TODO: deal from an empty deck does nothing (to both the deck and the destination pile)

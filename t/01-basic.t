@@ -4,19 +4,27 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 124;
+plan tests => 125;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my ($top_card, $bottom_card) = $deck->find( 1, -1 );
+
+# $deck is a deck
+isa_ok( $deck, 'Games::Cards::ShuffleTrack');
 
 # deck has 52 cards
-is( $deck->deck_size(), 52 );
-is( $deck->size(), 52 );
+is( $deck->deck_size(),   52 );
+is( $deck->size(),        52 );
 is( $deck->original_size, 52 );
+
+# adding cards increases deck size
 $deck->put( 'Joker' );
 cmp_ok( $deck->size, '>', $deck->original_size );
-$deck->take_random;
+
+# removing cards decreases deck size
+$deck->restart;
 $deck->take_random;
 cmp_ok( $deck->size, '<', $deck->original_size );
 $deck->restart;
@@ -26,7 +34,7 @@ is( $deck->size, $deck->original_size );
 is( $deck->orientation, 'down' );
 
 # turning the deck face up results in a face up deck and the original top and bottom cards are now reversed
-my ($top_card, $bottom_card) = $deck->find( 1, -1 );
+$deck->restart;
 ok( $deck->turn );
 is( $deck->orientation, 'up' );
 
@@ -50,16 +58,16 @@ for my $card (keys %$cards) {
 };
 
 # fournier and new_deck_order share the order of diamonds
-my $new_deck = Games::Cards::ShuffleTrack->new();
+$deck->restart;
 my $fournier = Games::Cards::ShuffleTrack->new('fournier');
 
 for ( 27 .. 39 ) {
-	is( $new_deck->find( $_ ), $fournier->find( $_ ) );
+	is( $deck->find( $_ ), $fournier->find( $_ ) );
 }
 
 # fournier and new_deck_order don't share the order of hearts, spades and clubs
 for ( 1 .. 26, 40 .. 52 ) {
-	isnt( $new_deck->find( $_ ), $fournier->find( $_ ) );
+	isnt( $deck->find( $_ ), $fournier->find( $_ ) );
 }
 
 # empty deck doesn't have cards
@@ -73,14 +81,13 @@ is_deeply( $empty_deck->get_deck, [] );
 # reseting a shuffled deck that started with new_deck order results in a deck in new deck order
 my $other_new_deck = Games::Cards::ShuffleTrack->new;
 
-$new_deck->riffle_shuffle;
-$new_deck->riffle_shuffle;
-$new_deck->restart;
-is_deeply( $new_deck->get_deck, $other_new_deck->get_deck );
-$new_deck->riffle_shuffle;
-$new_deck->restart;
-is_deeply( $new_deck->get_deck, $other_new_deck->get_deck );
-
+$deck->riffle_shuffle;
+$deck->riffle_shuffle;
+$deck->restart;
+is_deeply( $deck->get_deck, $other_new_deck->get_deck );
+$deck->riffle_shuffle;
+$deck->restart;
+is_deeply( $deck->get_deck, $other_new_deck->get_deck );
 
 # creating a pile with just 4 cards works well
 my $pile = Games::Cards::ShuffleTrack->new( [qw/AC AH AS AD/] );

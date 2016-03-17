@@ -4,14 +4,15 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 1;
+plan tests => 2;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 my $top_card = $deck->peek( 1 );
-my $card;
 
-# putting a card on top of the deck increases its size
-$deck->put( 'AS' );
+# putting a card on top of the deck increases its size and the card gets added on top
+$deck->put( 'Joker' );
 is( $deck->deck_size, 53 );
+
+is( $deck->find( 'Joker' ), 1 );
