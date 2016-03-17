@@ -81,4 +81,7 @@ To Do list:
     * blackjack
         * analyze hands (value)
         * compare hands
-    * gin rummy?
+    * gin rummy
+        * count points in hand
+    * faro game
+        * compare cards
