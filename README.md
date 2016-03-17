@@ -141,6 +141,44 @@ Turning the deck reverses its order.
 
         $deck->turn;
 
+### count
+
+Counts how many cards with specific characteristics are in the deck.
+
+        # how many tens
+        $deck->count( '10' );
+
+        # how many Clubs
+        $deck->count( 'C' );
+
+        # how many Clubs and Hearts
+        my ($clubs, $hearts) = $deck->count( 'C', 'H' );
+        my $clubs_and_hearts = $deck->count( 'C', 'H' );
+
+        # how many Jokers
+        $deck->count( 'Joker' );
+
+Since you can add whichever card you want to the deck, it should be noted how searching for values and suits works:
+
+- If looking for a value from 2 to A, you'll get the amount of cards with that value and one of the four suits
+- If looking for a suit (C, H, S, D), you'll get the amount of cards with a value from 2 through Ace and that suit
+- If looking for anything else, that something is compared to the whole card
+
+It is important to note:
+
+        my $total = $deck->count( 'JC' );   # holds 4
+        my $total = $deck->count( 'C', J ); # holds 16, because the JC is only counted once
+        my @total = $deck->count( 'C', J ); # holds (13, 4)
+
+Also:
+
+        $deck->put( 'Joker' );
+        $deck->put( 'Signed Joker' );
+        $deck->count( 'Joker' ); # returns 2
+
+        $deck->put( 'Signed 4C' );
+        $deck->count( '4C' ); # returns 2, because you didn't removed the previous one
+
 ## Shuffling
 
 ### Overhand Shuffle

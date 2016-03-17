@@ -46,6 +46,27 @@ my $shortcuts = {
     'bottom'  => -1,
 };
 
+my $expressions = {
+	A 	=> qr/A[CHSD]/,
+	2 	=> qr/2[CHSD]/,
+	3 	=> qr/3[CHSD]/,
+	4 	=> qr/4[CHSD]/,
+	5 	=> qr/5[CHSD]/,
+	6 	=> qr/6[CHSD]/,
+	7 	=> qr/7[CHSD]/,
+	8 	=> qr/8[CHSD]/,
+	9 	=> qr/9[CHSD]/,
+	10 	=> qr/10[CHSD]/,
+	J 	=> qr/J[CHSD]/,
+	Q 	=> qr/Q[CHSD]/,
+	K 	=> qr/K[CHSD]/,
+
+	C 	=> qr/(?:[A23456789JQK]|10)C/,
+	H 	=> qr/(?:[A23456789JQK]|10)H/,
+	S 	=> qr/(?:[A23456789JQK]|10)S/,
+	D 	=> qr/(?:[A23456789JQK]|10)D/,
+};
+
 
 =head1 SYNOPSIS
 
@@ -266,6 +287,99 @@ sub turn {
 	$self->{'orientation'} = $self->orientation eq 'down' ? 'up' : 'down';
 
 	return $self->_set_deck( reverse @{$self->get_deck} );
+}
+
+=head3 count
+
+Counts how many cards with specific characteristics are in the deck.
+
+	# how many tens
+	$deck->count( '10' );
+
+	# how many Clubs
+	$deck->count( 'C' );
+
+	# how many Clubs and Hearts
+	my ($clubs, $hearts) = $deck->count( 'C', 'H' );
+	my $clubs_and_hearts = $deck->count( 'C', 'H' );
+
+	# how many Jokers
+	$deck->count( 'Joker' );
+
+Since you can add whichever card you want to the deck, it should be noted how searching for values and suits works:
+
+=over 4
+
+=item * If looking for a value from 2 to A, you'll get the amount of cards with that value and one of the four suits
+
+=item * If looking for a suit (C, H, S, D), you'll get the amount of cards with a value from 2 through Ace and that suit
+
+=item * If looking for anything else, that something is compared to the whole card
+
+=back
+
+It is important to note:
+
+	my $total = $deck->count( 'JC' );   # holds 4
+	my $total = $deck->count( 'C', J ); # holds 16, because the JC is only counted once
+	my @total = $deck->count( 'C', J ); # holds (13, 4)
+
+Also:
+
+	$deck->put( 'Joker' );
+	$deck->put( 'Signed Joker' );
+	$deck->count( 'Joker' ); # returns 2
+
+	$deck->put( 'Signed 4C' );
+	$deck->count( '4C' ); # returns 2, because you didn't removed the previous one
+
+=cut
+
+sub count {
+	my $self = shift;
+	my @results;
+
+	if ( wantarray and @_ > 1 ) {
+		return $self->_count_each( @_ );
+	}
+	else {
+		return $self->_count_all( @_ );
+	}
+}
+
+sub _count_each {
+	my $self = shift;
+	my @results;
+	while (my $param = shift) {
+		if ( exists $expressions->{$param} ) {
+			push @results, scalar grep { /$expressions->{$param}/ } @{$self->get_deck};
+		}
+		else {
+			push @results, scalar grep { /$param/ } @{$self->get_deck};
+		}
+	}
+	return @results;
+}
+
+sub _count_all {
+	my $self = shift;
+
+	my @expressions;
+	for my $param (@_) {
+		push @expressions, exists $expressions->{$param} ?
+							$expressions->{$param} :
+							qr/$param/x,
+	}
+
+	my @results;
+	for my $card (@{$self->get_deck}) {
+
+		if (any { $card =~ $_ } @expressions) {
+			push @results, $card;
+		}
+
+	}
+	return scalar @results;
 }
 
 
