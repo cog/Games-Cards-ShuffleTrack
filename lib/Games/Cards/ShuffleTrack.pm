@@ -1314,6 +1314,59 @@ sub _is_shortcut {
 }
 
 
+=head1 GLOSSARY
+
+The following is not a comprehensive list of gambling terms; it is simply a list of some terms used somewhere in this module that may be useful.
+
+The text has been taken verbatim from The Expert at the Card Table.
+
+=over 4
+
+=item * Stock
+
+That portion of the deck that contains certain cards, placed in some particular order for dealing; or certain
+desirable cards placed at top or bottom of the deck.
+
+=item * Run
+
+To draw off one card at a time during the process of the hand shuffle. There is little or no difficulty in acquiring
+perfect ability to run the whole deck through in this manner with the utmost rapidity. The left thumb presses
+lightly on the top card, the right hand alone making the movement necessary to shuffle.
+
+=item * Break
+
+A space or division held in the deck. While shuffling it is held at the end by the right thumb. It is formed under
+the in-jog when about to under cut for the shuffle, by pushing the in-jog card slightly upwards with the right
+thumb, making a space of from an eighth to a quarter of an inch wide, and holding the space, by squeezing the
+ends of the packet to be drawn out, between the thumb and second and third fingers. The use of the break
+during a shuffle makes it possible to throw any number of cards that are immediately above it, in one packet
+into the left hand, without disarranging their order. The break is used when not shuffling, to locate any particular
+card or position, and is infinitely superior to the common method of inserting the little finger. A break can be
+held firmly by a finger or thumb of either hand, and entirely concealed by the other fingers of the same hand. It
+is also the principal aid in the blind riffles and cuts.
+
+=item * Throw
+
+To pass from the right hand to the left, during a shuffle, a certain number of cards in one packet, thereby
+retaining their order. A throw may be required at the beginning, during the process, or at the end of a shuffle;
+and the packet to be thrown may be located by the jog, or break, or by both.
+
+=item * Top Card
+
+The card on top of packet held in the left hand, or the original top card of the full deck, which about to be
+shuffled.
+
+=item * Riffle
+
+The modern method of shuffling on the table by springing, the ends of two packets into each other.
+
+=item * Crimp
+
+To bend one or a number of cards, so that they may be distinguished or located. 
+
+=back
+
+
 =head1 AUTHOR
 
 Jose Castro, C<< <cog at cpan.org> >>
@@ -1349,7 +1402,7 @@ L<http://search.cpan.org/dist/Games-Cards-ShuffleTrack/>
 
 =head1 SEE ALSO
 
-The following is a very, very, very, very extremely small list of recommended books:
+The following is an extremely small list of recommended books:
 
 =over 4
 
