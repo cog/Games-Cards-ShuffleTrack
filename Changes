@@ -5,6 +5,7 @@ Revision history for Games-Cards-ShuffleTrack
 		We can now $deck->deal( $pile )
 		We can now $deck->dribble( $pile )
 		We can now $deck->count( 'A' ) and $deck->count( 'C', 'S' )
+		Improved the documentation
 
 0.03    2016-03-08
         Added a few more methods
