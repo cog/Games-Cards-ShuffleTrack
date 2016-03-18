@@ -47,24 +47,24 @@ my $shortcuts = {
 };
 
 my $expressions = {
-	A 	=> qr/A[CHSD]/,
-	2 	=> qr/2[CHSD]/,
-	3 	=> qr/3[CHSD]/,
-	4 	=> qr/4[CHSD]/,
-	5 	=> qr/5[CHSD]/,
-	6 	=> qr/6[CHSD]/,
-	7 	=> qr/7[CHSD]/,
-	8 	=> qr/8[CHSD]/,
-	9 	=> qr/9[CHSD]/,
-	10 	=> qr/10[CHSD]/,
-	J 	=> qr/J[CHSD]/,
-	Q 	=> qr/Q[CHSD]/,
-	K 	=> qr/K[CHSD]/,
+	A   => qr/A[CHSD]/,
+	2   => qr/2[CHSD]/,
+	3   => qr/3[CHSD]/,
+	4   => qr/4[CHSD]/,
+	5   => qr/5[CHSD]/,
+	6   => qr/6[CHSD]/,
+	7   => qr/7[CHSD]/,
+	8   => qr/8[CHSD]/,
+	9   => qr/9[CHSD]/,
+	10  => qr/10[CHSD]/,
+	J   => qr/J[CHSD]/,
+	Q   => qr/Q[CHSD]/,
+	K   => qr/K[CHSD]/,
 
-	C 	=> qr/(?:[A23456789JQK]|10)C/,
-	H 	=> qr/(?:[A23456789JQK]|10)H/,
-	S 	=> qr/(?:[A23456789JQK]|10)S/,
-	D 	=> qr/(?:[A23456789JQK]|10)D/,
+	C   => qr/(?:[A23456789JQK]|10)C/,
+	H   => qr/(?:[A23456789JQK]|10)H/,
+	S   => qr/(?:[A23456789JQK]|10)S/,
+	D   => qr/(?:[A23456789JQK]|10)D/,
 };
 
 
