@@ -544,6 +544,7 @@ You can also decide where to cut the deck for the shuffle:
 # TODO: add an option to control top or bottom stock
 # TODO: when dropping cards, should we favor numbers 2 and 3?
 # TODO: with a lot of cards, the riffle should be done breaking the deck in piles
+# TODO: consider how fast each half is being depleted and whether the packets riffled on each side are of similar sizes
 sub riffle_shuffle {
 	my $self  = shift;
 	my $depth = shift;

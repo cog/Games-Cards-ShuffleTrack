@@ -29,7 +29,6 @@ To Do list:
     * the wash
     * riffle shuffle
     	* riffle stacking
-        * we're not considering how fast each half is being depleted nor whether the packets riffled on each side are of similar sizes
     * faro
         * faro X cards from the top
         * anti-faro
