@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 40;
+plan tests => 44;
 
 use Games::Cards::ShuffleTrack;
 
@@ -79,4 +79,15 @@ is( $deck->deck_size, 52 );
 is( $deck->peek( 1 ), $bottom_card );
 is( $deck->peek( 2 ), $top_card );
 
-# TODO: deal from an empty deck does nothing (to both the deck and the destination pile)
+# deal from an empty deck does nothing (to both the deck and the destination pile)
+$deck->restart;
+$pile->restart;
+$pile->deal( $deck );
+is( $pile->size, 0  );
+is( $deck->size, 52 );
+
+# dealing from an empty deck still creates an empty deck
+$pile->restart;
+my $empty_pile = $pile->deal;
+isa_ok( $empty_pile, 'Games::Cards::ShuffleTrack' );
+is( $empty_pile->size, 0 );

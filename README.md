@@ -476,6 +476,8 @@ You can still do a false deal to a pile:
 
         $deck->deal( $pile, 'second' );
 
+Dealing from an empty deck won't do anything, but a warning will be issued.
+
 ### remove
 
 Removes a card from the deck.

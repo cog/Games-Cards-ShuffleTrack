@@ -1072,9 +1072,10 @@ You can still do a false deal to a pile:
 
 	$deck->deal( $pile, 'second' );
 
+Dealing from an empty deck won't do anything, but a warning will be issued.
+
 =cut
 
-# TODO: deal from an empty deck?
 sub deal {
 	my $self = shift;
 
