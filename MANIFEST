@@ -11,6 +11,7 @@ examples/shuffling/faro-out.pl
 examples/shuffling/random_riffle_shuffles.pl
 t/00-load.t
 t/01-basic.t
+t/02-count.t
 t/03-faro.t
 t/04-riffle-shuffle.t
 t/05-cut.t
