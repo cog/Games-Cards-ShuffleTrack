@@ -55,8 +55,6 @@ To Do list:
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
     * acknowledgments
-    * add a glossary
-        * balance of the deck
     * create links on README.md to facilitate navigation on Github
     * update the descriptions of the different shuffles
 
