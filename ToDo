@@ -44,13 +44,15 @@ To Do list:
 
  * cutting
     * bury top 10 cards under next 5
-        $deck->uncut( 10, 5 );
-        $deck->undo( 10, 5 );
+        $deck->bury( 10, 3 ); # bury the top 10 cards underneath the following 3 cards
+        $deck->bury( 10, 5, 2 ); # same as $deck->bury( 10, 5+2 )->bury( 5, 2 );
     * slip cut
         $deck->slip_cut( $pile );
         my $pile = $deck->slip_cut;
         $deck->slip_cut( $pile, 10 ); # break under 10 cards (counting the slip card)
         my $pile = $deck->slip_cut( 10 ); # break under 10 cards (counting the slip card)
+        $deck->slip_cut_under
+        $deck->slip_cut_above
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
@@ -69,6 +71,9 @@ To Do list:
     * track relationship between cards: from a specific order and through a series of procedures, present conclusions about the end relationship
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
     * implement counting systems
+
+ * warnings
+    * warn when trying to find something in an empty deck
 
  * games
     * poker
