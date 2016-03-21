@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 57;
+plan tests => 58;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 my $top_card = $deck->peek( 1 );
 my $card;
 
@@ -26,3 +27,7 @@ for ( 1 .. $deck->deck_size ) {
 # peeking without a parameter peeks the top card
 $top_card = $deck->find( 1 );
 is( $deck->peek, $top_card );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

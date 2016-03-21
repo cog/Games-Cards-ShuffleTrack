@@ -4,12 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 20;
+plan tests => 21;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
-
+my @original_deck = @{$deck->get_deck};
 
 # AH is first card
 is( $deck->find('AH'), 1 );
@@ -58,3 +58,7 @@ is_deeply( [$deck->find( 'no such card' )], [ 0 ] );
 # can get card 52 but not 53
 ok( $deck->find( 52 ) );
 is_deeply( [$deck->find( 53 )], [ q{} ] );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

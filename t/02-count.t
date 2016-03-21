@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 33;
+plan tests => 34;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 
 # non existing cards don't exist
 is( $deck->count( 'Joker' ), 0 );
@@ -66,3 +67,7 @@ is( $deck->count( '4C' ), 2 );
 # behaviour of wantarray with just one search
 my @results = $deck->count( 'H' );
 is( $results[0], 13 );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

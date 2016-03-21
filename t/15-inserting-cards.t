@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 12;
+plan tests => 13;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 my $top_card = $deck->peek( 1 );
 my $bottom_card = $deck->peek( -1 );
 my $card;
@@ -51,3 +52,7 @@ is( $deck->peek( -1 ), 'Joker' );
 $deck->restart;
 $deck->insert( 'Joker', -52 );
 is( $deck->peek( 2 ), 'Joker' );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

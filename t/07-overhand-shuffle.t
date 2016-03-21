@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 25;
+plan tests => 26;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 
 my @initial_deck = @{$deck->get_deck};
 
@@ -45,23 +46,18 @@ ok($deck->run( -2 ));
 is_deeply( \@deck, $deck->get_deck );
 
 # overhand shuffling changes top and bottom cards
-
 my ($t, $b) = $deck->find( 1, -1 );
-
 ok( $deck->overhand_shuffle );
-
 isnt( $deck->find(  1 ), $t );
 isnt( $deck->find( -1 ), $b );
 
 # overhand shuffle accepts a parameter
 ok( $deck->overhand_shuffle( 2 ) );
 
-
 # running cards in an empty deck does nothing and the deck remains with no cards
 my $empty_deck = Games::Cards::ShuffleTrack->new( 'empty' );
 ok($empty_deck->run(3));
 is($empty_deck->deck_size, 0);
-
 
 # we can run several amounts at the same time
 $deck->restart;
@@ -81,3 +77,7 @@ ok( $deck->overhand_shuffle( 0 ) );
 is_deeply( $deck->get_deck, $initial_order );
 ok( $deck->overhand_shuffle( -10 ) );
 is_deeply( $deck->get_deck, $initial_order );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

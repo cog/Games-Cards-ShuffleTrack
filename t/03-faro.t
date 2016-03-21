@@ -4,13 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 3;
+plan tests => 4;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
-
-my @original_deck = @{$deck->get_deck()};
+my @original_deck = @{$deck->get_deck};
 
 # a deck of 52 cards after 8 faro-outs should result in the original order
 $deck->faro( 'out' ) for 1 .. 8;
@@ -32,3 +31,7 @@ $deck->faro( 'in' ) for 1 .. 26;
 my @after_52_faro_ins = @{$deck->get_deck};
 
 is_deeply( [@after_52_faro_ins], [@original_deck] );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 125;
+plan tests => 126;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 my ($top_card, $bottom_card) = $deck->find( 1, -1 );
 
 # $deck is a deck
@@ -93,3 +94,7 @@ is_deeply( $deck->get_deck, $other_new_deck->get_deck );
 my $pile = Games::Cards::ShuffleTrack->new( [qw/AC AH AS AD/] );
 is( $pile->deck_size, 4 );
 is( $pile->find( 1 ), 'AC' );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

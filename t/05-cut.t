@@ -4,12 +4,14 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 42;
+plan tests => 44;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 my $pile = Games::Cards::ShuffleTrack->new( 'empty' );
+my @original_pile = @{$pile->get_deck};
 
 # cutting 26 twice results in the original order
 my $deck_1 = $deck->get_deck;
@@ -21,11 +23,9 @@ is_deeply( $deck_1, $deck->get_deck );
 $deck->cut(13) for 1 .. 4;
 is_deeply( $deck_1, $deck->get_deck );
 
-
 # cutting one card moves it to the bottom
-my @original_deck = @{$deck->get_deck};
 my ($top_card, $second_card) = @original_deck[0, 1];
-
+$deck->restart;
 $deck->cut(1);
 
 my @cut_deck = @{$deck->get_deck};
@@ -136,3 +136,9 @@ is( $pile->deck_size, 52 );
 $pile->cut_above( 'AH' );
 $deck->restart;
 is_deeply( $deck->get_deck, $pile->get_deck );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );
+$pile->restart;
+is_deeply( [@{$pile->get_deck}], [@original_pile] );

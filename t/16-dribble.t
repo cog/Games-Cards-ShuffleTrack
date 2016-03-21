@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 19;
+plan tests => 20;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 
 # dribble cards to a pile
 my $pile = $deck->dribble;
@@ -62,3 +63,7 @@ cmp_ok( $pile->size, '>=', 10 );
 cmp_ok( $pile->size, '<=', 42 );
 cmp_ok( $deck->size, '>=', 10 );
 cmp_ok( $deck->size, '<=', 42 );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

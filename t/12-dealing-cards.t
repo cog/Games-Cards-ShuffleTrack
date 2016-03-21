@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 44;
+plan tests => 45;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 my $top_card = $deck->peek( 1 );
 
 # dealing a card from the top of the deck decreases its size
@@ -91,3 +92,7 @@ $pile->restart;
 my $empty_pile = $pile->deal;
 isa_ok( $empty_pile, 'Games::Cards::ShuffleTrack' );
 is( $empty_pile->size, 0 );
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 4;
+plan tests => 5;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 
 my @before_shuffling = $deck->get_deck();
 my ($bottom, $tenth_from_bottom) = $deck->find( -1, -10 );
@@ -31,3 +32,7 @@ is( scalar @before_shuffling, scalar @after_shuffling );
 my ($card_26, $card_27) = $deck->find( 26, 27 );
 $deck->riffle_shuffle( 26 );
 cmp_ok( $deck->find( $card_26 ) , '>', $deck->find( $card_27 ));
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );

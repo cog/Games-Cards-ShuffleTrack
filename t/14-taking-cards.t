@@ -4,11 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 56;
+plan tests => 57;
 
 use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
+my @original_deck = @{$deck->get_deck};
 my $top_card = $deck->peek( 1 );
 
 # taking a random card decreases the deck size and the card is no longer there
@@ -41,3 +42,7 @@ for ( 1 .. 52 ) {
 	is( $deck->find( $_ ), $deck->take_random( $_, $_ ) );
 	$deck->restart;
 }
+
+# final test to see if we can still restart the deck
+$deck->restart;
+is_deeply( [@{$deck->get_deck}], [@original_deck] );
