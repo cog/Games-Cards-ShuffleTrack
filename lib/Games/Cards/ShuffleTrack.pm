@@ -851,10 +851,11 @@ sub bury {
 	my $first_amount  = shift;
 	my $second_amount = shift;
 
-	my $first_pile  = $self->cut_to( $first_amount );
-	my $second_pile = $self->cut_to( $second_amount );
-       $first_pile->move_to( $self );
-       $second_pile->move_to( $self );
+	my @deck = @{$self->get_deck};
+
+	splice @deck, $second_amount, 0, splice @deck, 0, $first_amount;
+
+	$self->_set_deck( @deck );
 
 	return $self;
 }
