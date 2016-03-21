@@ -43,8 +43,7 @@ To Do list:
     * overhand shuffle with bottom card or bottom stock control
 
  * cutting
-    * bury top 10 cards under next 5
-        $deck->bury( 10, 3 ); # bury the top 10 cards underneath the following 3 cards
+    * multi-level burying of cards
         $deck->bury( 10, 5, 2 ); # same as $deck->bury( 10, 5+2 )->bury( 5, 2 );
     * slip cut
         $deck->slip_cut( $pile );

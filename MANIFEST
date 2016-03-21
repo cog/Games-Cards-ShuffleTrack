@@ -25,6 +25,7 @@ t/13-peeking-cards.t
 t/14-taking-cards.t
 t/15-inserting-cards.t
 t/16-dribble.t
+t/17-bury.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t

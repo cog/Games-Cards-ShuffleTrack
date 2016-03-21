@@ -833,6 +833,32 @@ sub running_cuts {
 }
 
 
+=head3 bury
+
+Buries a group of cards under another group:
+
+	# bury the top 10 cards under the following 3 cards
+	$deck->bury(10, 3);
+
+	# move the top card to the 13th position
+	$deck->bury( 1, 12 );
+
+=cut
+
+sub bury {
+	my $self          = shift;
+	my $first_amount  = shift;
+	my $second_amount = shift;
+
+	my $first_pile  = $self->cut_to( $first_amount );
+	my $second_pile = $self->cut_to( $second_amount );
+       $first_pile->move_to( $self );
+       $second_pile->move_to( $self );
+
+	return $self;
+}
+
+
 =head2 Handling cards
 
 There are a few different methods to track down cards.

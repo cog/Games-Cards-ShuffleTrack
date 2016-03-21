@@ -363,6 +363,16 @@ To do the procedure twice:
 
     $deck->running_cuts( 2 );
 
+### bury
+
+Buries a group of cards under another group:
+
+        # bury the top 10 cards under the following 3 cards
+        $deck->bury(10, 3);
+
+        # move the top card to the 13th position
+        $deck->bury( 1, 12 );
+
 ## Handling cards
 
 There are a few different methods to track down cards.
