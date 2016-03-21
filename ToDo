@@ -57,8 +57,6 @@ To Do list:
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
     * acknowledgments
-    * add a glossary
-        * balance of the deck
     * create links on README.md to facilitate navigation on Github
     * update the descriptions of the different shuffles
 
@@ -71,6 +69,7 @@ To Do list:
     * track relationship between cards: from a specific order and through a series of procedures, present conclusions about the end relationship
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
     * implement counting systems
+        * hi.lo
 
  * warnings
     * warn when trying to find something in an empty deck
