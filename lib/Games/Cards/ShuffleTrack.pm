@@ -727,6 +727,7 @@ This method returns the new pile.
 
 =cut
 
+# FIXME: in some situations this method alters the original order of the deck
 sub cut_to {
 	my $self = shift;
 
