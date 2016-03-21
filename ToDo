@@ -61,6 +61,8 @@ To Do list:
 
  * testing
     * rearrange the tests and cleanup the variable names in the tests
+    * add a test case in every test file to check whether we can still restart the deck to its original order
+    * run perlcritic on the tests and solve the issues
 
  * advanced
     * controlled multiple cuts (e.g., cut the top X cards under position N)
