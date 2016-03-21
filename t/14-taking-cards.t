@@ -10,7 +10,6 @@ use Games::Cards::ShuffleTrack;
 
 my $deck = Games::Cards::ShuffleTrack->new();
 my $top_card = $deck->peek( 1 );
-my $card;
 
 # taking a random card decreases the deck size and the card is no longer there
 $deck->restart;
