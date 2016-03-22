@@ -14,11 +14,11 @@ Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 =head1 VERSION
 
-Version 0.04
+Version 0.04_1
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.04_1';
 
 my $cut_limits = {
 	normal  => [0.19, 0.82], # on a 52 cards deck, cut between 10 and 43 cards
