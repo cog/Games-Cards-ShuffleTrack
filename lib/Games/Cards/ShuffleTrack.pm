@@ -1262,9 +1262,8 @@ sub dribble {
 						$lower_limit;
 	}
 	else {
-		# FIXME: this means we can't dribble if we have just 5 cards
-		$lower_limit = 5; # minimum amount of cards to hold back
-		$upper_limit = $self->size - 5; # minimum amount of cards to dribble
+		$lower_limit = min( $self->size, 5 );
+		$upper_limit = $self->size < 5 ? $self->size : $self->size - 5;
 	}
 
 	$self->turn;

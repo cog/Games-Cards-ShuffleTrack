@@ -18,7 +18,6 @@ my $deck_1 = $deck->get_deck;
 $deck->cut(26) for 1 .. 2;
 is_deeply( $deck_1, $deck->get_deck );
 
-
 # cutting 13 four times results in the original order
 $deck->cut(13) for 1 .. 4;
 is_deeply( $deck_1, $deck->get_deck );
@@ -86,7 +85,6 @@ $deck->cut( 52 );
 is_deeply( $deck_before_cutting, $deck->get_deck );
 $deck->cut( -52 );
 is_deeply( $deck_before_cutting, $deck->get_deck );
-
 
 # test cut_to
 $deck->restart;

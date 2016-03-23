@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 20;
+plan tests => 23;
 
 use Games::Cards::ShuffleTrack;
 
@@ -63,6 +63,13 @@ cmp_ok( $pile->size, '>=', 10 );
 cmp_ok( $pile->size, '<=', 42 );
 cmp_ok( $deck->size, '>=', 10 );
 cmp_ok( $deck->size, '<=', 42 );
+
+# dribble without cards
+$pile->restart;
+$deck->restart;
+ok( $pile->dribble( $deck ) );
+is( $pile->size, 0 );
+is( $deck->size, 52 );
 
 # final test to see if we can still restart the deck
 $deck->restart;
