@@ -137,6 +137,6 @@ is_deeply( $deck->get_deck, $pile->get_deck );
 
 # final test to see if we can still restart the deck
 $deck->restart;
-is_deeply( [@{$deck->get_deck}], [@original_deck] );
+is_deeply( $deck->get_deck, [@original_deck] );
 $pile->restart;
-is_deeply( [@{$pile->get_deck}], [@original_pile] );
+is_deeply( $pile->get_deck, [@original_pile] );

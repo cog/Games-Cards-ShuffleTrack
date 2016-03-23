@@ -35,4 +35,4 @@ cmp_ok( $deck->find( $card_26 ) , '>', $deck->find( $card_27 ));
 
 # final test to see if we can still restart the deck
 $deck->restart;
-is_deeply( [@{$deck->get_deck}], [@original_deck] );
+is_deeply( $deck->get_deck, [@original_deck] );
