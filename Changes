@@ -1,6 +1,7 @@
 Revision history for Games-Cards-ShuffleTrack
 
-0.
+0
+		Minor bug fixes
 
 0.04	2016-03-21
 		We can now $deck->run( 3, 5, 2 )
