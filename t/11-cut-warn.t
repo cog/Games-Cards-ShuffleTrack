@@ -31,4 +31,4 @@ is_deeply( $deck_before_cutting, $deck->get_deck );
 
 # final test to see if we can still restart the deck
 $deck->restart;
-is_deeply( [@{$deck->get_deck}], [@original_deck] );
+is_deeply( $deck->get_deck, [@original_deck] );

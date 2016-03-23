@@ -61,4 +61,4 @@ is_deeply( [$deck->find( 53 )], [ q{} ] );
 
 # final test to see if we can still restart the deck
 $deck->restart;
-is_deeply( [@{$deck->get_deck}], [@original_deck] );
+is_deeply( $deck->get_deck, [@original_deck] );
