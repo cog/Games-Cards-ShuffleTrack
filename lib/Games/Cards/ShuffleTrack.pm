@@ -1112,18 +1112,19 @@ sub deal {
 		return $self;
 	}
 
-	my $deal        = 'top';
-	my $destination = undef;
-	while (my $param = shift) {
-		if ( ref( $param ) eq 'Games::Cards::ShuffleTrack' ) {
-			$destination = $param;
-		}
-		elsif ( exists $shortcuts->{$param} ) {
-			$deal = $param;
+	my $params = _parse_params(@_);
+
+	my $destination = $params->{_has_places} ?
+						$params->{'places'}[0] :
+						undef;
+
+	my $position = $shortcuts->{'top'};
+	if ($params->{_has_options}) {
+		my $param = $params->{'options'}->[0];
+		if (exists $shortcuts->{$param}) {
+			$position = $shortcuts->{$param};
 		}
 	}
-
-	my $position = $shortcuts->{$deal};
 
 	my $card = $self->remove( $position );
 
@@ -1305,6 +1306,10 @@ sub _parse_params {
 		else {
 			push @{$params->{'options'}}, $param;
 		}
+	}
+
+	for (qw/numbers places options/) {
+		$params->{"_has_$_"} = @{$params->{$_}};
 	}
 	return $params;
 }
