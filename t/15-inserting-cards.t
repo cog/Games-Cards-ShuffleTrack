@@ -12,7 +12,6 @@ my $deck = Games::Cards::ShuffleTrack->new();
 my @original_deck = @{$deck->get_deck};
 my $top_card = $deck->peek( 1 );
 my $bottom_card = $deck->peek( -1 );
-my $card;
 
 # inserting cards in the deck
 $deck->restart;
