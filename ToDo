@@ -11,6 +11,9 @@ To Do list:
         $deck->remove_random();    # remove a random card
         $deck->remove_random( 5 ); # remove five cards
         $deck->remove_all( 'Joker' ); # remove all Jokers
+        $deck->remove_all( 'A' ); # remove all Aces
+        $deck->remove_all( 'C' ); # remove all Clubs
+        $deck->remove_all( 'J', 'Q', 'K' ); # remove all court cards
         $deck->remove( 'AS' ); # remove the Ace of Spades
     * drop cards from the deck
         $deck->drop( 10 ); # same as dribble, but targeted at the cards being dropped instead of the cards held
