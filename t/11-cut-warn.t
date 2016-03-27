@@ -17,17 +17,19 @@ if ($@) {
     plan skip_all => "Test::Warn $min_tw required for testing warnings";
 }
 else {
-    plan tests => 5;
+    plan tests => 6;
 }
 
 # cut at a non-existing position doesn't alter the order of the deck and issues warnings
-
 my $deck_before_cutting = $deck->get_deck;
-
 warnings_exist {$deck->cut( 100 )} [qr/Tried to cut the deck at a non-existing position/];
 is_deeply( $deck_before_cutting, $deck->get_deck );
 warnings_exist {$deck->cut( -100 )} [qr/Tried to cut the deck at a non-existing position/];
 is_deeply( $deck_before_cutting, $deck->get_deck );
+
+# dealing from an empty pile
+my $pile = Games::Cards::ShuffleTrack->new( 'empty' );
+warnings_exist {$pile->deal} [qr/Tried to deal without cards/];
 
 # final test to see if we can still restart the deck
 $deck->restart;
