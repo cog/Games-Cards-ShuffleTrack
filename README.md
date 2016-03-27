@@ -117,6 +117,16 @@ Returns the original size of the deck.
                 # if the deck has been exausted by over 50%
         }
 
+### is\_original
+
+Checks to see if the order of the deck is still the same as the original order.
+
+    if ($deck->is_original) {
+        # ...
+    }
+
+This method checks for each card and also the orientation of the deck. The only case where the orientation of the deck doesn't matter is when the deck is empty, in which case that property is ignored.
+
 ### get\_deck
 
 Returns the deck (a reference to a list of strings).
