@@ -16,6 +16,7 @@ To Do list:
     * lose? ("to lose a card in the deck")
     * drop cards from the deck
         $deck->drop( 10 ); # same as dribble, but targeted at the cards being dropped instead of the cards held
+        $deck->drop( -4 ); # drop until only 4 cards remain
     * start a deck with 4 decks
         Games::Cards::ShuffleTrack->new( 4 );
     * deal X cards
@@ -45,13 +46,6 @@ To Do list:
  * cutting
     * multi-level burying of cards
         $deck->bury( 10, 5, 2 ); # same as $deck->bury( 10, 5+2 )->bury( 5, 2 );
-    * slip cut
-        $deck->slip_cut( $pile );
-        my $pile = $deck->slip_cut;
-        $deck->slip_cut( $pile, 10 ); # break under 10 cards (counting the slip card)
-        my $pile = $deck->slip_cut( 10 ); # break under 10 cards (counting the slip card)
-        $deck->slip_cut_under
-        $deck->slip_cut_above
 
  * documentation
     * document what happens if you try to faro a deck with an odd number of cards
