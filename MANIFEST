@@ -27,6 +27,7 @@ t/15-inserting-cards.t
 t/16-dribble.t
 t/17-bury.t
 t/18-original.t
+t/19-remove.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
