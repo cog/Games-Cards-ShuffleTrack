@@ -54,6 +54,7 @@ To Do list:
  * testing
     * rearrange the tests and cleanup the variable names in the tests
     * run perlcritic on the tests and solve the issues
+    * move the warning tests to the same file
 
  * advanced
     * given a series of procedures and a desired final result, assert the initial order of the deck
