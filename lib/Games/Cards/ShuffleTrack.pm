@@ -359,8 +359,8 @@ Since you can add whichever card you want to the deck, it should be noted how se
 It is important to note:
 
 	my $total = $deck->count( 'JC' );   # holds 4
-	my $total = $deck->count( 'C', J ); # holds 16, because the JC is only counted once
-	my @total = $deck->count( 'C', J ); # holds (13, 4)
+	my $total = $deck->count( 'C', 'J' ); # holds 16, because the JC is only counted once
+	my @total = $deck->count( 'C', 'J' ); # holds (13, 4)
 
 Also:
 
@@ -1257,6 +1257,43 @@ sub take_random {
 
 	return $self->remove( _rand( $lower_limit, $upper_limit ) );
 }
+
+
+=head3 remove_all
+
+Removes all cards that match a pattern from the deck.
+
+    $deck->remove_all( 'Joker' ); # remove all Jokers
+    $deck->remove_all( 'A' ); # remove all Aces
+    $deck->remove_all( 'C' ); # remove all Clubs
+    $deck->remove_all( 'J', 'Q', 'K' ); # remove all court cards
+
+Without arguments this method does precisely what it states:
+
+    $deck->remove_all(); # removes everythin from the deck
+
+=cut
+
+sub remove_all {
+    my $self = shift;
+
+    if ( @_ ) {
+        while (my $param = shift) {
+            if ( exists $expressions->{$param} ) {
+                $self->_set_deck( grep { not /$expressions->{$param}/ } @{$self->get_deck} );
+            }
+            else {
+                $self->_set_deck( grep { not /$param/ } @{$self->get_deck} );
+            }
+        }
+    }
+    else {
+        $self->_set_deck();
+    }
+    
+    return $self;
+}
+
 
 =head3 dribble
 
