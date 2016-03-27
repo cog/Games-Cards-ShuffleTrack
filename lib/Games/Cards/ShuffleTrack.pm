@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use List::Util      qw/any min/;
-use List::MoreUtils qw/zip first_index/;
+use List::MoreUtils qw/zip first_index true/;
 use Scalar::Util    qw/looks_like_number/;
 
 =head1 NAME
@@ -390,10 +390,10 @@ sub _count_each {
 	my @results;
 	while (my $param = shift) {
 		if ( exists $expressions->{$param} ) {
-			push @results, scalar grep { /$expressions->{$param}/ } @{$self->get_deck};
+			push @results, true { /$expressions->{$param}/ } @{$self->get_deck};
 		}
 		else {
-			push @results, scalar grep { /$param/ } @{$self->get_deck};
+			push @results, true { /$param/ } @{$self->get_deck};
 		}
 	}
 	return @results;
