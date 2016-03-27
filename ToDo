@@ -3,8 +3,6 @@ To Do list:
  * new deck
     * start a deck with a specific number of cards
     * move the different deck orders to submodules
-    * is_original
-        $deck->is_original; # check if the order or contents of the deck has changed
     * start a deck with 4 decks
         Games::Cards::ShuffleTrack->new( 4 );
 

@@ -236,6 +236,44 @@ sub original_size {
 }
 
 
+=head3 is_original
+
+Checks to see if the order of the deck is still the same as the original order.
+
+    if ($deck->is_original) {
+        # ...
+    }
+
+This method checks for each card and also the orientation of the deck. The only case where the orientation of the deck doesn't matter is when the deck is empty, in which case that property is ignored.
+
+=cut
+
+sub is_original {
+    my $self = shift;
+
+    # check size
+    my @original = @{$self->{'original'}};
+    if ( $self->size != @original ) {
+        return 0;
+    }
+
+    $self->size || return 1;
+
+    # check orientation
+    if ( $self->orientation ne 'down' ) {
+        return 0;
+    }
+    
+    # check order
+    my @deck = @{$self->get_deck};
+    for ( 0 .. $#deck ) {
+        $deck[$_] eq $original[$_] || return 0;
+    }
+
+    return 1;
+}
+
+
 =head3 get_deck
 
 Returns the deck (a reference to a list of strings).
