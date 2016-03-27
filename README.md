@@ -1,5 +1,3 @@
-[![CPAN version](https://badge.fury.io/pl/Games-Cards-ShuffleTrack.svg)](https://badge.fury.io/pl/Games-Cards-ShuffleTrack)
-
 # NAME
 
 Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
@@ -534,6 +532,19 @@ Remove a random card from the deck.
 You can also specify limits (if you're somehow directing the person taking the card to a particular section of the deck):
 
         my $random_card = $deck->take_random( 13, 39 );
+
+### remove\_all
+
+Removes all cards that match a pattern from the deck.
+
+    $deck->remove_all( 'Joker' ); # remove all Jokers
+    $deck->remove_all( 'A' ); # remove all Aces
+    $deck->remove_all( 'C' ); # remove all Clubs
+    $deck->remove_all( 'J', 'Q', 'K' ); # remove all court cards
+
+Without arguments this method does precisely what it states:
+
+    $deck->remove_all(); # removes everythin from the deck
 
 ### dribble
 
