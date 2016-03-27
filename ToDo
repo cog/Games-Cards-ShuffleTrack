@@ -56,7 +56,6 @@ To Do list:
     * run perlcritic on the tests and solve the issues
 
  * advanced
-    * controlled multiple cuts (e.g., cut the top X cards under position N)
     * given a series of procedures and a desired final result, assert the initial order of the deck
     * track relationship between cards: from a specific order and through a series of procedures, present conclusions about the end relationship
     * given an initial deck order and a series of procedures, run that sequence X times to analyze the outcome (e.g., 1st card usually ends in certain positions)
