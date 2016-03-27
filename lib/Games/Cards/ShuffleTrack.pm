@@ -359,8 +359,8 @@ Since you can add whichever card you want to the deck, it should be noted how se
 It is important to note:
 
 	my $total = $deck->count( 'JC' );   # holds 4
-	my $total = $deck->count( 'C', J ); # holds 16, because the JC is only counted once
-	my @total = $deck->count( 'C', J ); # holds (13, 4)
+	my $total = $deck->count( 'C', 'J' ); # holds 16, because the JC is only counted once
+	my @total = $deck->count( 'C', 'J' ); # holds (13, 4)
 
 Also:
 
