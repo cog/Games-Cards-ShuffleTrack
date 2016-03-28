@@ -1,2 +1,6 @@
 severity = 3
-exclude = RequireTestLabels
+exclude = RegularExpressions::RequireExtendedFormatting Subroutines::RequireArgUnpacking RequireTestLabels
+
+[Bangs::ProhibitFlagComments]
+severity = 3
+keywords = FIXME
