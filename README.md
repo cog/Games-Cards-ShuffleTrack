@@ -1,10 +1,12 @@
+[![CPAN version](https://badge.fury.io/pl/Games-Cards-ShuffleTrack.svg)](https://badge.fury.io/pl/Games-Cards-ShuffleTrack)
+
 # NAME
 
 Games::Cards::ShuffleTrack - Track cards through shuffles and cuts
 
 # VERSION
 
-Version 0.04\_1
+Version 0.05
 
 # SYNOPSIS
 

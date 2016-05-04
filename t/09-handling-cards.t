@@ -15,7 +15,6 @@ my $top_card = $deck->peek( 1 );
 # putting a card on top of the deck increases its size and the card gets added on top
 $deck->put( 'Joker' );
 is( $deck->deck_size, 53 );
-
 is( $deck->find( 'Joker' ), 1 );
 
 # final test to see if we can still restart the deck
