@@ -1152,12 +1152,12 @@ sub deal {
 
 	my $params = _parse_params(@_);
 
-	my $destination = $params->{_has_places} ?
+	my $destination = $params->{'_has_places'} ?
 						$params->{'places'}[0] :
 						undef;
 
 	my $position = $shortcuts->{'top'};
-	if ($params->{_has_options}) {
+	if ($params->{'_has_options'}) {
 		my $param = $params->{'options'}->[0];
 		if (exists $shortcuts->{$param}) {
 			$position = $shortcuts->{$param};
@@ -1367,9 +1367,9 @@ sub _fix_limits {
 # TODO: use this for every method (just being used in dribble)
 sub _parse_params {
 	my $params = {
-		numbers => [],
-		places  => [],
-		options => [],
+		'numbers' => [],
+		'places'  => [],
+		'options' => [],
 	};
 	while (my $param = shift) {
 		if (looks_like_number($param)) {
