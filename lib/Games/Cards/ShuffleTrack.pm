@@ -358,8 +358,8 @@ Since you can add whichever card you want to the deck, it should be noted how se
 
 It is important to note:
 
-	my $total = $deck->count( 'JC' );   # holds 4
-	my $total = $deck->count( 'C', 'J' ); # holds 16, because the JC is only counted once
+	my $total = $deck->count( 'JC' );   # holds 1
+	my $total = $deck->count( 'C', 'J' ); # holds 16 (4 Jacks + 13 cards - JC, which is being counted twice)
 	my @total = $deck->count( 'C', 'J' ); # holds (13, 4)
 
 Also:
@@ -1462,12 +1462,12 @@ and the packet to be thrown may be located by the jog, or break, or by both.
 
 =item * Top Card
 
-The card on top of packet held in the left hand, or the original top card of the full deck, which about to be
+The card on top of packet held in the left hand, or the original top card of the full deck, which is about to be
 shuffled.
 
 =item * Riffle
 
-The modern method of shuffling on the table by springing, the ends of two packets into each other.
+The modern method of shuffling on the table by springing the ends of two packets into each other.
 
 =item * Crimp
 

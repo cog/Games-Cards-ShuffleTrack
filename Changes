@@ -1,5 +1,8 @@
 Revision history for Games-Cards-ShuffleTrack
 
+0.06
+		minor updates to the documentation
+
 0.05    2016-04-28
 		Implemented is_original
 		We can now $deck->remove_all( 'Joker' )
