@@ -64,7 +64,7 @@ To Do list:
 
  * games
     * poker
-        * order cards in a hand
+        * sort cards in a hand
         * analyze hands (value)
         * make the best hand out of X cards
         * compare hands
@@ -75,3 +75,6 @@ To Do list:
         * count points in hand
     * faro game
         * compare cards
+	* counting systems for games
+		* blackjack (court cards are 10, ace is either 1 or 11)
+		* standard (cards are worth their face value; jack is 11, queen is 12, king is 13, ace is 14; this is useful for comparison of cards)
