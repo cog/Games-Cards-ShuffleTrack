@@ -20,6 +20,9 @@ To Do list:
         my $pile = $deck->deal( 5 );
         $deck->deal( 5, @hands, 'alternate' ); # deals one card at a time to all hands
         $deck->deal( 5, @hands, 'together' );  # deals 5 cards to a hand at a time
+	* dribble
+		$deck->dribble_above( 'KS' );
+		$deck->dribble_below( 'KS' );
 
  * shuffling
     * the wash
